@@ -1,11 +1,14 @@
 import React from 'react'
-import IdentificadorDeArquivo from '../../Componentes/Calculadora/IdentificadorDeArquivo'
+
+import ResultadoDctf from '../../Componentes/ResultadoDctf'
+import { InputDctf } from '../../Componentes/InputDctf'
 
 export default function PaginaInicial() {
   return (
     <>
-    <h1>Ola Mundo ! </h1>
-    <IdentificadorDeArquivo/>
+      <h1>Ola Mundo ! </h1>
+      <InputDctf />
+      <ResultadoDctf/>
     </>
   )
 }
