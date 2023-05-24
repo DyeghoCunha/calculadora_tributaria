@@ -8,7 +8,7 @@ export default function ResultadoDctf() {
     valorEncontradoCsll,
     valorEncontradoPis,
     valorEncontradoCofins, faturamentoCalculadoPis,
-    faturamentoCalculadoCofins,faturamentoEstimado
+    faturamentoCalculadoCofins,faturamentoEstimado, faturamentoEstimadoCsll
   } = useContext(DctfImportContext);
 
   let Ir = 0;
@@ -17,7 +17,8 @@ export default function ResultadoDctf() {
   let Cofins = 0;
   let FaturamentoPis = 0;
   let FaturamentoCofins =0;
-  let Faturamento = 0 
+  let Faturamento = 0 ;
+  let FaturamentoCsll = 0;
 
   
 
@@ -29,6 +30,7 @@ export default function ResultadoDctf() {
      FaturamentoPis = faturamentoCalculadoPis.toFixed(2);
      FaturamentoCofins = faturamentoCalculadoCofins.toFixed(2);
      Faturamento = faturamentoEstimado.toFixed(2);
+     FaturamentoCsll = faturamentoEstimadoCsll.toFixed(2);
   }
 
 
@@ -41,6 +43,7 @@ export default function ResultadoDctf() {
       <p>Faturamento Pelo Pis: R$ {FaturamentoPis}</p>
       <p>Faturamento Pelo Cofins: R$ {FaturamentoCofins}</p>
       <p>Faturamento Estimado: R$ {Faturamento}</p>
+      <p>Faturamento Estimado pelo Csll: R$ {FaturamentoCsll}</p>
     </div>
   );
 }
