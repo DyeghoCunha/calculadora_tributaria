@@ -1,0 +1,17 @@
+@import "../../../styles/variaveis";
+
+.linknavContainer{
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+
+}
+
+.titulo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aqua;
+  height: inherit;
+  width: 9em;
+}

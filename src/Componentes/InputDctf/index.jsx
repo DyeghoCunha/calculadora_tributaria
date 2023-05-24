@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { DctfImportContext } from '../../common/contex/DctfImport';
+import styles from './InputDctf.module.scss'
 
-export const InputDctf = ()=> {
+export const InputDctf = () => {
 
-  const {updateArquivo, setValorEncontradoCofins,setValorEncontradoCsll,setValorEncontradoIr,setValorEncontradoPis} = useContext(DctfImportContext)
+  const { updateArquivo, setValorEncontradoCofins, setValorEncontradoCsll, setValorEncontradoIr, setValorEncontradoPis } = useContext(DctfImportContext)
 
 
   function handleFileChange(event) {
@@ -86,8 +87,13 @@ export const InputDctf = ()=> {
     }
   }
   return (
-    <div>
-      <input type="file" onChange={handleFileChange} />
+    <div className={styles.container}>
+      <h1 className={styles.label}>DCTF</h1>
+
+      <div className={styles.botaoContainer}>
+      <label htmlFor="fileInput" className={styles.botao}>Anexar</label>
+      <input type="file" id="fileInput" onChange={handleFileChange}  className={styles.input}/>
+      </div>
     </div>
   );
 }

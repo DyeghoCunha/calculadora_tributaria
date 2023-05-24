@@ -7,7 +7,7 @@ import Banner from '../../Componentes/Banner'
 export default function PaginaInicial() {
   return (
     <>
-     <Banner/>
+     {/* <Banner/> */}
       <InputDctf />
       <ResultadoDctf/>
     </>
