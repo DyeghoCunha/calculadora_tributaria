@@ -1,6 +1,6 @@
 # Calculadora Tributaria ! 
 
-Projeto desenvolvido para fixar conhecimento em React Js e contabilidade Tributaria
+Projeto desenvolvido para fixar conhecimento em React Js e Contabilidade Tributaria
 
 | :placard: Vitrine.Dev |**Dyegho Cunha**
 | -------------  | --- |
@@ -10,7 +10,7 @@ Projeto desenvolvido para fixar conhecimento em React Js e contabilidade Tributa
 
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
-![](https://github.com/DyeghoCunha/myroom/blob/master/capaMYRoom.png#vitrinedev)
+![](https://github.com/DyeghoCunha/calculadora_tributaria/blob/master/Captura%20de%20tela%202023-05-24%20201039.png?raw=true#vitrinedev)
 
 
 
