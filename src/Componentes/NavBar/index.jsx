@@ -6,7 +6,7 @@ import LinkNav from './LinkNav'
 export default function NavBar() {
   return (
        <nav className={styles.navbarContainer}>
-        <h1>LogoMarca</h1>
+        <h1 className={styles.logoMarca}>LogoMarca</h1>
         <div className={styles.links}>
           <LinkNav  titulo={'Pagina Inicial'}/>
           <LinkNav  titulo={'Calculo Tributario'}/>
