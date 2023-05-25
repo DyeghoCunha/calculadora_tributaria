@@ -29,4 +29,16 @@ npm install ract-markdown
 
 npm install react-router-dom
 
+## Instalar o File-Saver
 
+npm install file-saver --save
+
+let conteudo = 'Olaaaar';
+const blob = new Blob([conteudo], { type: 'text/plain' });
+
+// Cria um objeto FileSaver.js
+const fileSaver = require('file-saver');
+
+// Salva o arquivo
+fileSaver.saveAs(blob, 'nome_do_arquivo.txt');let file = new File(["Hello, world!"], "hello world.txt", {type: "text/plain;charset=utf-8"});
+FileSaver.saveAs(file);
