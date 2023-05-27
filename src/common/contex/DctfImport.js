@@ -1,6 +1,9 @@
 import FileSaver from 'file-saver';
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
+import faturamentoDb from '../../assets/json/dados.json'
+
+
 export const DctfImportContext = createContext();
 DctfImportContext.displayName = "DCTF";
 

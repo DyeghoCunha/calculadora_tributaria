@@ -1,0 +1,136 @@
+{
+  "faturamentoMensal": [
+    {
+      "id": 1,
+      "mês": "Janeiro",
+      "ir": "",
+      "faturamentoMes":"",
+      "csll": "",
+      "pis": "",
+      "cofins": "",
+      "impostoPago": "",
+      "impostoRestituir": ""
+    },
+    {
+      "id": 2,
+      "mês": "Fevereiro",
+      "ir": "",
+      "faturamentoMes":"",
+      "csll": "",
+      "pis": "",
+      "cofins": "",
+      "impostoPago": "",
+      "impostoRestituir": ""
+    },
+    {
+      "id": 3,
+      "mês": "Março",
+      "ir": "",
+      "faturamentoMes":"",
+      "csll": "",
+      "pis": "",
+      "cofins": "",
+      "impostoPago": "",
+      "impostoRestituir": ""
+    },
+    {
+      "id": 4,
+      "mês": "Abril",
+      "ir": "",
+      "faturamentoMes":"",
+      "csll": "",
+      "pis": "",
+      "cofins": "",
+      "impostoPago": "",
+      "impostoRestituir": ""
+    },
+    {
+      "id": 5,
+      "mês": "Maio",
+      "ir": "",
+      "faturamentoMes":"",
+      "csll": "",
+      "pis": "",
+      "cofins": "",
+      "impostoPago": "",
+      "impostoRestituir": ""
+    },
+    {
+      "id": 6,
+      "mês": "Junho",
+      "ir": "",
+      "faturamentoMes":"",
+      "csll": "",
+      "pis": "",
+      "cofins": "",
+      "impostoPago": "",
+      "impostoRestituir": ""
+    },
+    {
+      "id": 7,
+      "mês": "Julho",
+      "ir": "",
+      "faturamentoMes":"",
+      "csll": "",
+      "pis": "",
+      "cofins": "",
+      "impostoPago": "",
+      "impostoRestituir": ""
+    },
+    {
+      "id": 8,
+      "mês": "Agosto",
+      "ir": "",
+      "faturamentoMes":"",
+      "csll": "",
+      "pis": "",
+      "cofins": "",
+      "impostoPago": "",
+      "impostoRestituir": ""
+    },
+    {
+      "id": 9,
+      "mês": "Setembro",
+      "ir": "",
+      "faturamentoMes":"",
+      "csll": "",
+      "pis": "",
+      "cofins": "",
+      "impostoPago": "",
+      "impostoRestituir": ""
+    },
+    {
+      "id": 10,
+      "mês": "Outubro",
+      "ir": "",
+      "faturamentoMes":"",
+      "csll": "",
+      "pis": "",
+      "cofins": "",
+      "impostoPago": "",
+      "impostoRestituir": ""
+    },
+    {
+      "id": 11,
+      "mês": "Novembro",
+      "ir": "",
+      "faturamentoMes":"",
+      "csll": "",
+      "pis": "",
+      "cofins": "",
+      "impostoPago": "",
+      "impostoRestituir": ""
+    },
+    {
+      "id": 12,
+      "mês": "Dezembro",
+      "ir": "",
+      "faturamentoMes":"",
+      "csll": "",
+      "pis": "",
+      "cofins": "",
+      "impostoPago": "",
+      "impostoRestituir": ""
+    }
+  ]
+}

@@ -3,17 +3,29 @@
 
 
 
+.containerPrincipal{
 
-.container{
   display: flex;
   flex-direction: column;
-  
-  
+  gap: 5px;
+  margin: 20px 0;
+
+}
+.container:hover label{
+  color:$colorTribBotao
+}
+
+.mesContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
 }
 .label{
   font-family: $fonte-normal;
-  margin-left: 9px;
+  margin-right: 5px;
 }
+
 .input{
   width: 140px;
   height: 30px;
@@ -21,8 +33,12 @@
   border: none;
   background-color: $colorTribCampoFundo;
 
+ 
   box-sizing: border-box;
 }
+
+
+
 .input:hover{
   border: solid 2px $colorTribBotao;
 }

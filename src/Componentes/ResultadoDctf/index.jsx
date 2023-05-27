@@ -1,7 +1,8 @@
 
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { DctfImportContext } from '../../common/contex/DctfImport';
 import styles from './ResultadoDctf.module.scss';
+
 
 export default function ResultadoDctf() {
   const {
@@ -33,6 +34,7 @@ export default function ResultadoDctf() {
     Faturamento = faturamentoEstimado.toFixed(2);
     FaturamentoCsll = faturamentoEstimadoCsll.toFixed(2);
   }
+
 
 
   return (

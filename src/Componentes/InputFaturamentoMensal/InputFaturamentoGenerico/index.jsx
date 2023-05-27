@@ -1,23 +1,28 @@
-import React from 'react'
-import styles from './InputFaturamentoGenerico.module.scss'
+import styles from './InputFaturamentoGenerico.module.scss';
+import React, { useContext } from 'react';
 
-export default function InputFaturamentoGenerico({ mes }) {
-  const handleChange = (event) => {
-    const valor = event.target.value;
 
-  };
-
+const InputFaturamentoGenerico = ({ faturamentoDb, handleFaturamentoInputChange }) => {
   return (
-    <div className={styles.container}>
-      <label htmlFor="filterText" className={styles.label}>
-        {mes}
-      </label>
-      <input
-        type="number"
-        id="filterText"
-        onChange={handleChange}
-        className={styles.input}
-      />
+    <div className={styles.containerPrincipal}>
+      {faturamentoDb.faturamentoMensal.map(obj => (
+        <div className={styles.container} key={obj.id}>
+          <div className={styles.mesContainer}>
+            <label className={styles.label} htmlFor={`faturamentoMes_${obj.id}`}>
+              {obj.mês}
+            </label>
+            <input
+              className={styles.input}
+              type="number"
+              id={`faturamentoMes_${obj.id}`}
+              value={obj.faturamentoMes}
+              onChange={e => handleFaturamentoInputChange(obj.id, e.target.value)}
+            />
+          </div>
+        </div>
+      ))}
     </div>
   );
-}
+};
+
+export default InputFaturamentoGenerico;
