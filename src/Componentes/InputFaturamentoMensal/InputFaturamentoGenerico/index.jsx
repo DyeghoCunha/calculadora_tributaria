@@ -13,7 +13,7 @@ const InputFaturamentoGenerico = ({ faturamentoDb, handleFaturamentoInputChange 
             </label>
             <input
               className={styles.input}
-              type="number"
+              type="text"
               id={`faturamentoMes_${obj.id}`}
               value={obj.faturamentoMes}
               onChange={e => handleFaturamentoInputChange(obj.id, e.target.value)}

@@ -1,6 +1,6 @@
 @import '../../styles/variaveis';
 
-.container{
+.container {
   width: 320px;
   height: auto;
   border-radius: 8px;
@@ -10,33 +10,33 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-margin: 10px;
+  margin: 10px;
 }
 
-.titulo{
+.titulo {
   font-size: 30px;
   font-family: $fonte-normal;
   color: $colorTribBotao;
 }
 
-.mesesContainer{
-
-  
+.mesesContainer {
   justify-content: space-around;
-  padding:0;
-  
+  padding: 0;
+
+  .mesesContainer_div {
+    padding: 2px;
+  }
 }
-.mesesContainer_div{
-padding: 2px; 
-}
-.botaoAnoContainer{
+
+.botaoAnoContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px ;
-  gap:10px;
+  margin-bottom: 20px;
+  gap: 10px;
 }
-.botao{
+
+.botao {
   width: 110px;
   height: 42px;
   border-radius: 8px;
@@ -45,36 +45,99 @@ padding: 2px;
   font-size: 32px;
   background-color: $colorTribBotao;
   border: none;
-}
-.botao:disabled{
-  border: 2px solid $colorTribDestaque;
-  background-color: $colorTribCard;
-  color:$colorTribDestaque;
 
+  &:disabled {
+    border: 2px solid $colorTribDestaque;
+    background-color: $colorTribCard;
+    color: $colorTribDestaque;
+  }
 }
 
-.inputAno{
+.inputAno {
   width: 140px;
   height: 30px;
   border-radius: 8px;
   border: none;
   background-color: $colorTribCampoFundo;
-
- 
   box-sizing: border-box;
 
+  &::placeholder {
+    text-align: center;
+    font-size: 15px;
+  }
+
+  &:hover {
+    border: 2px $colorTribBotao solid;
+  }
+
+  &:focus {
+    outline: none;
+    border: 2px solid $colorTribDestaque;
+  }
 }
-.inputAno::placeholder{
-text-align: center;
-font-size: 15px;
+
+
+/* Vai virar um Componente */
+.erroContainer {
+  bottom: 65px;
+  left: 18px;
+  position: absolute;
+  border: 2px solid $colorTribDestaqueFade;
+  border-radius: 8px;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  background-color: $colorTribDestaqueFade;
+ 
+  
+
 }
-.inputAno:hover{
-  border: 2px $colorTribBotao solid;
+
+.erroAno {
+  position: inherit;
+  text-align: center;
+ font-family: $fonte-normal;
+  font-size: 36px;
+  color: $colorTribDestaque;
 }
-.inputAno:focus{
-  outline: none;
-  border:2px solid $colorTribDestaque;
+
+.menor{
+  font-size: 30px;
+  color: $colorTribBotao;
+  font-family: $fonte-bold;
 }
-.erroAno{
-  color: red;
+.maior{
+  font-size: 40px;
+  color: $colorTribBotao;
+  font-family: $fonte-bold;
+}
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutAnimation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeIn {
+  animation: fadeInAnimation 0.5s ease-in forwards;
+  opacity: 0;
+}
+
+.fadeOut {
+  animation: fadeOutAnimation 2s ease-out forwards;
+  opacity: 1;
 }

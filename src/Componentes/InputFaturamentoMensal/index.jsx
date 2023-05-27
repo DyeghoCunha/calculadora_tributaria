@@ -26,18 +26,28 @@ export default function InputFaturamentoMensal() {
     }));
     setCapturedData(capturedValues);
     console.log(capturedValues); // Console.log para visualizar a informação armazenada
+
+    // Limpar os valores dos inputs
+    setSelectedYear('');
+    setFaturamentoDbValues(faturamentoDb);
   };
 
   const currentYear = new Date().getFullYear();
   const retroativo = currentYear - 5;
-  let erro = `O ano é maior do que ${currentYear} ou menor que ${retroativo}`;
+  let erro = (
+    <p className={styles.erroAno}>
+      O ano deve ser <span className={styles.menor}>menor</span> que {currentYear}  <span className={styles.maior}>maior</span> que {retroativo}
+    </p>
+  );
+
   const isButtonDisabled =
     selectedYear < retroativo ||
     selectedYear === '' ||
     selectedYear > currentYear;
 
 
-    const isErroAno = selectedYear < retroativo || selectedYear > currentYear;
+  let isErroAno = selectedYear < retroativo || selectedYear > currentYear;
+
   return (
 
     <div className={styles.container}>
@@ -48,14 +58,14 @@ export default function InputFaturamentoMensal() {
           handleFaturamentoInputChange={handleFaturamentoInputChange}
         />
 
-
-
         {/* Tentando arrumar o Erro de aparecer o Ano */}
-         {isErroAno && (
-        <p className={styles.erroAno} style={{ display: 'none' }}>
-          {erro}
-        </p>
-      )}
+        {isErroAno && selectedYear !== '' && (
+          <div className={`${styles.erroContainer} ${isErroAno ? styles.fadeIn : '' || !isErroAno ? styles.fadeOut : ''}`}>
+            {erro}
+          </div>
+
+        )}
+
         <div className={styles.botaoAnoContainer}>
           <button onClick={handleCaptureData} disabled={isButtonDisabled} className={styles.botao}>
             Enviar</button>

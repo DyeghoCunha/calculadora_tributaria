@@ -12,7 +12,7 @@ export default function PaginaInicial() {
      {/* <Banner/> */}
       <InputFaturamento/>
       <InputFaturamentoMensal/>
-      {/* <InputDctf /> */}
+      <InputDctf />
       <ResultadoDctf/>
     </>
   )
