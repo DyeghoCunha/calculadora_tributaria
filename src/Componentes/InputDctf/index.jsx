@@ -15,7 +15,7 @@ export const InputDctf = () => {
 
       reader.onload = (e) => {
         const contents = e.target.result;
-        console.log('Conteúdo do arquivo:', contents);
+        //console.log('Conteúdo do arquivo:', contents);
 
         let planilha = contents;
         updateArquivo(planilha);
@@ -34,9 +34,8 @@ export const InputDctf = () => {
           for (const match of matchesIr) {
             const valor = match.slice(-13);
             const resultadoFinal = valor.slice(0, -4);
-            console.log('Valor encontrado:', valor);
             const number = Number(resultadoFinal) / 100;
-            console.log('Valor:', number);
+            console.log('Valor DCTF Ir:', number);
             setValorEncontradoIr(number);
           }
         } else {
@@ -47,9 +46,8 @@ export const InputDctf = () => {
           for (const match of matchesCsll) {
             const valor = match.slice(-13);
             const resultadoFinal = valor.slice(0, -4);
-            console.log('Valor encontrado:', valor);
             const number = Number(resultadoFinal) / 100;
-            console.log('Valor:', number);
+            console.log('Valor DCTF Csll:', number);
             setValorEncontradoCsll(number);
           }
         } else {
@@ -60,9 +58,8 @@ export const InputDctf = () => {
           for (const match of matchesPis) {
             const valor = match.slice(-13);
             const resultadoFinal = valor.slice(0, -4);
-            console.log('Valor encontrado:', valor);
             const number = Number(resultadoFinal) / 100;
-            console.log('Valor:', number);
+            console.log('Valor DCTF Pis:', number);
             setValorEncontradoPis(number);
           }
         } else {
@@ -73,9 +70,8 @@ export const InputDctf = () => {
           for (const match of matchesCofins) {
             const valor = match.slice(-13);
             const resultadoFinal = valor.slice(0, -4);
-            console.log('Valor encontrado:', valor);
             const number = Number(resultadoFinal) / 100;
-            console.log('Valor:', number);
+            console.log('Valor DCTF Cofins:', number);
             setValorEncontradoCofins(number);
           }
         } else {

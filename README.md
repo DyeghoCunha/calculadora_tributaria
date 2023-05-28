@@ -46,3 +46,7 @@ const fileSaver = require('file-saver');
 // Salva o arquivo
 fileSaver.saveAs(blob, 'nome_do_arquivo.txt');let file = new File(["Hello, world!"], "hello world.txt", {type: "text/plain;charset=utf-8"});
 FileSaver.saveAs(file);
+
+
+
+Fazer alteração na pagina inicial 

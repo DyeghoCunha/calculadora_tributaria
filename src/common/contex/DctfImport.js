@@ -9,15 +9,18 @@ DctfImportContext.displayName = "DCTF";
 
 export const DctfImportContextProvider = ({ children }) => {
   const [arquivo, setArquivo] = useState([]);
+
+  /* Valores encontrados na DCTF */
   const [valorEncontradoIr, setValorEncontradoIr] = useState('');
   const [valorEncontradoCsll, setValorEncontradoCsll] = useState('');
   const [valorEncontradoPis, setValorEncontradoPis] = useState('');
   const [valorEncontradoCofins, setValorEncontradoCofins] = useState('');
 
+  /* Faturamento calculado a Partir da DCTF */
   const [faturamentoCalculadoPis, setFaturamentoCalculadoPis] = useState('');
   const [faturamentoCalculadoCofins, setFaturamentoCalculadoCofins] = useState('');
-  const [faturamentoEstimado, setFaturamentoEstimado] = useState('');
-  const [faturamentoEstimadoCsll, setFaturamentoEstimadoCsll] = useState('');
+  const [faturamentoEstimadoMensal, setFaturamentoEstimado] = useState('');
+  const [faturamentoEstimadoTrimestral, setFaturamentoEstimadoCsll] = useState('');
 
   const presuncaoIrSemBeneficio = 0.32;
   const presuncaoCsllSemBeneficio = 0.12 //Alterar porque esta para Vendas
@@ -26,7 +29,7 @@ export const DctfImportContextProvider = ({ children }) => {
   const alqPis = 0.0065;
   const alqCofins = 0.03;
   const baseDivisaoCsll = presuncaoCsllSemBeneficio * alqCsll;
-  //Ver questao do Adicional de 10%
+  
 
   useEffect(() => {
     if (faturamentoCalculadoPis !== valorEncontradoPis / alqPis) {
@@ -35,14 +38,25 @@ export const DctfImportContextProvider = ({ children }) => {
     if (faturamentoCalculadoCofins !== valorEncontradoCofins / alqCofins) {
       setFaturamentoCalculadoCofins(valorEncontradoCofins / alqCofins);
     }
-    if (faturamentoEstimado !== (faturamentoCalculadoPis + faturamentoCalculadoCofins) / 2) {
+    if (faturamentoEstimadoMensal !== (faturamentoCalculadoPis + faturamentoCalculadoCofins) / 2) {
       const fatEstimado = (faturamentoCalculadoPis + faturamentoCalculadoCofins) / 2;
       setFaturamentoEstimado(fatEstimado);
     }
-    if (faturamentoEstimadoCsll !== valorEncontradoCsll / baseDivisaoCsll) {
+    if (faturamentoEstimadoTrimestral !== valorEncontradoCsll / baseDivisaoCsll) {
       setFaturamentoEstimadoCsll(valorEncontradoCsll / baseDivisaoCsll);
     }
   }, [valorEncontradoPis, valorEncontradoCofins, faturamentoCalculadoPis, faturamentoCalculadoCofins]);
+  
+  console.log(`
+  |---------------------------------------------|
+  |FatEstimado Mensal pelo Pis/Cofins: ${parseFloat(faturamentoEstimadoMensal).toFixed(2)}|
+  |------------------------|
+  |FatEstimado Trimestral: ${parseFloat(faturamentoEstimadoTrimestral).toFixed(2)}|
+  |--------------------------------------------|
+  `);
+
+
+
 
   const updateArquivo = (file) => {
     setArquivo([...arquivo, { file }]);
@@ -62,8 +76,8 @@ export const DctfImportContextProvider = ({ children }) => {
         updateArquivo,
         faturamentoCalculadoPis,
         faturamentoCalculadoCofins,
-        faturamentoEstimado,
-        faturamentoEstimadoCsll
+        faturamentoEstimadoMensal,
+        faturamentoEstimadoTrimestral
       }}
     >
       {children}

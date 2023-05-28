@@ -1,4 +1,6 @@
 import React from 'react'
+import styles from './PaginaInicial.module.scss'
+
 
 import ResultadoDctf from '../../Componentes/ResultadoDctf'
 import { InputDctf } from '../../Componentes/InputDctf'
@@ -8,12 +10,16 @@ import InputFaturamentoMensal from '../../Componentes/InputFaturamentoMensal'
 
 export default function PaginaInicial() {
   return (
-    <>
-     {/* <Banner/> */}
-      <InputFaturamento/>
-      <InputFaturamentoMensal/>
+
+    <div className={styles.container}>
+      {/* <Banner/> */}
+      <div>
+        <InputFaturamento />
+        <InputFaturamentoMensal />
+      </div>
       <InputDctf />
-      <ResultadoDctf/>
-    </>
+      <ResultadoDctf />
+    </div>
+
   )
 }

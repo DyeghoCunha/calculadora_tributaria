@@ -12,11 +12,14 @@
 }
 
 .label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 border: none;
-  color: black;
+  color: $colorTribBotao;
   font-size: 58px;
   font-weight: 400;
-  font-family: $fonte-normal;
+  font-family: $fonte-bold;
   margin-left: 10px;
 
 }
@@ -29,13 +32,13 @@ display: none;
 .botaoContainer{
   position: relative;
   display: inline-block;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .botao {
-  
-  display: inline-block;
-  text-align: center;
+text-align: center;
   background-color: $colorTribBotao;
   width: 110px;
   height: 42px;
@@ -44,7 +47,7 @@ display: none;
   font-weight: 400;
   color: #fff;
   border-radius: 8px;
-  margin: 30px 10px 10px 10px ;
+  margin: 10px ;
   cursor: pointer;
 }
 
