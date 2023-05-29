@@ -12,13 +12,13 @@ export default function PaginaInicial() {
   return (
 
     <div className={styles.container}>
-      {/* <Banner/> */}
+ {/*       <Banner/> 
       <div>
         <InputFaturamento />
         <InputFaturamentoMensal />
       </div>
       <InputDctf />
-      <ResultadoDctf />
+      <ResultadoDctf /> */}
     </div>
 
   )

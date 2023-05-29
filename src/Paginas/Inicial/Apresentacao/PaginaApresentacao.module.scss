@@ -1,0 +1,71 @@
+@import '../../../styles/variaveis';
+
+
+.container{
+  width: 100vw;
+  height: auto;
+  background-color: $colorTribFundo;
+} 
+
+.titulo{
+  font-family: $fonte-normal;
+  font-size: 8vw;
+  background-color: $colorTribCard;
+  color: $colorTribBotao;
+  box-sizing: border-box;
+  padding:0px ;
+  padding: 20px 10px;
+  text-align: center;
+ 
+ 
+}
+.destaque{
+  color:$colorTribDestaque; 
+  font-family: $fonte-bold;
+}
+.destaque:hover{
+  color: $colorTribBotao;
+  -webkit-text-stroke: 2px $colorTribDestaque; /* Para navegadores WebKit (Chrome, Safari) */
+  text-stroke: 2px $colorTribDestaque; /* Padrão */
+}
+
+.secaoContainer{
+  
+  box-sizing: border-box;
+  width: 100vw;
+  height: auto;
+  padding: 20px;
+}
+
+.subtitulo{
+  font-size: 4vw;
+  font-family: $fonte-normal;
+  color: $colorTribBotao;
+  margin-bottom: 20px;
+}
+.paragrafo{
+  font-family: $fonte-normal;
+  font-size: 32px;
+  padding: 10px;
+  line-height: 45px;
+}
+
+.linkBotao{
+  background-color: $colorTribBotao;
+  border-radius: 8px;
+  padding: 1px 6px;
+  margin: 0px 5px;
+  text-decoration: none;
+  color: $colorTribCard;
+  font-family: $fonte-bold;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  &:hover{
+    color: $colorTribDestaque; 
+    background-color: $colorTribDestaqueFade;
+    border-radius: 8px;
+    padding: 1px 6px;
+    margin: 0px 5px;
+box-shadow:  inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}

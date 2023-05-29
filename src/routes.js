@@ -6,17 +6,20 @@ import PaginaInicial from './Paginas/Inicial';
 import { DctfImportContextProvider } from './common/contex/DctfImport';
 import NavBar from './Componentes/NavBar';
 import { FaturamentoInputProvider } from './common/contex/FaturamentoInput';
+import PaginaApresentacao from './Paginas/Inicial/Apresentacao';
 
 
 
 export default function AppRoutes() {
   return (
     <BrowserRouter>
-      <NavBar/>
+       <NavBar/> 
       <DctfImportContextProvider>
         <FaturamentoInputProvider>        
         <Routes>
-        <Route path="/" element={<PaginaInicial />} />
+       {/*  <Route path="/" element={<PaginaInicial />} />*/}
+        <Route path="/" element={<PaginaApresentacao/>} />
+        
         </Routes>
         </FaturamentoInputProvider>
       </DctfImportContextProvider>
