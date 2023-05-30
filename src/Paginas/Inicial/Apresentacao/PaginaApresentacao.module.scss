@@ -22,11 +22,14 @@
 .destaque{
   color:$colorTribDestaque; 
   font-family: $fonte-bold;
+  z-index: 0;
+  
 }
 .destaque:hover{
   color: $colorTribBotao;
-  -webkit-text-stroke: 2px $colorTribDestaque; /* Para navegadores WebKit (Chrome, Safari) */
-  text-stroke: 2px $colorTribDestaque; /* Padrão */
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  
 }
 
 .secaoContainer{
@@ -68,4 +71,19 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin: 0px 5px;
 box-shadow:  inset 4px 4px 4px rgba(0, 0, 0, 0.25);
   }
+}
+
+.tituloLista{
+  color: $colorTribBotao;
+  margin-bottom: 20px;
+  font-size: 3vw;
+}
+.listaContainer{
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+.listaItem{
+  font-size: 32px;
+  font-family: $fonte-normal;
+  color: $colorTribDestaque;
 }
