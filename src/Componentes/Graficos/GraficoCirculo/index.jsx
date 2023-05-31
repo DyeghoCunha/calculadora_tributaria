@@ -1,9 +1,11 @@
 import './GraficoCirculo.module.scss'
 
 import styles from './GraficoCirculo.module.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleDot } from '@fortawesome/free-solid-svg-icons'
 import React from 'react';
+
+
+
+
 
 const GraficoCircular = ({ valorPago = 100, valorCorreto = 40, nomeImposto = 'Imposto' }) => {
   // Calcular a porcentagem do valor correto e do valor a restituir
