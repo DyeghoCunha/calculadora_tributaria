@@ -17,8 +17,8 @@ export default function AppRoutes() {
       <DctfImportContextProvider>
         <FaturamentoInputProvider>        
         <Routes>
-       {/*  <Route path="/" element={<PaginaInicial />} />*/}
-        <Route path="/" element={<PaginaApresentacao/>} />
+        <Route path="/" element={<PaginaInicial />} />
+       {/*  <Route path="/" element={<PaginaApresentacao/>} /> */}
         
         </Routes>
         </FaturamentoInputProvider>
