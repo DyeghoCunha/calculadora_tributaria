@@ -1,5 +1,6 @@
 import ContainerTrib from '../../ContainerTrib'
 import GraficoCircular from '../../Graficos/GraficoCirculo'
+import GraficoLinha from '../../Graficos/GraficoLinha'
 import InputFaturamentoMensal from '../../InputFaturamentoMensal'
 import ResultadoDctf from '../../ResultadoDctf'
 import styles from './BlocoFaturamentoMensal.module.scss'
@@ -14,13 +15,13 @@ export default function BlocoFaturamentoMensal() {
       <InputFaturamentoMensal />
       <div className={styles.containerGrafico}>
         <ResultadoDctf />
-
+        <GraficoLinha />
         <div className={styles.containerGraficoCircular}>
           <GraficoCircular />
           <GraficoCircular />
           <GraficoCircular />
           <GraficoCircular />
-          
+
         </div>
       </div>
 

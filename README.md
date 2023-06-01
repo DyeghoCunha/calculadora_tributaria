@@ -19,6 +19,9 @@ Projeto desenvolvido para fixar conhecimento em React Js e Contabilidade Tributa
 ## Instalado o Sass
 npm install node-sass sass-loader style-loader css-loader sass
 
+## Instalando o React Charts
+
+npm install react-chartjs-2 chart.js
 
 
 ## Instalando o EMAIL SDK
