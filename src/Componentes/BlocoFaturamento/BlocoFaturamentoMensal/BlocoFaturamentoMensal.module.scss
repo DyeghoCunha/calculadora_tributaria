@@ -19,10 +19,20 @@
 }
 
 .containerGraficoCircular {
-  max-width: 450px;
+  
   justify-content: center;
   align-items: center;
   display: flex;
-  flex-wrap: wrap;
-  //border: solid 2px blue;
+  gap: 18px;
+
+  
+}
+.containerBlocoGrafico{
+
+}
+.containerAll{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

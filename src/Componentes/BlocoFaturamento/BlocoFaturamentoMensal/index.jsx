@@ -1,4 +1,5 @@
 import ContainerTrib from '../../ContainerTrib'
+import GraficoBarra from '../../Graficos/GraficoBarra'
 import GraficoCircular from '../../Graficos/GraficoCirculo'
 import GraficoLinha from '../../Graficos/GraficoLinha'
 import InputFaturamentoMensal from '../../InputFaturamentoMensal'
@@ -15,17 +16,27 @@ export default function BlocoFaturamentoMensal() {
       <InputFaturamentoMensal />
       <div className={styles.containerGrafico}>
         <ResultadoDctf />
-        <GraficoLinha />
-        <div className={styles.containerGraficoCircular}>
-          <GraficoCircular />
-          <GraficoCircular />
-          <GraficoCircular />
-          <GraficoCircular />
 
-        </div>
+       
+          <div className={styles.contailerAll}>
+          <div className={styles.containerGraficoCircular}>
+            <GraficoCircular />
+            <GraficoCircular />
+            <GraficoCircular />
+            <GraficoCircular />
+          </div>
+
+          <div>
+            <GraficoLinha />
+            <GraficoBarra />
+          </div>
+
       </div>
 
-    </ContainerTrib>
+    
+      </div >
+
+    </ContainerTrib >
 
   )
 }
