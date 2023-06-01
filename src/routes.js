@@ -8,6 +8,7 @@ import NavBar from './Componentes/NavBar';
 import { FaturamentoInputProvider } from './common/contex/FaturamentoInput';
 import PaginaApresentacao from './Paginas/Inicial/Apresentacao';
 import PaginaFaturamentoAnual from './Paginas/PaginaFaturamentoAnual';
+import PaginaFaturamentoMensal from './Paginas/PaginaFaturamentoMensal';
 
 
 
@@ -20,7 +21,8 @@ export default function AppRoutes() {
         <Routes>
        {/*  <Route path="/" element={<PaginaApresentacao/>} /> */}
        {/*  <Route path="/" element={<PaginaInicial />} /> */}
-        <Route path="/" element={<PaginaFaturamentoAnual />} />
+       {/*  <Route path="/" element={<PaginaFaturamentoAnual />} />  */}
+        <Route path="/" element={<PaginaFaturamentoMensal />} />
         
         </Routes>
         </FaturamentoInputProvider>

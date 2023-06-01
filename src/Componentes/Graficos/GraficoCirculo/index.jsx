@@ -59,8 +59,8 @@ const GraficoCircular = ({ valorPago = 100, valorCorreto = 40, nomeImposto = 'Im
         <span className={styles.porcentagemMeio}>  {porcentagemRestituir.toFixed()}%</span>
       </div>
       <div className={styles.valoresContainer}>
-        <p className={styles.valores}>{/* <FontAwesomeIcon icon={faCircleDot} className={styles.iconeDot} /> */} Valor Pago: R$ {valorPago}</p>
-        <p className={styles.valores}>{/* <FontAwesomeIcon icon={faCircleDot} className={styles.iconeDot} /> */} Valor a Restituir R$ {(valorPago - valorCorreto)} </p>
+        {/* <p className={styles.valores}> Valor Pago: R$ {valorPago}</p>
+        <p className={styles.valores}> Valor a Restituir R$ {(valorPago - valorCorreto)} </p> */}
       </div>
     </div>
   );

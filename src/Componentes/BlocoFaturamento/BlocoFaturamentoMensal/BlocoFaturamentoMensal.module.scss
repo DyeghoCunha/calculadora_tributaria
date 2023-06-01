@@ -1,0 +1,28 @@
+@import '../../../styles/variaveis';
+
+
+//Fazer um Componente Container
+.container {
+  border: 2px solid;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  //background-color: $colorTribCard;
+  margin: 20px;
+  border-radius: 8px;
+  display: flex;
+}
+
+.containerGrafico {
+  display: flex;
+}
+
+.containerGraficoCircular {
+  max-width: 450px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  //border: solid 2px blue;
+}
