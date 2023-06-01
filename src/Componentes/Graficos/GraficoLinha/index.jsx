@@ -7,7 +7,7 @@ import ContainerTrib from '../../ContainerTrib';
 
 
 
-export default function GraficoLinha({width=900,height=300}) {
+export default function GraficoLinha({width=860,height=300}) {
 
   
   const color1 = 'rgba(255, 20, 147, 0.5)'; // Rosa Choque (Rosa Vibrante)
@@ -144,7 +144,8 @@ export default function GraficoLinha({width=900,height=300}) {
   }
 
   return (
-    <ContainerTrib backgroundColor='white'>
+    <ContainerTrib>
+    <div className={styles.container} >
       <LineChart
         width={width}
         height={height}
@@ -172,6 +173,7 @@ export default function GraficoLinha({width=900,height=300}) {
           />
         ))}
       </LineChart>
+    </div>
     </ContainerTrib>
   );
 }

@@ -15,6 +15,8 @@ Projeto desenvolvido para fixar conhecimento em React Js e Contabilidade Tributa
 
 
 
+## Instalando React-Icons
+npm install react-icons --save
 
 ## Instalado o Sass
 npm install node-sass sass-loader style-loader css-loader sass

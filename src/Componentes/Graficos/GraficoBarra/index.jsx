@@ -4,7 +4,7 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Resp
 import ContainerTrib from '../../ContainerTrib';
 
 
-export default function GraficoBarra({width=900, height=300}) {
+export default function GraficoBarra({width=860, height=300}) {
 
   const color1 = 'rgba(255, 20, 147, 0.5)'; // Rosa Choque (Rosa Vibrante)
   const color2 = 'rgba(0, 255, 128, 1)'; // Verde Neon (Verde Intenso)
@@ -140,8 +140,8 @@ export default function GraficoBarra({width=900, height=300}) {
   }
 
   return (
-    <ContainerTrib backgroundColor='white'>
-
+    <ContainerTrib>
+     <div className={styles.container}>
       <BarChart
         data={data}
         height={height}
@@ -169,7 +169,7 @@ export default function GraficoBarra({width=900, height=300}) {
           />
         ))}
       </BarChart>
-
+</div>
     </ContainerTrib>
   );
 }

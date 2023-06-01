@@ -12,6 +12,7 @@
   align-items: center;
   margin: 10px;
   padding-top: 10px;
+  position: relative;
 }
 
 .titulo {
@@ -80,8 +81,8 @@
 
 /* Vai virar um Componente */
 .erroContainer {
-  bottom: 65px;
-  left: 18px;
+  bottom: 75px;
+  left: 8px;
   position: absolute;
   border: 2px solid $colorTribDestaqueFade;
   border-radius: 8px;
