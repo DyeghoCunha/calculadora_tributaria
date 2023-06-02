@@ -2,6 +2,7 @@ import GraficoBarra from '../../../Graficos/GraficoBarra'
 import styles from './BlocoGraficoBarra.module.scss'
 import React, { useState } from 'react'
 import { TbChartBar} from "react-icons/tb";
+import { RiBarChart2Fill } from "react-icons/ri";
 
 
 
@@ -17,7 +18,7 @@ const visibilidade = ()=>{
 
   return (
     <div className={styles.container}>
-      <button className={styles.botao} onClick={visibilidade}><TbChartBar className={styles.icone}/></button>
+      <button className={styles.botao} onClick={visibilidade}><RiBarChart2Fill className={styles.icone}/></button>
       {visivel && (
       <GraficoBarra/>
       )}

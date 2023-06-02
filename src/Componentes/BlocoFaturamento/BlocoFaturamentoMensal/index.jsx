@@ -1,8 +1,9 @@
 
 import InputFaturamentoMensal from '../../InputFaturamentoMensal'
 import ResultadoDctf from '../../ResultadoDctf'
-import BlocoGraficoBarra from '../BlocoGraficos/BlocoGraficoBarra'
-import BlocoGraficoLinha from '../BlocoGraficos/BlocoGraficoLinha'
+
+import BlocoGraficoFaturamento from '../BlocoGraficos/BlocoGraficoFaturamento'
+
 import BlocoGraficoCircular from '../BlocoGraficos/BlocoGraficosCircular'
 
 import styles from './BlocoFaturamentoMensal.module.scss'
@@ -25,8 +26,7 @@ export default function BlocoFaturamentoMensal() {
           </div>
           <div className={styles.containerGraficosLinhaeBarra}>
 
-            <BlocoGraficoLinha/>
-            <BlocoGraficoBarra/>
+            <BlocoGraficoFaturamento/>
           </div>
         </div>
       </div>
