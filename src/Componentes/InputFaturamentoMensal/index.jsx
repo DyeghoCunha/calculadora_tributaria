@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import InputFaturamentoGenerico from './InputFaturamentoGenerico';
 import styles from './InputFaturamentoMensal.module.scss';
 
 import faturamentoDb from '../../assets/json/dados.json';
+import { FaturamentoInputContext } from '../../common/contex/FaturamentoInput';
 
 export default function InputFaturamentoMensal() {
   const [faturamentoDbValues, setFaturamentoDbValues] = useState(faturamentoDb);
-  const [capturedData, setCapturedData] = useState([]);
   const [selectedYear, setSelectedYear] = useState('');
+  const { faturamentoMensal, setFaturamentoMensal } = useContext(FaturamentoInputContext);
+
+
+
+
 
   const handleFaturamentoInputChange = (id, value) => {
     setFaturamentoDbValues((prevValues) => ({
@@ -24,9 +29,11 @@ export default function InputFaturamentoMensal() {
       valor: obj.faturamentoMes,
       ano: selectedYear,
     }));
-    setCapturedData(capturedValues);
-    console.log(capturedValues); // Console.log para visualizar a informação armazenada
+    setFaturamentoMensal(capturedValues);
 
+
+    //console.log(capturedValues); // Console.log para visualizar a informação armazenada
+    
     // Limpar os valores dos inputs
     setSelectedYear('');
     setFaturamentoDbValues(faturamentoDb);
@@ -53,6 +60,7 @@ export default function InputFaturamentoMensal() {
     <div className={styles.container}>
       <h1 className={styles.titulo}>Faturamento Mensal</h1>
       <div className={styles.mesesContainer}>
+
         <InputFaturamentoGenerico
           faturamentoDb={faturamentoDbValues}
           handleFaturamentoInputChange={handleFaturamentoInputChange}

@@ -47,7 +47,7 @@ export const DctfImportContextProvider = ({ children }) => {
     }
   }, [valorEncontradoPis, valorEncontradoCofins, faturamentoCalculadoPis, faturamentoCalculadoCofins]);
   
-  console.log(`
+/*   console.log(`
   |---------------------------------------------|
   |FatEstimado Mensal pelo Pis/Cofins: ${parseFloat(faturamentoEstimadoMensal).toFixed(2)}|
   |------------------------|
@@ -55,7 +55,7 @@ export const DctfImportContextProvider = ({ children }) => {
   |--------------------------------------------|
   `);
 
-
+ */
 
 
   const updateArquivo = (file) => {

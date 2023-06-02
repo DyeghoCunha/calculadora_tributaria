@@ -1,6 +1,8 @@
 
+import { CalculoProvider } from '../../../common/contex/Calculos'
+import { FaturamentoInputProvider } from '../../../common/contex/FaturamentoInput'
 import InputFaturamentoMensal from '../../InputFaturamentoMensal'
-import ResultadoDctf from '../../ResultadoDctf'
+import TabelaImpostoPresumido from '../../TabelaImpostoPresumido'
 
 import BlocoGraficoFaturamento from '../BlocoGraficos/BlocoGraficoFaturamento'
 
@@ -14,22 +16,28 @@ export default function BlocoFaturamentoMensal() {
 
 
   return (
-    <div className={styles.container}>
-      <InputFaturamentoMensal />
-      <div className={styles.containerGrafico}>
-        <ResultadoDctf />
-        <div className={styles.contailerAll}>
-          <div className={styles.containerGraficoCircular}>
+    <CalculoProvider>
+      <FaturamentoInputProvider>
 
-            <BlocoGraficoCircular />
+        <div className={styles.container}>
+          <InputFaturamentoMensal />
+          <div className={styles.containerGrafico}>
+            <TabelaImpostoPresumido />
+            <div className={styles.contailerAll}>
+              <div className={styles.containerGraficoCircular}>
 
-          </div>
-          <div className={styles.containerGraficosLinhaeBarra}>
+                <BlocoGraficoCircular />
 
-            <BlocoGraficoFaturamento/>
+              </div>
+              <div className={styles.containerGraficosLinhaeBarra}>
+
+                <BlocoGraficoFaturamento />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+        
+      </FaturamentoInputProvider>
+    </CalculoProvider>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './PaginaInicial.module.scss'
 
 
-import ResultadoDctf from '../../Componentes/ResultadoDctf'
+import TabelaImpostoPresumido from '../../Componentes/TabelaImpostoPresumido'
 import { InputDctf } from '../../Componentes/InputDctf'
 import Banner from '../../Componentes/Banner'
 import InputFaturamento from '../../Componentes/InputFaturamento'
@@ -20,7 +20,7 @@ export default function PaginaInicial() {
       </div>
       <GraficoCirculo valorPago={900} valorCorreto={570}/>
       <InputDctf />
-      <ResultadoDctf />
+      <TabelaImpostoPresumido />
     </div>
 
   )

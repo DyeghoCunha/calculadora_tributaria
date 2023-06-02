@@ -1,6 +1,6 @@
 import GraficoCircular from '../../Graficos/GraficoCirculo'
 import InputFaturamento from '../../InputFaturamento'
-import ResultadoDctf from '../../ResultadoDctf'
+import TabelaImpostoPresumido from '../../TabelaImpostoPresumido'
 import styles from './BlocoFaturamentoAnual.module.scss'
 import React from 'react'
 
@@ -19,7 +19,7 @@ export default function BlocoFaturamentoAnual() {
     
   <InputFaturamento/>
 
-  <ResultadoDctf/>
+  <TabelaImpostoPresumido/>
 
   <div className={styles.graficoContainer}>
    <GraficoCircular/> 

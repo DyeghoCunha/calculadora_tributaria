@@ -1,5 +1,5 @@
 import styles from './InputFaturamentoGenerico.module.scss';
-import React, { useContext } from 'react';
+import React from 'react';
 
 
 const InputFaturamentoGenerico = ({ faturamentoDb, handleFaturamentoInputChange }) => {

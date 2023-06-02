@@ -6,7 +6,7 @@ export default function InputFaturamento() {
 
   function teste(event){
     let texto = event.target.value;
-    console.log(texto)
+   /*  console.log(texto) */
   }
 
   return (

@@ -9,13 +9,15 @@ import { FaturamentoInputProvider } from './common/contex/FaturamentoInput';
 import PaginaApresentacao from './Paginas/Inicial/Apresentacao';
 import PaginaFaturamentoAnual from './Paginas/PaginaFaturamentoAnual';
 import PaginaFaturamentoMensal from './Paginas/PaginaFaturamentoMensal';
+import { CalculoProvider } from './common/contex/Calculos';
 
 
 
 export default function AppRoutes() {
   return (
     <BrowserRouter>
-       <NavBar/> 
+       <NavBar/>
+       <CalculoProvider> 
       <DctfImportContextProvider>
         <FaturamentoInputProvider>        
         <Routes>
@@ -27,6 +29,7 @@ export default function AppRoutes() {
         </Routes>
         </FaturamentoInputProvider>
       </DctfImportContextProvider>
+      </CalculoProvider>
     </BrowserRouter>
   );
 }

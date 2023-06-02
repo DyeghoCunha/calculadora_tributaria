@@ -35,11 +35,11 @@ export const InputDctf = () => {
             const valor = match.slice(-13);
             const resultadoFinal = valor.slice(0, -4);
             const number = Number(resultadoFinal) / 100;
-            console.log('Valor DCTF Ir:', number);
+          /*   console.log('Valor DCTF Ir:', number); */
             setValorEncontradoIr(number);
           }
         } else {
-          console.log('Nenhum match encontrado.');
+         /*  console.log('Nenhum match encontrado.'); */
         }
 
         if (matchesCsll) {
@@ -47,11 +47,11 @@ export const InputDctf = () => {
             const valor = match.slice(-13);
             const resultadoFinal = valor.slice(0, -4);
             const number = Number(resultadoFinal) / 100;
-            console.log('Valor DCTF Csll:', number);
+            /* console.log('Valor DCTF Csll:', number); */
             setValorEncontradoCsll(number);
           }
         } else {
-          console.log('Nenhum match encontrado.');
+      /*     console.log('Nenhum match encontrado.'); */
         }
 
         if (matchesPis) {
@@ -59,11 +59,11 @@ export const InputDctf = () => {
             const valor = match.slice(-13);
             const resultadoFinal = valor.slice(0, -4);
             const number = Number(resultadoFinal) / 100;
-            console.log('Valor DCTF Pis:', number);
+           /*  console.log('Valor DCTF Pis:', number); */
             setValorEncontradoPis(number);
           }
         } else {
-          console.log('Nenhum match encontrado.');
+  /*         console.log('Nenhum match encontrado.'); */
         }
 
         if (matchesCofins) {
@@ -71,11 +71,11 @@ export const InputDctf = () => {
             const valor = match.slice(-13);
             const resultadoFinal = valor.slice(0, -4);
             const number = Number(resultadoFinal) / 100;
-            console.log('Valor DCTF Cofins:', number);
+      /*       console.log('Valor DCTF Cofins:', number); */
             setValorEncontradoCofins(number);
           }
         } else {
-          console.log('Nenhum match encontrado.');
+        /*   console.log('Nenhum match encontrado.'); */
         }
       };
 
