@@ -6,28 +6,26 @@ const FaturamentoInputContext = createContext();
 const FaturamentoInputProvider = ({ children }) => {
   const [faturamentoMensal, setFaturamentoMensal] = useState([]);
   const [faturamentoAnual, setFaturamentoAnual] = useState(0);
-  const { setFatCalculo } = useContext(CalculoContext);
+  const { setFatCalculo, setQtdMeses } = useContext(CalculoContext);
 
   useEffect(() => {
     if (faturamentoMensal.length > 0) {
-      const somaFaturamentoMensal = faturamentoMensal.reduce((total, item) => {
+      const faturamentoPositivo = faturamentoMensal.filter(item => item.valor > 0);
+      const somaFaturamentoMensal = faturamentoPositivo.reduce((total, item) => {
         const { valor } = item;
-        if (valor !== '') {
-          return total + valor;
-        }
-        return total;
+        return total + valor;
       }, 0);
+
+      setQtdMeses(faturamentoPositivo.length);
 
       setFaturamentoAnual({
         ano: faturamentoMensal[0].ano,
         rbt12: somaFaturamentoMensal
       });
-      // Removi a chamada para setFatCalculo(faturamentoAnual) pois estava causando o ciclo infinito de atualizações de estado
 
       setFatCalculo(faturamentoAnual => ({ ...faturamentoAnual, ...{ rbt12: somaFaturamentoMensal } }));
-      // Atualizei o setFatCalculo para apenas alterar a propriedade rbt12 do objeto faturamentoAnual, preservando as outras propriedades existentes
     }
-  }, [faturamentoMensal, setFatCalculo]);
+  }, [faturamentoMensal, setFatCalculo, setQtdMeses]);
 
   const value = {
     faturamentoMensal,
