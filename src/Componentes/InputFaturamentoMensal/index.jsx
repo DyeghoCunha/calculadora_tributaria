@@ -4,6 +4,8 @@ import styles from './InputFaturamentoMensal.module.scss';
 
 import faturamentoDb from '../../assets/json/dados.json';
 import { FaturamentoInputContext } from '../../common/contex/FaturamentoInput';
+import { MdOutlineCleaningServices } from "react-icons/md";
+
 
 export default function InputFaturamentoMensal() {
   const [faturamentoDbValues, setFaturamentoDbValues] = useState(faturamentoDb);
@@ -34,10 +36,15 @@ export default function InputFaturamentoMensal() {
 
     //console.log(capturedValues); // Console.log para visualizar a informação armazenada
     
-    // Limpar os valores dos inputs
+    //* Limpar os valores dos inputs
+
+  
+  };
+
+const limpaFormulario = ()=>{
     setSelectedYear('');
     setFaturamentoDbValues(faturamentoDb);
-  };
+}
 
   const currentYear = new Date().getFullYear();
   const retroativo = currentYear - 5;
@@ -63,6 +70,7 @@ export default function InputFaturamentoMensal() {
 
         <InputFaturamentoGenerico
           faturamentoDb={faturamentoDbValues}
+          
           handleFaturamentoInputChange={handleFaturamentoInputChange}
         />
 
@@ -84,6 +92,8 @@ export default function InputFaturamentoMensal() {
             onChange={(e) => setSelectedYear(e.target.value)}
             className={styles.inputAno}
           />
+
+          <button className={styles.limpaFormulario} onClick={limpaFormulario}><MdOutlineCleaningServices className={styles.iconeLimpa}/></button>
         </div>
 
       </div>

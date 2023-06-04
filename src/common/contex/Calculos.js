@@ -19,18 +19,25 @@ const CalculoProvider = ({ children }) => {
   const alqPis = 0.0065;
   const alqCofins = 0.03;
 
-//*Apenas para controlar o que aparece na Teal
-  const [mostraTela,setMostratela] = useState(true)
-//*--------------------------------------------
+  //*Apenas para controlar o que aparece na Teal
+  const [mostraTela, setMostratela] = useState(true)
+  //*--------------------------------------------
 
   const [qtdMeses, setQtdMeses] = useState(0)
   const [faturamento, setFaturamento] = useState(0);
-  const [ramo, setRamo] = useState('Hospital')
+  const [ramo, setRamo] = useState('Serviço')
+
   const [valorIr, setValorIr] = useState(0);
   const [valorAdIr, setValorAdIr] = useState(0);
   const [valorTotalIr, setValorTotalIr] = useState(0);
   const [bcNormalIr, setBcNormalIr] = useState(0);
   const [bcNormalCsll, setBcNormalCsll] = useState(0);
+  const [valorCsll, setValorCsll] = useState(0);
+
+  const [valorIrRestituir, setValorIrRestituir] = useState(0)
+  const [valorCsllRestituir, setValorCsllRestituir] = useState(0)
+  const [valorPisRestituir, setValorPisRestituir] = useState(0)
+  const [valorCofinsRestituir, setValorCofinsRestituir] = useState(0)
 
 
   const [bcHospitalCsll, setBcHospitalCsll] = useState(0);
@@ -41,7 +48,7 @@ const CalculoProvider = ({ children }) => {
   const [valorCsllHospital, setValorCsllHospital] = useState(0);
 
 
-  const [valorCsll, setValorCsll] = useState(0);
+
   const [valorPis, setValorPis] = useState(0);
   const [valorCofins, setValorCofins] = useState(0);
   const [bcExcedente, setBcExcedente] = useState(0)
@@ -59,13 +66,19 @@ const CalculoProvider = ({ children }) => {
       setValorPis(faturamento * alqPis);
       setValorCofins(faturamento * alqCofins);
 
+      //TODO Alterar esta parte para a seleção ficar dinãmica
+      //!Cuidar com esta Parte
       if (ramo) {
         if (ramo == "Comercio") {
           setBcNormalIr(faturamento * presIrComerico);
           setBcNormalCsll(faturamento * presCsllComercio);
+          setBcHospitalIr(faturamento * presIrHospital);
+          setBcHospitalCsll(faturamento * presCsllHospital);
         } else if (ramo == "Serviço") {
           setBcNormalIr(faturamento * presIrServico);
           setBcNormalCsll(faturamento * presCsllServico);
+          setBcHospitalIr(faturamento * presIrHospital);
+          setBcHospitalCsll(faturamento * presCsllHospital);
         } else if (ramo == "Hospital") {
           setBcHospitalIr(faturamento * presIrHospital);
           setBcHospitalCsll(faturamento * presCsllHospital);
@@ -80,7 +93,7 @@ const CalculoProvider = ({ children }) => {
     }
   }, [faturamento]);
 
-//! O IR ADICIONAL TEM QUE SER LEVADO EM CONTA COM OS MESES EM QUE ESTAMOS CALCULANDO, DEVE TER UMA LENGTH 
+  //! O IR ADICIONAL TEM QUE SER LEVADO EM CONTA COM OS MESES EM QUE ESTAMOS CALCULANDO, DEVE TER UMA LENGTH 
 
   useEffect(() => {
 
@@ -91,7 +104,7 @@ const CalculoProvider = ({ children }) => {
       const addBc = (bcNormalIr - bcExcedente) * adicionalIr
       setValorAdIr(addBc);
     }
-//! Verificar se não haverá erro na hora de trocar de Serviço para Comércio
+    //! Verificar se não haverá erro na hora de trocar de Serviço para Comércio
     if (bcNormalIr) {
       setValorIr(bcNormalIr * alqIr);
       setValorCsll(bcNormalCsll * alqCsll)
@@ -118,17 +131,6 @@ const CalculoProvider = ({ children }) => {
 
   }, [bcHospitalIr])
 
-  useEffect(() => {
-
-    if (valorAdIrHospital) {
-      const addIrTotal = valorIrHospital + valorAdIrHospital
-      setValorTotalIrHospital(addIrTotal);
-    } else {
-      setValorTotalIrHospital(valorIrHospital);
-    }
-    setMostratela(!mostraTela)
-  }, [valorIrHospital])
-
 
   useEffect(() => {
 
@@ -141,6 +143,30 @@ const CalculoProvider = ({ children }) => {
     setMostratela(!mostraTela)
   }, [valorIr])
 
+
+
+
+  useEffect(() => {
+
+    if (valorAdIrHospital) {
+      const addIrTotal = valorIrHospital + valorAdIrHospital
+      setValorTotalIrHospital(addIrTotal);
+    } else {
+      setValorTotalIrHospital(valorIrHospital);
+    }
+
+    const irRestituir = valorTotalIr - valorTotalIrHospital
+    const csllRestituir = valorCsll - valorCsllHospital
+
+    setValorIrRestituir(irRestituir)
+    setValorCsllRestituir(csllRestituir)
+    setValorPisRestituir(0)
+    setValorCofinsRestituir(0)
+
+    setMostratela(!mostraTela)
+  }, [valorTotalIr, valorIrHospital])
+
+
   /* 
   ! useEffect(()=>{
   !setRamo('Serviço')
@@ -148,42 +174,66 @@ const CalculoProvider = ({ children }) => {
    */
 
 
-  useEffect(()=>{
-if(valorIr > 1 || valorIrHospital > 1){
-    console.log("------------Faturamento---------------");
-    console.log('Faturamento: ', faturamento)
-    console.log("----------Normal--------------");
-    console.log('BcIRn: ', bcNormalIr)
-    console.log('Valor IRn: ', valorIr)
-    console.log('Adicional IRn: ', valorAdIr)
-    console.log('IRn Total: ', valorTotalIr)
-    console.log("---------------------------");
-    console.log("BcCslln: ", bcNormalCsll);
-    console.log('Valor Cslln: ', valorCsll)
-    console.log("\n----------Hospital--------------");
-    console.log('BcIR-hpt: ', bcHospitalIr)
-    console.log('Valor IR-hpt: ', valorIrHospital)
-    console.log('Adicional IR-hpt: ', valorAdIrHospital)
-    console.log('IR-hpt Total: ', valorTotalIrHospital)
-    console.log("---------------------------");
-    console.log("BcCsll-hpt: ", bcHospitalCsll);
-    console.log('Valor Csll-hpt: ', valorCsllHospital)
+  useEffect(() => {
+    if (valorIr > 1 || valorIrHospital > 1) {
+
+      console.log('Valor do CSLL Restituir', valorCsllRestituir, typeof valorCsllRestituir)
+      console.log('Valor do IR Restituir', valorIrRestituir, typeof valorCsllRestituir)
 
 
-    console.log("\n---------------------------");
-    console.log("Pis:", valorPis);
-    console.log("Cofins:", valorCofins);
-    console.log("----------------------------");
 
-    console.log("QtdMeses: ", qtdMeses)
-}
+      console.log("------------Faturamento---------------");
+      console.log('Faturamento: ', faturamento)
+      console.log("----------Normal--------------");
+      console.log('BcIRn: ', bcNormalIr)
+      console.log('Valor IRn: ', valorIr)
+      console.log('Adicional IRn: ', valorAdIr)
+      console.log('IRn Total: ', valorTotalIr)
+      console.log("---------------------------");
+      console.log("BcCslln: ", bcNormalCsll);
+      console.log('Valor Cslln: ', valorCsll)
+      console.log("\n----------Hospital--------------");
+      console.log('BcIR-hpt: ', bcHospitalIr)
+      console.log('Valor IR-hpt: ', valorIrHospital)
+      console.log('Adicional IR-hpt: ', valorAdIrHospital)
+      console.log('IR-hpt Total: ', valorTotalIrHospital)
+      console.log("---------------------------");
+      console.log("BcCsll-hpt: ", bcHospitalCsll);
+      console.log('Valor Csll-hpt: ', valorCsllHospital)
 
-   },[mostraTela])
+
+      console.log("\n---------------------------");
+      console.log("Pis:", valorPis);
+      console.log("Cofins:", valorCofins);
+      console.log("----------------------------");
+
+      console.log("QtdMeses: ", qtdMeses)
+    }
+
+  }, [mostraTela])
 
   const value = {
     fatCalculo,
     setFatCalculo,
-    setQtdMeses
+    setQtdMeses,
+    ramo,
+    setRamo,
+    valorIr,
+    valorCsll,
+    valorAdIr,
+    valorTotalIr,
+    valorAdIrHospital,
+    valorIrHospital,
+    valorTotalIrHospital,
+    valorCsllHospital,
+    valorPis,
+    valorCofins,
+    faturamento,
+    valorIrRestituir,
+    valorCsllRestituir,
+    valorCofinsRestituir,
+    valorPisRestituir,
+    valorCofinsRestituir
   };
 
   return (

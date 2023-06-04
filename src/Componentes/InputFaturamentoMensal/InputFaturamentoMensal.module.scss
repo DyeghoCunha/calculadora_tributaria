@@ -143,3 +143,22 @@
   animation: fadeOutAnimation 2s ease-out forwards;
   opacity: 1;
 }
+.limpaFormulario{
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+}
+.iconeLimpa{
+  color: $colorTribBotao;
+  width: fit-content;
+  height: fit-content;
+  font-size: 20px;
+}
+
+.iconeLimpa:hover{
+  transform: scale(1.2);
+  color: $colorTribDestaque;
+}
