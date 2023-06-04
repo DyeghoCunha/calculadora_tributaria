@@ -140,7 +140,7 @@ const CalculoProvider = ({ children }) => {
     } else {
       setValorTotalIr(valorIr);
     }
-    setMostratela(!mostraTela)
+  
   }, [valorIr])
 
 
@@ -174,7 +174,7 @@ const CalculoProvider = ({ children }) => {
    */
 
 
-  useEffect(() => {
+/*   useEffect(() => {
     if (valorIr > 1 || valorIrHospital > 1) {
 
       console.log('Valor do CSLL Restituir', valorCsllRestituir, typeof valorCsllRestituir)
@@ -210,7 +210,7 @@ const CalculoProvider = ({ children }) => {
       console.log("QtdMeses: ", qtdMeses)
     }
 
-  }, [mostraTela])
+  }, [mostraTela]) */
 
   const value = {
     fatCalculo,

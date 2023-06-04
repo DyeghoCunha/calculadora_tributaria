@@ -7,7 +7,7 @@ import React from 'react';
 
 
 
-const GraficoCircular = ({ valorPago = 100, valorCorreto = 40, nomeImposto = 'Imposto' }) => {
+const GraficoCircular = ({ valorPago = 0, valorCorreto = 0, nomeImposto = 'Imposto' }) => {
   // Calcular a porcentagem do valor correto e do valor a restituir
   const porcentagemCorreto = (valorCorreto / valorPago) * 100;
   const porcentagemRestituir = 100 - porcentagemCorreto;

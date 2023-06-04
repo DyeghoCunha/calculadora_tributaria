@@ -1,13 +1,17 @@
 import styles from './GraficoLinha.module.scss'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import React from 'react'
+import React, { useContext } from 'react'
 import ContainerTrib from '../../ContainerTrib';
+import { FaturamentoInputContext } from '../../../common/contex/FaturamentoInput';
 
 
 
 
 
 export default function GraficoLinha({width=860,height=300}) {
+
+
+  const {faturamentoMensal} = useContext(FaturamentoInputContext)
 
   
   const color1 = 'rgba(255, 20, 147, 0.5)'; // Rosa Choque (Rosa Vibrante)
@@ -16,123 +20,51 @@ export default function GraficoLinha({width=860,height=300}) {
   const color4 = 'rgba(255, 255, 0, 1)'; // Amarelo Brilhante (Amarelo Intenso)
   const color5 = 'rgba(68, 209, 201, 0.5)'; // Turquesa (Azul Ciano)
 
-
+console.log(faturamentoMensal)
 
   function faturamentoAleatorio() {
     return Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
   }
 
-  const data = [
+  const data = [];
+
+  for (let mes = 1; mes <= 12; mes++) {
+    const monthObj = {
+      mes: mes.toString(),
+    };
+    
+  //!! ARRUMAR OS ANOS DE ACORDO COM O IMPUT
+    for (let ano = 2018; ano <= 2022; ano++) 
+    
     {
-      mes: '1',
-      '2018': faturamentoAleatorio(),
-      '2019': faturamentoAleatorio(),
-      '2020': faturamentoAleatorio(),
-      '2021': faturamentoAleatorio(),
-      '2022': faturamentoAleatorio(),
-
-
-    },
-    {
-      mes: '2',
-      '2018': faturamentoAleatorio(),
-      '2019': faturamentoAleatorio(),
-      '2020': faturamentoAleatorio(),
-      '2021': faturamentoAleatorio(),
-      '2022': faturamentoAleatorio(),
-
-    },
-    {
-      mes: '3',
-      '2018': faturamentoAleatorio(),
-      '2019': faturamentoAleatorio(),
-      '2020': faturamentoAleatorio(),
-      '2021': faturamentoAleatorio(),
-      '2022': faturamentoAleatorio(),
-
-    },
-    {
-      mes: '4',
-      '2018': faturamentoAleatorio(),
-      '2019': faturamentoAleatorio(),
-      '2020': faturamentoAleatorio(),
-      '2021': faturamentoAleatorio(),
-      '2022': faturamentoAleatorio(),
-
-    },
-    {
-      mes: '5',
-      '2018': faturamentoAleatorio(),
-      '2019': faturamentoAleatorio(),
-      '2020': faturamentoAleatorio(),
-      '2021': faturamentoAleatorio(),
-      '2022': faturamentoAleatorio(),
-
-    },
-    {
-      mes: '6',
-      '2018': faturamentoAleatorio(),
-      '2019': faturamentoAleatorio(),
-      '2020': faturamentoAleatorio(),
-      '2021': faturamentoAleatorio(),
-      '2022': faturamentoAleatorio(),
-
-    },
-    {
-      mes: '7',
-      '2018': faturamentoAleatorio(),
-      '2019': faturamentoAleatorio(),
-      '2020': faturamentoAleatorio(),
-      '2021': faturamentoAleatorio(),
-      '2022': faturamentoAleatorio(),
-
-    },
-    {
-      mes: '8',
-      '2018': faturamentoAleatorio(),
-      '2019': faturamentoAleatorio(),
-      '2020': faturamentoAleatorio(),
-      '2021': faturamentoAleatorio(),
-      '2022': faturamentoAleatorio(),
-
-    },
-    {
-      mes: '9',
-      '2018': faturamentoAleatorio(),
-      '2019': faturamentoAleatorio(),
-      '2020': faturamentoAleatorio(),
-      '2021': faturamentoAleatorio(),
-      '2022': faturamentoAleatorio(),
-
-    },
-    {
-      mes: '10',
-      '2018': faturamentoAleatorio(),
-      '2019': faturamentoAleatorio(),
-      '2020': faturamentoAleatorio(),
-      '2021': faturamentoAleatorio(),
-      '2022': faturamentoAleatorio(),
-
-    },
-    {
-      mes: '11',
-      '2018': faturamentoAleatorio(),
-      '2019': faturamentoAleatorio(),
-      '2020': faturamentoAleatorio(),
-      '2021': faturamentoAleatorio(),
-      '2022': faturamentoAleatorio(),
-
-    },
-    {
-      mes: '12',
-      '2018': faturamentoAleatorio(),
-      '2019': faturamentoAleatorio(),
-      '2020': faturamentoAleatorio(),
-      '2021': faturamentoAleatorio(),
-      '2022': faturamentoAleatorio(),
-
-    },
-  ];
+      const valor = faturamentoMensal.find(
+        item => item.mes === obterNomeMes(mes) && item.ano === ano.toString()
+      )?.valor || 0;
+  
+      monthObj[ano.toString()] = valor;
+    }
+  
+    data.push(monthObj);
+  }
+  
+  function obterNomeMes(numeroMes) {
+    const meses = [
+      'Janeiro',
+      'Fevereiro',
+      'Março',
+      'Abril',
+      'Maio',
+      'Junho',
+      'Julho',
+      'Agosto',
+      'Setembro',
+      'Outubro',
+      'Novembro',
+      'Dezembro',
+    ];
+  
+    return meses[numeroMes - 1];
+  }
 
   //Alterar para poder receber os meses de faturamento digitados no Faturamento Mensal
   

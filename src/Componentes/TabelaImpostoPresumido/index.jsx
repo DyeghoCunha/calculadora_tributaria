@@ -68,6 +68,8 @@ useEffect(() => {
       setCsll(valorEncontradoCsll.toFixed(2));
       setPis(valorEncontradoPis.toFixed(2));
       setCofins(valorEncontradoCofins.toFixed(2));
+
+      
     }
   }, [valorEncontradoPis]);
 

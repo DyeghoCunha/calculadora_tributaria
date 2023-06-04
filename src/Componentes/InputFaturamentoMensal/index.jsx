@@ -29,15 +29,15 @@ export default function InputFaturamentoMensal() {
     const capturedValues = faturamentoDbValues.faturamentoMensal.map((obj) => ({
       id: obj.id,
       valor: obj.faturamentoMes,
+      mes:obj.mês,
       ano: selectedYear,
     }));
     setFaturamentoMensal(capturedValues);
 
 
-    //console.log(capturedValues); // Console.log para visualizar a informação armazenada
-    
-    //* Limpar os valores dos inputs
+   //* console.log('captured',capturedValues); // Console.log para visualizar a informação armazenada
 
+    
   
   };
 
