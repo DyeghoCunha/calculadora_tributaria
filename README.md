@@ -90,3 +90,5 @@ setRamo: atualiza o ramo de atividade.
 O código também inclui vários blocos useEffect que são acionados quando determinados estados são alterados. Esses efeitos são responsáveis por realizar os cálculos necessários com base nos valores fornecidos e atualizar os estados correspondentes.
 
 Por fim, o provedor CalculoProvider envolve os componentes filhos e fornece o contexto com os valores e funções de configuração para que possam ser acessados por esses componentes.
+
+##GraficoLinha

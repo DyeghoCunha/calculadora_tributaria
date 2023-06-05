@@ -11,8 +11,8 @@ import { FaturamentoInputContext } from '../../../common/contex/FaturamentoInput
 export default function GraficoLinha({width=860,height=300}) {
 
 
-  const {faturamentoMensal, anoAtual, anoRetroativo} = useContext(FaturamentoInputContext)
-
+  const {faturamentoMensal, anoAtual, anoRetroativo, faturamentoMensalComAno} = useContext(FaturamentoInputContext)
+  console.log('faturamentoMensalComAno: ', faturamentoMensalComAno)
   
   const color1 = 'rgba(255, 20, 147, 0.5)'; // Rosa Choque (Rosa Vibrante)
   const color2 = 'rgba(0, 255, 128, 1)'; // Verde Neon (Verde Intenso)
@@ -22,35 +22,57 @@ export default function GraficoLinha({width=860,height=300}) {
 
 console.log(faturamentoMensal)
 
-  function faturamentoAleatorio() {
-    return Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
+
+ 
+
+  function getLineColor(index) {
+    const colors = [color1, color2, color3, color4, color5];
+    return colors[index % colors.length];
   }
 
   const data = [];
 
+  //* Agrupar os objetos de faturamento por ano e mês
+  
+  const groupedFaturamento = {};
+
+  for (const ano in faturamentoMensalComAno) {
+
+    const faturamentoMesAno = faturamentoMensalComAno[ano];
+
+    for (const item of faturamentoMesAno) {
+
+      const { mes } = item;
+
+      if (!groupedFaturamento[ano]) {
+        groupedFaturamento[ano] = {};
+      }
+
+      if (!groupedFaturamento[ano][mes]) {
+        groupedFaturamento[ano][mes] = [];
+
+      }
+
+      groupedFaturamento[ano][mes].push(item);
+    }
+  }
+  
   for (let mes = 1; mes <= 12; mes++) {
     const monthObj = {
-      mes: mes.toString(),
+      mes: obterNomeMes(mes),
     };
-    
-  //!! ARRUMAR OS ANOS DE ACORDO COM O IMPUT
-  console.log('faturamentoMensal:', faturamentoMensal);
-
- 
-
-    for (let ano = anoRetroativo; ano <= anoAtual ; ano++) 
-    
-    {
-      const valor = faturamentoMensal.find(
-        item => item.mes === obterNomeMes(mes) && item.ano === ano.toString()
-      )?.valor || 0;
+  
+    for (let ano = anoRetroativo; ano <= anoAtual; ano++) {
+      const faturamentoMesAno = groupedFaturamento[ano.toString()] || {};
+      const faturamentoMes = faturamentoMesAno[obterNomeMes(mes)] || [];
+      const valor = faturamentoMes.reduce((sum, item) => sum + item.valor, 0) || 0;
   
       monthObj[ano.toString()] = valor;
     }
-    console.log(mes + ": ", monthObj);
+  
     data.push(monthObj);
   }
-
+  
   function obterNomeMes(numeroMes) {
     const meses = [
       'Janeiro',
@@ -69,17 +91,10 @@ console.log(faturamentoMensal)
   
     return meses[numeroMes - 1];
   }
-
-  console.log(obterNomeMes())
-  //Alterar para poder receber os meses de faturamento digitados no Faturamento Mensal
-  console.log('DATA: ', data)
   
   const dataKeys = Object.keys(data[0]).filter(key => key !== 'mes');
-
-  function getLineColor(index) {
-    const colors = [color1, color2, color3, color4, color5];
-    return colors[index % colors.length];
-  }
+  
+  console.log(data);
 
   return (
     <ContainerTrib>
