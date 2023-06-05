@@ -8,6 +8,7 @@ const FaturamentoInputProvider = ({ children }) => {
   const [faturamentoAnual, setFaturamentoAnual] = useState(0);
   const { setFatCalculo, setQtdMeses } = useContext(CalculoContext);
   const [faturamentoMensalComAno, setFaturamentoMensalComAno] = useState({})
+  const [anoSelecionado, setAnoSelecionado] = useState();
   
   const [anoAtual, setAnoAtual] = useState(0)
   const [anoRetroativo, setAnoRetroativo] = useState(0)
@@ -30,7 +31,7 @@ const FaturamentoInputProvider = ({ children }) => {
         const { valor } = item;
         return total + valor;
       }, 0);
-      console.log('ESte eh o Faturamenot Mensal : ', faturamentoMensalComAno)
+    
       setQtdMeses(faturamentoPositivo.length);
 
       setFaturamentoAnual({
@@ -47,7 +48,8 @@ const FaturamentoInputProvider = ({ children }) => {
     setFaturamentoMensal,
     faturamentoAnual,
     setFaturamentoMensalComAno,
-    faturamentoMensalComAno, setAnoAtual, anoAtual, setAnoRetroativo, anoRetroativo
+    faturamentoMensalComAno, setAnoAtual, anoAtual, setAnoRetroativo, anoRetroativo,
+    anoSelecionado,setAnoSelecionado
   };
 
   return (

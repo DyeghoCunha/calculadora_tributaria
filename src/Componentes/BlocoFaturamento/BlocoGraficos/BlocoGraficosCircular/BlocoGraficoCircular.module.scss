@@ -9,14 +9,24 @@
  
 
 }
+.titulo{
+  color: $colorTribBotao;
+  font-family: $fonte-normal;
+  font-size: 20px;
 
+}
 .containerGrafico{
   height: fit-content;
   width: fit-content;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
  
 }
-
+.containerCirculo{
+  display: flex;
+}
 .botao{
 
   left: 15px;

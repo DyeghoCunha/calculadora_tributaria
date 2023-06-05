@@ -24,7 +24,11 @@ const CalculoProvider = ({ children }) => {
   //*--------------------------------------------
 
   const [qtdMeses, setQtdMeses] = useState(0)
+
+  //* Faturamento Total Digitado
   const [faturamento, setFaturamento] = useState(0);
+  const [faturamentoSomado, setFaturamentoSomado] = useState(0)
+
   const [ramo, setRamo] = useState('Serviço')
 
   const [valorIr, setValorIr] = useState(0);
@@ -54,13 +58,21 @@ const CalculoProvider = ({ children }) => {
   const [bcExcedente, setBcExcedente] = useState(0)
   const [fatCalculo, setFatCalculo] = useState(0);
 
+
+
+
+
   useEffect(() => {
     if (fatCalculo && fatCalculo.rbt12) {
       setFaturamento(fatCalculo.rbt12);
+      setFaturamentoSomado(faturamentoSomado + fatCalculo.rbt12 )
+
+
     }
   }, [fatCalculo]);
 
   useEffect(() => {
+
     if (faturamento) {
 
       setValorPis(faturamento * alqPis);
@@ -98,7 +110,7 @@ const CalculoProvider = ({ children }) => {
   useEffect(() => {
 
     if (qtdMeses > 0) {
-     // console.log('Bc Excedente N:', bcExcedente);
+      // console.log('Bc Excedente N:', bcExcedente);
     }
     if (bcNormalIr > bcExcedente) {
       const addBc = (bcNormalIr - bcExcedente) * adicionalIr
@@ -116,7 +128,7 @@ const CalculoProvider = ({ children }) => {
   useEffect(() => {
 
     if (qtdMeses > 0) {
-    //  console.log('Bc Excedente H:', bcExcedente);
+      //  console.log('Bc Excedente H:', bcExcedente);
     }
 
     if (bcHospitalIr > bcExcedente) {
@@ -140,7 +152,7 @@ const CalculoProvider = ({ children }) => {
     } else {
       setValorTotalIr(valorIr);
     }
-  
+
   }, [valorIr])
 
 
@@ -166,7 +178,7 @@ const CalculoProvider = ({ children }) => {
     setMostratela(!mostraTela)
   }, [valorTotalIr, valorIrHospital])
 
-
+ 
   /* 
   ! useEffect(()=>{
   !setRamo('Serviço')
@@ -174,46 +186,47 @@ const CalculoProvider = ({ children }) => {
    */
 
 
-/*   useEffect(() => {
-    if (valorIr > 1 || valorIrHospital > 1) {
-
-      console.log('Valor do CSLL Restituir', valorCsllRestituir, typeof valorCsllRestituir)
-      console.log('Valor do IR Restituir', valorIrRestituir, typeof valorCsllRestituir)
-
-
-
-      console.log("------------Faturamento---------------");
-      console.log('Faturamento: ', faturamento)
-      console.log("----------Normal--------------");
-      console.log('BcIRn: ', bcNormalIr)
-      console.log('Valor IRn: ', valorIr)
-      console.log('Adicional IRn: ', valorAdIr)
-      console.log('IRn Total: ', valorTotalIr)
-      console.log("---------------------------");
-      console.log("BcCslln: ", bcNormalCsll);
-      console.log('Valor Cslln: ', valorCsll)
-      console.log("\n----------Hospital--------------");
-      console.log('BcIR-hpt: ', bcHospitalIr)
-      console.log('Valor IR-hpt: ', valorIrHospital)
-      console.log('Adicional IR-hpt: ', valorAdIrHospital)
-      console.log('IR-hpt Total: ', valorTotalIrHospital)
-      console.log("---------------------------");
-      console.log("BcCsll-hpt: ", bcHospitalCsll);
-      console.log('Valor Csll-hpt: ', valorCsllHospital)
-
-
-      console.log("\n---------------------------");
-      console.log("Pis:", valorPis);
-      console.log("Cofins:", valorCofins);
-      console.log("----------------------------");
-
-      console.log("QtdMeses: ", qtdMeses)
-    }
-
-  }, [mostraTela]) */
+  /*   useEffect(() => {
+      if (valorIr > 1 || valorIrHospital > 1) {
+  
+        console.log('Valor do CSLL Restituir', valorCsllRestituir, typeof valorCsllRestituir)
+        console.log('Valor do IR Restituir', valorIrRestituir, typeof valorCsllRestituir)
+  
+  
+  
+        console.log("------------Faturamento---------------");
+        console.log('Faturamento: ', faturamento)
+        console.log("----------Normal--------------");
+        console.log('BcIRn: ', bcNormalIr)
+        console.log('Valor IRn: ', valorIr)
+        console.log('Adicional IRn: ', valorAdIr)
+        console.log('IRn Total: ', valorTotalIr)
+        console.log("---------------------------");
+        console.log("BcCslln: ", bcNormalCsll);
+        console.log('Valor Cslln: ', valorCsll)
+        console.log("\n----------Hospital--------------");
+        console.log('BcIR-hpt: ', bcHospitalIr)
+        console.log('Valor IR-hpt: ', valorIrHospital)
+        console.log('Adicional IR-hpt: ', valorAdIrHospital)
+        console.log('IR-hpt Total: ', valorTotalIrHospital)
+        console.log("---------------------------");
+        console.log("BcCsll-hpt: ", bcHospitalCsll);
+        console.log('Valor Csll-hpt: ', valorCsllHospital)
+  
+  
+        console.log("\n---------------------------");
+        console.log("Pis:", valorPis);
+        console.log("Cofins:", valorCofins);
+        console.log("----------------------------");
+  
+        console.log("QtdMeses: ", qtdMeses)
+      }
+  
+    }, [mostraTela]) */
 
   const value = {
     fatCalculo,
+    faturamentoSomado,
     setFatCalculo,
     setQtdMeses,
     ramo,

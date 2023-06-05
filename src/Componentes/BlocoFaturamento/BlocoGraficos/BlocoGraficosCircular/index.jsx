@@ -5,7 +5,7 @@ import styles from './BlocoGraficoCircular.module.scss'
 import { TbChartDonut2 } from "react-icons/tb";
 import { CalculoContext } from '../../../../common/contex/Calculos';
 
-export default function BlocoGraficoCircular({ nomeImposto, valorPago, valorCorreto }) {
+export default function BlocoGraficoCircular({ nomeImposto, valorPago, valorCorreto ,ano}) {
 
   const [visibilidade, setVisibilidade] = useState(true)
   let mostra = 0;
@@ -32,11 +32,15 @@ export default function BlocoGraficoCircular({ nomeImposto, valorPago, valorCorr
       <div className={styles.botao} onClick={mostraConteudo}>
         <TbChartDonut2 className={styles.icone} />
       </div>
-      {valorTotalIr > 0 && visibilidade && (
+      {/* valorTotalIr > 0 && */ visibilidade && (
+
         <ContainerTrib>
           <div className={styles.containerGrafico}>
+            <h1 className={styles.titulo}>{ano}</h1>
+            <div className={styles.containerCirculo}>
             <GraficoCircular nomeImposto={'IR'} valorPago={valorTotalIr} valorCorreto={valorTotalIrHospital} />
             <GraficoCircular nomeImposto={'CSLL'} valorPago={valorCsll} valorCorreto={valorCsllHospital} />
+
             {valorPisRestituir > 0 && (
               <GraficoCircular nomeImposto={'PIS'} valorPago={valorPis} valorCorreto={valorPis} />
             )}
@@ -44,8 +48,10 @@ export default function BlocoGraficoCircular({ nomeImposto, valorPago, valorCorr
               <GraficoCircular nomeImposto={'COFINS'} valorPago={valorCofins} valorCorreto={valorCofins} />
             )}
           </div>
+        </div>
         </ContainerTrib>
-      )}
-    </div>
+  )
+}
+    </div >
   );
 }
