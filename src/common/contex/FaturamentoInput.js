@@ -1,19 +1,20 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { CalculoContext } from './Calculos';
 
+
 const FaturamentoInputContext = createContext();
 
 const FaturamentoInputProvider = ({ children }) => {
   const [faturamentoMensal, setFaturamentoMensal] = useState([]);
   const [faturamentoAnual, setFaturamentoAnual] = useState(0);
-  const { setFatCalculo, setQtdMeses } = useContext(CalculoContext);
+  const { setFatCalculo, setQtdMeses, setFaturamentoMesAno } = useContext(CalculoContext);
   const [faturamentoMensalComAno, setFaturamentoMensalComAno] = useState({})
-  const [anoSelecionado, setAnoSelecionado] = useState();
+  const [anoSelecionado, setAnoSelecionado] = useState('');
   
   const [anoAtual, setAnoAtual] = useState(0)
   const [anoRetroativo, setAnoRetroativo] = useState(0)
 
-
+  
 
  useEffect(() => {
     const currentYear = new Date().getFullYear();
@@ -36,12 +37,20 @@ const FaturamentoInputProvider = ({ children }) => {
 
       setFaturamentoAnual({
         ano: faturamentoMensal[0].ano,
-        rbt12: somaFaturamentoMensal
+        rbt12: somaFaturamentoMensal,
+        
       });
 
       setFatCalculo(faturamentoAnual => ({ ...faturamentoAnual, ...{ rbt12: somaFaturamentoMensal } }));
+      
     }
   }, [faturamentoMensal, setFatCalculo, setQtdMeses]);
+
+ useEffect(()=>{
+
+  setFaturamentoMesAno(faturamentoAnual)
+
+ },[faturamentoAnual])
 
   const value = {
     faturamentoMensal,

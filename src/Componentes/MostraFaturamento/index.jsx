@@ -2,7 +2,7 @@ import { CalculoContext } from '../../common/contex/Calculos.js'
 import styles from './MostraFaturamento.module.scss'
 import React, { useContext, useEffect, useState } from 'react'
 
-export default function MostraFaturamento() {
+export default function MostraFaturamento({inputValor}) {
 
   const { faturamento, faturamentoSomado } = useContext(CalculoContext)
   const [valor, setValor] = useState(0)

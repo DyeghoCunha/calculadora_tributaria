@@ -1,4 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { FaturamentoInputContext } from "./FaturamentoInput";
+import { EmpresaContext } from "./Empresa.js";
+
 
 const CalculoContext = createContext();
 
@@ -18,6 +21,8 @@ const CalculoProvider = ({ children }) => {
   const alqCsll = 0.09;
   const alqPis = 0.0065;
   const alqCofins = 0.03;
+
+
 
   //*Apenas para controlar o que aparece na Teal
   const [mostraTela, setMostratela] = useState(true)
@@ -58,14 +63,41 @@ const CalculoProvider = ({ children }) => {
   const [bcExcedente, setBcExcedente] = useState(0)
   const [fatCalculo, setFatCalculo] = useState(0);
 
+  const [faturamentoMesAno, setFaturamentoMesAno] = useState({})
 
+  const { setEmpresa } = useContext(EmpresaContext);
+
+
+  useEffect(() => {
+    if (faturamentoMesAno && valorTotalIr && valorTotalIrHospital && qtdMeses) {
+      setEmpresa({
+        ano: faturamentoMesAno.ano,
+        faturamento: faturamentoMesAno.rbt12,
+        ir: valorIr,
+        irAd: valorAdIr,
+        irT: valorTotalIr,
+        irH: valorIrHospital,
+        irHAd: valorAdIrHospital,
+        irHT: valorTotalIrHospital,
+        csll: valorCsll,
+        pis: valorPis,
+        cofins: valorCofins,
+        irRestituir: valorIrRestituir,
+        csllRestituir: valorCsllRestituir,
+        pisRestituir: valorPisRestituir,
+        cofinsRestituir: valorCofinsRestituir,
+        mesesFaturado: qtdMeses,
+      });
+    }
+  }, [valorTotalIr]);
+  
 
 
 
   useEffect(() => {
     if (fatCalculo && fatCalculo.rbt12) {
       setFaturamento(fatCalculo.rbt12);
-      setFaturamentoSomado(faturamentoSomado + fatCalculo.rbt12 )
+      setFaturamentoSomado(faturamentoSomado + fatCalculo.rbt12)
 
 
     }
@@ -74,7 +106,6 @@ const CalculoProvider = ({ children }) => {
   useEffect(() => {
 
     if (faturamento) {
-
       setValorPis(faturamento * alqPis);
       setValorCofins(faturamento * alqCofins);
 
@@ -178,7 +209,11 @@ const CalculoProvider = ({ children }) => {
     setMostratela(!mostraTela)
   }, [valorTotalIr, valorIrHospital])
 
- 
+
+
+
+
+
   /* 
   ! useEffect(()=>{
   !setRamo('Serviço')
@@ -246,7 +281,8 @@ const CalculoProvider = ({ children }) => {
     valorCsllRestituir,
     valorCofinsRestituir,
     valorPisRestituir,
-    valorCofinsRestituir
+    valorCofinsRestituir,
+    setFaturamentoMesAno
   };
 
   return (

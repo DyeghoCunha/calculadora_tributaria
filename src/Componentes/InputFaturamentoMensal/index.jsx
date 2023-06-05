@@ -10,8 +10,8 @@ import { useEffect } from 'react';
 
 export default function InputFaturamentoMensal() {
   const [faturamentoDbValues, setFaturamentoDbValues] = useState(faturamentoDb);
-  const [selectedYear, setSelectedYear] = useState('');
-  const { faturamentoMensal, setFaturamentoMensal, setFaturamentoMensalComAno, anoAtual, anoRetroativo } = useContext(FaturamentoInputContext);
+  
+  const {anoSelecionado, setAnoSelecionado, faturamentoMensal, setFaturamentoMensal, setFaturamentoMensalComAno, anoAtual, anoRetroativo } = useContext(FaturamentoInputContext);
   //!const [allFaturamentoMensal, setAllFaturamentoMensal] = useState([]); //!coloca todos os valores em um unico array
   const [isErroAno, setIsErroAno] = useState(false); // New state variable
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -41,7 +41,7 @@ export default function InputFaturamentoMensal() {
       id: obj.id,
       valor: obj.faturamentoMes,
       mes: obj.mês,
-      ano: selectedYear,
+      ano: anoSelecionado,
     }));
     setFaturamentoMensal(capturedValues);
     //!setAllFaturamentoMensal((prevValues) => [...prevValues, ...capturedValues]); // Coloca todos os valores em um unico array
@@ -50,7 +50,7 @@ export default function InputFaturamentoMensal() {
 
     setFaturamentoMensalComAno((prevValues) => ({
       ...prevValues,
-      [selectedYear]: [...(prevValues[selectedYear] || []), ...capturedValues],
+      [anoSelecionado]: [...(prevValues[anoSelecionado] || []), ...capturedValues],
     }));
 
     //* console.log('captured',capturedValues); // Console.log para visualizar a informação armazenada
@@ -60,7 +60,7 @@ export default function InputFaturamentoMensal() {
   };
 
   const limpaFormulario = () => {
-    setSelectedYear('');
+    setAnoSelecionado('');
     setFaturamentoDbValues(faturamentoDb);
   }
 
@@ -74,19 +74,19 @@ export default function InputFaturamentoMensal() {
 
 
   useEffect(() => {
-    setIsErroAno(selectedYear < anoRetroativo || selectedYear > anoAtual);
-  }, [selectedYear, anoRetroativo, anoAtual]);
+    setIsErroAno(anoSelecionado < anoRetroativo || anoSelecionado > anoAtual);
+  }, [anoSelecionado, anoRetroativo, anoAtual]);
 
 
 
 
   useEffect(() => {
     const isDisabled =
-      Number(selectedYear) > anoAtual ||
-      Number(selectedYear) < anoRetroativo;
+      Number(anoSelecionado) > anoAtual ||
+      Number(anoSelecionado) < anoRetroativo;
     setIsButtonDisabled(isDisabled);
 
-  }, [selectedYear, anoAtual, anoRetroativo]);
+  }, [anoSelecionado, anoAtual, anoRetroativo]);
 
 
   return (
@@ -103,7 +103,7 @@ export default function InputFaturamentoMensal() {
 
         {/* Tentando arrumar o Erro de aparecer o Ano */}
 
-        {isErroAno && selectedYear !== '' && (
+        {isErroAno && anoSelecionado !== '' && (
           <div className={`${styles.erroContainer} ${isErroAno ? styles.fadeIn : styles.fadeOut}`}>
             {erro}
           </div>
@@ -116,8 +116,8 @@ export default function InputFaturamentoMensal() {
           <input
             type="text"
             placeholder="Digite o ano"
-            value={selectedYear}
-            onChange={(e) => setSelectedYear(e.target.value)}
+            value={anoSelecionado}
+            onChange={(e) => setAnoSelecionado(e.target.value)}
             className={styles.inputAno}
           />
 
