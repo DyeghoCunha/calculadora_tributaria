@@ -5,14 +5,22 @@ import styles from './InputFaturamentoMensal.module.scss';
 import faturamentoDb from '../../assets/json/dados.json';
 import { FaturamentoInputContext } from '../../common/contex/FaturamentoInput';
 import { MdOutlineCleaningServices } from "react-icons/md";
+import { useEffect } from 'react';
 
 
 export default function InputFaturamentoMensal() {
   const [faturamentoDbValues, setFaturamentoDbValues] = useState(faturamentoDb);
   const [selectedYear, setSelectedYear] = useState('');
-  const { faturamentoMensal, setFaturamentoMensal } = useContext(FaturamentoInputContext);
+  const { faturamentoMensal, setFaturamentoMensal, setFaturamentoMensalComAno, anoAtual, anoRetroativo } = useContext(FaturamentoInputContext);
+  //!const [allFaturamentoMensal, setAllFaturamentoMensal] = useState([]); //!coloca todos os valores em um unico array
+  const [isErroAno, setIsErroAno] = useState(false); // New state variable
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
 
+  //TODO Passar o SelecTedYEAS !!! 
+  //* É COM O faturamentoMensal que temos as informações
+
+  //? o faturamentoDbValues tem as informações do arquivo Json ?
 
 
 
@@ -25,42 +33,61 @@ export default function InputFaturamentoMensal() {
     }));
   };
 
+
+
+
   const handleCaptureData = () => {
     const capturedValues = faturamentoDbValues.faturamentoMensal.map((obj) => ({
       id: obj.id,
       valor: obj.faturamentoMes,
-      mes:obj.mês,
+      mes: obj.mês,
       ano: selectedYear,
     }));
     setFaturamentoMensal(capturedValues);
+    //!setAllFaturamentoMensal((prevValues) => [...prevValues, ...capturedValues]); // Coloca todos os valores em um unico array
 
 
-   //* console.log('captured',capturedValues); // Console.log para visualizar a informação armazenada
 
-    
-  
+    setFaturamentoMensalComAno((prevValues) => ({
+      ...prevValues,
+      [selectedYear]: [...(prevValues[selectedYear] || []), ...capturedValues],
+    }));
+
+    //* console.log('captured',capturedValues); // Console.log para visualizar a informação armazenada
+
+
+
   };
 
-const limpaFormulario = ()=>{
+  const limpaFormulario = () => {
     setSelectedYear('');
     setFaturamentoDbValues(faturamentoDb);
-}
+  }
 
-  const currentYear = new Date().getFullYear();
-  const retroativo = currentYear - 5;
+
   let erro = (
     <p className={styles.erroAno}>
-      O ano deve ser <span className={styles.menor}>menor</span> que {currentYear}  <span className={styles.maior}>maior</span> que {retroativo}
+      O ano deve ser <span className={styles.menor}>menor</span> que {anoAtual}  <span className={styles.maior}>maior</span> que {anoRetroativo}
     </p>
   );
 
-  const isButtonDisabled =
-    selectedYear < retroativo ||
-    selectedYear === '' ||
-    selectedYear > currentYear;
 
 
-  let isErroAno = selectedYear < retroativo || selectedYear > currentYear;
+  useEffect(() => {
+    setIsErroAno(selectedYear < anoRetroativo || selectedYear > anoAtual);
+  }, [selectedYear, anoRetroativo, anoAtual]);
+
+
+
+
+  useEffect(() => {
+    const isDisabled =
+      Number(selectedYear) > anoAtual ||
+      Number(selectedYear) < anoRetroativo;
+    setIsButtonDisabled(isDisabled);
+
+  }, [selectedYear, anoAtual, anoRetroativo]);
+
 
   return (
 
@@ -70,13 +97,14 @@ const limpaFormulario = ()=>{
 
         <InputFaturamentoGenerico
           faturamentoDb={faturamentoDbValues}
-          
+
           handleFaturamentoInputChange={handleFaturamentoInputChange}
         />
 
         {/* Tentando arrumar o Erro de aparecer o Ano */}
+
         {isErroAno && selectedYear !== '' && (
-          <div className={`${styles.erroContainer} ${isErroAno ? styles.fadeIn : '' || !isErroAno ? styles.fadeOut : ''}`}>
+          <div className={`${styles.erroContainer} ${isErroAno ? styles.fadeIn : styles.fadeOut}`}>
             {erro}
           </div>
 
@@ -93,7 +121,7 @@ const limpaFormulario = ()=>{
             className={styles.inputAno}
           />
 
-          <button className={styles.limpaFormulario} onClick={limpaFormulario}><MdOutlineCleaningServices className={styles.iconeLimpa}/></button>
+          <button className={styles.limpaFormulario} onClick={limpaFormulario}><MdOutlineCleaningServices className={styles.iconeLimpa} /></button>
         </div>
 
       </div>

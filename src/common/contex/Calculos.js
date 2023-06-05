@@ -98,7 +98,7 @@ const CalculoProvider = ({ children }) => {
   useEffect(() => {
 
     if (qtdMeses > 0) {
-      console.log('Bc Excedente N:', bcExcedente);
+     // console.log('Bc Excedente N:', bcExcedente);
     }
     if (bcNormalIr > bcExcedente) {
       const addBc = (bcNormalIr - bcExcedente) * adicionalIr
@@ -116,7 +116,7 @@ const CalculoProvider = ({ children }) => {
   useEffect(() => {
 
     if (qtdMeses > 0) {
-      console.log('Bc Excedente H:', bcExcedente);
+    //  console.log('Bc Excedente H:', bcExcedente);
     }
 
     if (bcHospitalIr > bcExcedente) {

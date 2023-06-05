@@ -11,7 +11,7 @@ import { FaturamentoInputContext } from '../../../common/contex/FaturamentoInput
 export default function GraficoLinha({width=860,height=300}) {
 
 
-  const {faturamentoMensal} = useContext(FaturamentoInputContext)
+  const {faturamentoMensal, anoAtual, anoRetroativo} = useContext(FaturamentoInputContext)
 
   
   const color1 = 'rgba(255, 20, 147, 0.5)'; // Rosa Choque (Rosa Vibrante)
@@ -34,7 +34,11 @@ console.log(faturamentoMensal)
     };
     
   //!! ARRUMAR OS ANOS DE ACORDO COM O IMPUT
-    for (let ano = 2018; ano <= 2022; ano++) 
+  console.log('faturamentoMensal:', faturamentoMensal);
+
+ 
+
+    for (let ano = anoRetroativo; ano <= anoAtual ; ano++) 
     
     {
       const valor = faturamentoMensal.find(
@@ -43,10 +47,10 @@ console.log(faturamentoMensal)
   
       monthObj[ano.toString()] = valor;
     }
-  
+    console.log(mes + ": ", monthObj);
     data.push(monthObj);
   }
-  
+
   function obterNomeMes(numeroMes) {
     const meses = [
       'Janeiro',
@@ -66,7 +70,9 @@ console.log(faturamentoMensal)
     return meses[numeroMes - 1];
   }
 
+  console.log(obterNomeMes())
   //Alterar para poder receber os meses de faturamento digitados no Faturamento Mensal
+  console.log('DATA: ', data)
   
   const dataKeys = Object.keys(data[0]).filter(key => key !== 'mes');
 
