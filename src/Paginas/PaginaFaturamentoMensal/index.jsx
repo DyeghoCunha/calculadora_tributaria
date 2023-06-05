@@ -3,12 +3,15 @@ import BlocoFaturamentoMensal from '../../Componentes/BlocoFaturamento/BlocoFatu
 import { FaturamentoInputProvider } from '../../common/contex/FaturamentoInput'
 import { CalculoProvider } from '../../common/contex/Calculos'
 
+
 export default function PaginaFaturamentoMensal() {
   return (
     <CalculoProvider>
-    <FaturamentoInputProvider>
- <BlocoFaturamentoMensal/> 
- </FaturamentoInputProvider>
- </CalculoProvider>
+      <FaturamentoInputProvider>
+       
+          <BlocoFaturamentoMensal />
+      
+      </FaturamentoInputProvider>
+    </CalculoProvider>
   )
 }

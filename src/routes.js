@@ -13,6 +13,7 @@ import { CalculoProvider } from './common/contex/Calculos';
 
 
 
+
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ export default function AppRoutes() {
        <CalculoProvider> 
       <DctfImportContextProvider>
         <FaturamentoInputProvider>        
+     
         <Routes>
        {/*  <Route path="/" element={<PaginaApresentacao/>} /> */}
        {/*  <Route path="/" element={<PaginaInicial />} /> */}
@@ -27,6 +29,7 @@ export default function AppRoutes() {
         <Route path="/" element={<PaginaFaturamentoMensal />} />
         
         </Routes>
+        
         </FaturamentoInputProvider>
       </DctfImportContextProvider>
       </CalculoProvider>
