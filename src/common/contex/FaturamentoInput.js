@@ -1,13 +1,17 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { CalculoContext } from './Calculos';
+import { EmpresaContext } from './Empresa';
 
 
 const FaturamentoInputContext = createContext();
 
 const FaturamentoInputProvider = ({ children }) => {
+  const { setFatCalculo, setQtdMeses, setFaturamentoMesAno } = useContext(CalculoContext);
+  const { anoInput }= useContext(EmpresaContext)
   const [faturamentoMensal, setFaturamentoMensal] = useState([]);
   const [faturamentoAnual, setFaturamentoAnual] = useState(0);
-  const { setFatCalculo, setQtdMeses, setFaturamentoMesAno } = useContext(CalculoContext);
+  
+
   const [faturamentoMensalComAno, setFaturamentoMensalComAno] = useState({})
   const [anoSelecionado, setAnoSelecionado] = useState('');
   

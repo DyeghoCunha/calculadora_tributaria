@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { CalculoContext } from "./Calculos";
+import { FaturamentoInputContext } from "./FaturamentoInput";
 
 const EmpresaContext = createContext()
 
@@ -10,26 +11,27 @@ const EmpresaProvider = ({ children }) => {
 
   const [empresa, setEmpresa] = useState({});
 
-  const[arreyEmpresa, setArreyEmpresa] = useState([])
+  const [arreyEmpresa, setArreyEmpresa] = useState([])
+
+  const [anoSelecionado, setAnoSelecionado] = useState('')
+
+  const [dadosFormularioMensal, setDadosFormularioMensal] = useState([]);
+
+  //!Arrumar o Ano e finalizar a empresa
   
-
-
-useEffect(() => {
-  if (Object.keys(empresa).length !== 0) {
-    setArreyEmpresa(prevEmpresa => {
-      return [...prevEmpresa, empresa];
-    });
-  }
-}, [empresa]);
-
-console.log(arreyEmpresa);
-
+useEffect(()=>{
+  console.log(dadosFormularioMensal)
+},[dadosFormularioMensal])
+  
 
   const value = {
+anoSelecionado,
+setAnoSelecionado,
+dadosFormularioMensal,
+setDadosFormularioMensal
 
-    setEmpresa
   }
-  
+
   return (
     <EmpresaContext.Provider value={value}>
       {children}

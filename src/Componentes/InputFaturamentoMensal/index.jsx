@@ -6,13 +6,15 @@ import faturamentoDb from '../../assets/json/dados.json';
 import { FaturamentoInputContext } from '../../common/contex/FaturamentoInput';
 import { MdOutlineCleaningServices } from "react-icons/md";
 import { useEffect } from 'react';
+import { EmpresaContext } from '../../common/contex/Empresa';
 
 
 export default function InputFaturamentoMensal() {
   const [faturamentoDbValues, setFaturamentoDbValues] = useState(faturamentoDb);
-  
-  const {anoSelecionado, setAnoSelecionado, faturamentoMensal, setFaturamentoMensal, setFaturamentoMensalComAno, anoAtual, anoRetroativo } = useContext(FaturamentoInputContext);
+
+  const { faturamentoMensal, setFaturamentoMensal, setFaturamentoMensalComAno, anoAtual, anoRetroativo } = useContext(FaturamentoInputContext);
   //!const [allFaturamentoMensal, setAllFaturamentoMensal] = useState([]); //!coloca todos os valores em um unico array
+  const { anoSelecionado, setAnoSelecionado } = useContext(EmpresaContext)
   const [isErroAno, setIsErroAno] = useState(false); // New state variable
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 

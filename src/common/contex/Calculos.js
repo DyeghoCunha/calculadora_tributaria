@@ -65,34 +65,59 @@ const CalculoProvider = ({ children }) => {
 
   const [faturamentoMesAno, setFaturamentoMesAno] = useState({})
 
-  const { setEmpresa } = useContext(EmpresaContext);
+  const { empresa, setEmpresa, setArreyEmpresa , anoSelecionado} = useContext(EmpresaContext);
 
 
+
+  const {dadosFormularioMensal, setDadosFormularioMensal} = useContext(EmpresaContext);
+
+
+ 
   useEffect(() => {
-    if (faturamentoMesAno && valorTotalIr && valorTotalIrHospital && qtdMeses) {
-      setEmpresa({
-        ano: faturamentoMesAno.ano,
-        faturamento: faturamentoMesAno.rbt12,
-        ir: valorIr,
-        irAd: valorAdIr,
-        irT: valorTotalIr,
-        irH: valorIrHospital,
-        irHAd: valorAdIrHospital,
-        irHT: valorTotalIrHospital,
-        csll: valorCsll,
-        pis: valorPis,
-        cofins: valorCofins,
-        irRestituir: valorIrRestituir,
-        csllRestituir: valorCsllRestituir,
-        pisRestituir: valorPisRestituir,
-        cofinsRestituir: valorCofinsRestituir,
-        mesesFaturado: qtdMeses,
-      });
+    // Verifica se o ano selecionado está vazio
+    if (anoSelecionado.length === 0) {
+      return;
     }
-  }, [valorTotalIr]);
+  
+    const novoObjeto = {
+      ano: anoSelecionado,
+      faturamento: faturamento,
+      ir: valorIr,
+      irAd: valorAdIr,
+      irT: valorTotalIr,
+      irH: valorIrHospital,
+      irHAd: valorAdIrHospital,
+      irHT: valorTotalIrHospital,
+      csll: valorCsll,
+      pis: valorPis,
+      cofins: valorCofins,
+      irRestituir: valorIrRestituir,
+      csllRestituir: valorCsllRestituir,
+      pisRestituir: valorPisRestituir,
+      cofinsRestituir: valorCofinsRestituir,
+      mesesFaturado: qtdMeses,
+    };
+  
+    const objetoExistenteIndex = dadosFormularioMensal.findIndex(objeto => objeto.ano === anoSelecionado);
+  
+    if (objetoExistenteIndex !== -1) {
+      const confirmacao = window.confirm(`Um objeto com o ano ${anoSelecionado} já existe no array. Deseja substituir?`);
+  
+      if (confirmacao) {
+        const novosDados = [...dadosFormularioMensal];
+        novosDados[objetoExistenteIndex] = novoObjeto;
+        setDadosFormularioMensal(novosDados);
+      } else {
+        console.log('Os valores não foram alterados.');
+      }
+    } else {
+      setDadosFormularioMensal([...dadosFormularioMensal, novoObjeto]);
+    }
+  }, [valorIr]);
   
 
 
+    
 
   useEffect(() => {
     if (fatCalculo && fatCalculo.rbt12) {
