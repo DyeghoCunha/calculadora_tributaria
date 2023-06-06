@@ -19,7 +19,7 @@ export default function InputFaturamentoMensal() {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
 
-  //TODO Passar o SelecTedYEAS !!! 
+  
   //* É COM O faturamentoMensal que temos as informações
 
   //? o faturamentoDbValues tem as informações do arquivo Json ?
@@ -48,6 +48,7 @@ export default function InputFaturamentoMensal() {
     setFaturamentoMensal(capturedValues);
     //!setAllFaturamentoMensal((prevValues) => [...prevValues, ...capturedValues]); // Coloca todos os valores em um unico array
 
+    
 
 
     setFaturamentoMensalComAno((prevValues) => ({
@@ -90,6 +91,14 @@ export default function InputFaturamentoMensal() {
 
   }, [anoSelecionado, anoAtual, anoRetroativo]);
 
+  const handleAnoSelecionado = (e)=>{
+    const valorDigitado = e.target.value;
+    if (valorDigitado >= anoRetroativo && valorDigitado <= anoAtual) {
+      setAnoSelecionado(valorDigitado);
+    } else {
+      console.log('Erro na data')
+    }
+  }
 
   return (
 

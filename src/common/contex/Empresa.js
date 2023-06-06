@@ -20,7 +20,9 @@ const EmpresaProvider = ({ children }) => {
   //!Arrumar o Ano e finalizar a empresa
   
 useEffect(()=>{
-  console.log(dadosFormularioMensal)
+
+  if(dadosFormularioMensal.length>0){
+  console.log('Empresa: ',dadosFormularioMensal)}
 },[dadosFormularioMensal])
   
 

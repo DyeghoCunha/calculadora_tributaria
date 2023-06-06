@@ -67,12 +67,132 @@ const CalculoProvider = ({ children }) => {
 
   const { empresa, setEmpresa, setArreyEmpresa , anoSelecionado} = useContext(EmpresaContext);
 
-
+   const [controlaAno, setControlaAno] = useState(0)
 
   const {dadosFormularioMensal, setDadosFormularioMensal} = useContext(EmpresaContext);
-
+ 
 
  
+  
+
+    useEffect(() => {
+    if (fatCalculo && fatCalculo.rbt12) {
+      setFaturamento(fatCalculo.rbt12);
+      setFaturamentoSomado(faturamentoSomado + fatCalculo.rbt12)
+
+
+    }
+  }, [fatCalculo]);
+
+
+  useEffect(() => {
+
+    if (faturamento) {
+      setValorPis(faturamento * alqPis);
+      setValorCofins(faturamento * alqCofins);
+
+      //TODO Alterar esta parte para a seleção ficar dinãmica
+      //!Cuidar com esta Parte
+      if (ramo) {
+
+        if (ramo == "Comercio") {
+          setBcNormalIr(faturamento * presIrComerico);
+          setBcNormalCsll(faturamento * presCsllComercio);
+          setBcHospitalIr(faturamento * presIrHospital);
+          setBcHospitalCsll(faturamento * presCsllHospital);
+
+        } else if (ramo == "Serviço") {
+          setBcNormalIr(faturamento * presIrServico);
+          setBcNormalCsll(faturamento * presCsllServico);
+          setBcHospitalIr(faturamento * presIrHospital);
+          setBcHospitalCsll(faturamento * presCsllHospital);
+
+        } else if (ramo == "Hospital") {
+          setBcHospitalIr(faturamento * presIrHospital);
+          setBcHospitalCsll(faturamento * presCsllHospital);
+        } else {
+          console.log(
+            "Como não foi informado um Ramo, a aplicação usou o padrão Comércio, ou apresentou erro"
+          );
+        }
+
+      }
+      setBcExcedente(20000 * qtdMeses)
+
+    }
+  }, [faturamento]);
+
+
+  useEffect(() => {
+
+    if (bcNormalIr > bcExcedente) {
+      const addBc = (bcNormalIr - bcExcedente) * adicionalIr
+      setValorAdIr(addBc);
+    }
+    //! Verificar se não haverá erro na hora de trocar de Serviço para Comércio
+    if (bcNormalIr) {
+      setValorIr(bcNormalIr * alqIr);
+      setValorCsll(bcNormalCsll * alqCsll)
+    }
+
+  }, [bcNormalIr]);
+
+
+  useEffect(() => {
+
+    if (bcHospitalIr > bcExcedente) {
+      const addBc = (bcHospitalIr - bcExcedente) * adicionalIr
+      setValorAdIrHospital(addBc);
+    }
+
+    if (bcHospitalIr) {
+      setValorIrHospital(bcHospitalIr * alqIr)
+      setValorCsllHospital(bcHospitalCsll * alqCsll)
+    }
+
+  }, [bcHospitalIr])
+
+
+  useEffect(() => {
+
+    if (valorAdIr) {
+      const addIrTotal = valorIr + valorAdIr
+      setValorTotalIr(addIrTotal);
+    } else {
+      setValorTotalIr(valorIr);
+    }
+
+  }, [valorAdIr, valorIr])
+
+
+
+  useEffect(() => {
+
+    if (valorAdIrHospital) {
+      const addIrTotal = valorIrHospital + valorAdIrHospital
+      setValorTotalIrHospital(addIrTotal);
+    } else {
+      setValorTotalIrHospital(valorIrHospital);
+    }
+
+    const irRestituir = valorTotalIr - valorTotalIrHospital
+    const csllRestituir = valorCsll - valorCsllHospital
+
+    setValorIrRestituir(irRestituir)
+    setValorCsllRestituir(csllRestituir)
+    setValorPisRestituir(0)
+    setValorCofinsRestituir(0)
+
+
+    
+    
+    setMostratela(!mostraTela)
+  }, [valorTotalIr, valorIrHospital,valorAdIrHospital])
+
+useEffect(()=>{
+setControlaAno(controlaAno +1)
+},[valorIr])
+
   useEffect(() => {
     // Verifica se o ano selecionado está vazio
     if (anoSelecionado.length === 0) {
@@ -98,163 +218,57 @@ const CalculoProvider = ({ children }) => {
       mesesFaturado: qtdMeses,
     };
   
-    const objetoExistenteIndex = dadosFormularioMensal.findIndex(objeto => objeto.ano === anoSelecionado);
+    // Verificar se o novo objeto já existe no array
+    const objetoExistente = dadosFormularioMensal.find(objeto => {
+      return objeto.ano === novoObjeto.ano;
+    });
   
-    if (objetoExistenteIndex !== -1) {
-      const confirmacao = window.confirm(`Um objeto com o ano ${anoSelecionado} já existe no array. Deseja substituir?`);
-  
-      if (confirmacao) {
-        const novosDados = [...dadosFormularioMensal];
-        novosDados[objetoExistenteIndex] = novoObjeto;
-        setDadosFormularioMensal(novosDados);
-      } else {
-        console.log('Os valores não foram alterados.');
-      }
-    } else {
+    if (!objetoExistente) {
       setDadosFormularioMensal([...dadosFormularioMensal, novoObjeto]);
     }
-  }, [valorIr]);
-  
+ 
+  const objetoExistenteIndex = dadosFormularioMensal.findIndex(objeto => objeto.ano === anoSelecionado);
 
+  if (objetoExistenteIndex !== -1) {
+    const confirmacao = window.confirm(`Um objeto com o ano ${anoSelecionado} já existe no array. Deseja substituir?`);
 
-    
-
-  useEffect(() => {
-    if (fatCalculo && fatCalculo.rbt12) {
-      setFaturamento(fatCalculo.rbt12);
-      setFaturamentoSomado(faturamentoSomado + fatCalculo.rbt12)
-
-
-    }
-  }, [fatCalculo]);
-
-  useEffect(() => {
-
-    if (faturamento) {
-      setValorPis(faturamento * alqPis);
-      setValorCofins(faturamento * alqCofins);
-
-      //TODO Alterar esta parte para a seleção ficar dinãmica
-      //!Cuidar com esta Parte
-      if (ramo) {
-        if (ramo == "Comercio") {
-          setBcNormalIr(faturamento * presIrComerico);
-          setBcNormalCsll(faturamento * presCsllComercio);
-          setBcHospitalIr(faturamento * presIrHospital);
-          setBcHospitalCsll(faturamento * presCsllHospital);
-        } else if (ramo == "Serviço") {
-          setBcNormalIr(faturamento * presIrServico);
-          setBcNormalCsll(faturamento * presCsllServico);
-          setBcHospitalIr(faturamento * presIrHospital);
-          setBcHospitalCsll(faturamento * presCsllHospital);
-        } else if (ramo == "Hospital") {
-          setBcHospitalIr(faturamento * presIrHospital);
-          setBcHospitalCsll(faturamento * presCsllHospital);
-        } else {
-          console.log(
-            "Como não foi informado um Ramo, a aplicação usou o padrão Comércio, ou apresentou erro"
-          );
-        }
-      }
-      setBcExcedente(20000 * qtdMeses)
-
-    }
-  }, [faturamento]);
-
-  //! O IR ADICIONAL TEM QUE SER LEVADO EM CONTA COM OS MESES EM QUE ESTAMOS CALCULANDO, DEVE TER UMA LENGTH 
-
-  useEffect(() => {
-
-    if (qtdMeses > 0) {
-      // console.log('Bc Excedente N:', bcExcedente);
-    }
-    if (bcNormalIr > bcExcedente) {
-      const addBc = (bcNormalIr - bcExcedente) * adicionalIr
-      setValorAdIr(addBc);
-    }
-    //! Verificar se não haverá erro na hora de trocar de Serviço para Comércio
-    if (bcNormalIr) {
-      setValorIr(bcNormalIr * alqIr);
-      setValorCsll(bcNormalCsll * alqCsll)
-    }
-
-  }, [bcNormalIr]);
-
-
-  useEffect(() => {
-
-    if (qtdMeses > 0) {
-      //  console.log('Bc Excedente H:', bcExcedente);
-    }
-
-    if (bcHospitalIr > bcExcedente) {
-      const addBc = (bcHospitalIr - bcExcedente) * adicionalIr
-      setValorAdIrHospital(addBc);
-    }
-
-    if (bcHospitalIr) {
-      setValorIrHospital(bcHospitalIr * alqIr)
-      setValorCsllHospital(bcHospitalCsll * alqCsll)
-    }
-
-  }, [bcHospitalIr])
-
-
-  useEffect(() => {
-
-    if (valorAdIr) {
-      const addIrTotal = valorIr + valorAdIr
-      setValorTotalIr(addIrTotal);
+    if (confirmacao) {
+      const novosDados = [...dadosFormularioMensal];
+      novosDados[objetoExistenteIndex] = novoObjeto;
+      setDadosFormularioMensal(novosDados);
     } else {
-      setValorTotalIr(valorIr);
+      console.log('Os valores não foram alterados.');
     }
-
-  }, [valorIr])
-
-
-
-
-  useEffect(() => {
-
-    if (valorAdIrHospital) {
-      const addIrTotal = valorIrHospital + valorAdIrHospital
-      setValorTotalIrHospital(addIrTotal);
-    } else {
-      setValorTotalIrHospital(valorIrHospital);
-    }
-
-    const irRestituir = valorTotalIr - valorTotalIrHospital
-    const csllRestituir = valorCsll - valorCsllHospital
-
-    setValorIrRestituir(irRestituir)
-    setValorCsllRestituir(csllRestituir)
-    setValorPisRestituir(0)
-    setValorCofinsRestituir(0)
-
-    setMostratela(!mostraTela)
-  }, [valorTotalIr, valorIrHospital])
+  } else {
+    setDadosFormularioMensal([...dadosFormularioMensal, novoObjeto]);
+  }
+  //todo ---- ENCONTRAR UMA FORMA DO CODIGO ACEITAR FATURAMENTOS IGUAIS PARA ANOS DIFERENTES
+  //!! TENHO QUE ACHAR UM JEITO DE RESOLVER 
+}, [valorIrRestituir]);
 
 
+   useEffect(() => {
+      if (valorIrHospital > 1) {
 
 
+        console.log('ano: ', anoSelecionado);
+        console.log('faturamento: ', faturamento);
+        console.log('ir: ', valorIr);
+        console.log('irAd: ', valorAdIr);
+        console.log('irT: ', valorTotalIr);
+        console.log('irH: ', valorIrHospital);
+        console.log('irHAd: ', valorAdIrHospital);
+        console.log('irHT: ', valorTotalIrHospital);
+        console.log('csll: ', valorCsll);
+        console.log('pis: ', valorPis);
+        console.log('cofins: ', valorCofins);
+        console.log('irRestituir: ', valorIrRestituir);
+        console.log('csllRestituir: ', valorCsllRestituir);
+        console.log('pisRestituir: ', valorPisRestituir);
+        console.log('cofinsRestituir: ', valorCofinsRestituir);
+        console.log('mesesFaturado: ', qtdMeses);
 
-
-  /* 
-  ! useEffect(()=>{
-  !setRamo('Serviço')
-  !},[ramo]) 
-   */
-
-
-  /*   useEffect(() => {
-      if (valorIr > 1 || valorIrHospital > 1) {
-  
-        console.log('Valor do CSLL Restituir', valorCsllRestituir, typeof valorCsllRestituir)
-        console.log('Valor do IR Restituir', valorIrRestituir, typeof valorCsllRestituir)
-  
-  
-  
-        console.log("------------Faturamento---------------");
+   /*      console.log("------------Faturamento---------------");
         console.log('Faturamento: ', faturamento)
         console.log("----------Normal--------------");
         console.log('BcIRn: ', bcNormalIr)
@@ -263,8 +277,10 @@ const CalculoProvider = ({ children }) => {
         console.log('IRn Total: ', valorTotalIr)
         console.log("---------------------------");
         console.log("BcCslln: ", bcNormalCsll);
-        console.log('Valor Cslln: ', valorCsll)
+        console.log('Valor Cslln: ', valorCsll) */
+
         console.log("\n----------Hospital--------------");
+
         console.log('BcIR-hpt: ', bcHospitalIr)
         console.log('Valor IR-hpt: ', valorIrHospital)
         console.log('Adicional IR-hpt: ', valorAdIrHospital)
@@ -272,17 +288,17 @@ const CalculoProvider = ({ children }) => {
         console.log("---------------------------");
         console.log("BcCsll-hpt: ", bcHospitalCsll);
         console.log('Valor Csll-hpt: ', valorCsllHospital)
-  
-  
         console.log("\n---------------------------");
+
         console.log("Pis:", valorPis);
         console.log("Cofins:", valorCofins);
         console.log("----------------------------");
   
-        console.log("QtdMeses: ", qtdMeses)
+    
       }
   
-    }, [mostraTela]) */
+    }, [mostraTela]) 
+
 
   const value = {
     fatCalculo,
@@ -307,7 +323,8 @@ const CalculoProvider = ({ children }) => {
     valorCofinsRestituir,
     valorPisRestituir,
     valorCofinsRestituir,
-    setFaturamentoMesAno
+    setFaturamentoMesAno,
+    setControlaAno
   };
 
   return (
@@ -318,3 +335,8 @@ const CalculoProvider = ({ children }) => {
 };
 
 export { CalculoContext, CalculoProvider };
+
+
+
+
+ 
