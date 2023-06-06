@@ -13,44 +13,44 @@ export default function BlocoTabelaImposto() {
     console.log(dadosFormularioMensal[0].ano);
   }
   
-  for( const i= 0; i < dadosFormularioMensal.length ; i++){
+
+  for( let i= 0; i < dadosFormularioMensal.length ; i++){
+    <div className={styles.container}>
+          <h1 className={styles.titulo}>{dadosFormularioMensal[i].ano}</h1>
+          <MostraFaturamento inputValor={dadosFormularioMensal[i].faturamento} />
+          <TabelaImpostoPresumido 
+          propsIr={dadosFormularioMensal[i].irT} 
+          propsCsll={dadosFormularioMensal[i].csll}
+          propsPis={dadosFormularioMensal[i].pis}
+          propsCofins={dadosFormularioMensal[i].cofins}
+          propsIrRestituir={dadosFormularioMensal[i].irRestituir}
+          propsCsllRestituir={dadosFormularioMensal[i].csllRestituir}
+          propsCofinsRestituir={dadosFormularioMensal[i].cofinsRestituir}
+          propsPisRestituir={dadosFormularioMensal[i].pisRestituir}
+          />
+        </div>
 
   }
 
   return (
-
     <ContainerTrib>
       <section className={styles.containerBlocoTabela}>
-        <div className={styles.container}>
-          <h1 className={styles.titulo}>Ano</h1>
-          <MostraFaturamento />
-          <TabelaImpostoPresumido />
-        </div>
-
-        <div className={styles.container}>
-          <h1 className={styles.titulo}>Ano</h1>
-          <MostraFaturamento />
-          <TabelaImpostoPresumido />
-        </div>
-
-        <div className={styles.container}>
-          <h1 className={styles.titulo}>Ano</h1>
-          <MostraFaturamento />
-          <TabelaImpostoPresumido />
-        </div>
-
-        <div className={styles.container}>
-          <h1 className={styles.titulo}>Ano</h1>
-          <MostraFaturamento />
-          <TabelaImpostoPresumido />
-        </div>
-
-        <div className={styles.container}>
-          <h1 className={styles.titulo}>Ano</h1>
-          <MostraFaturamento />
-          <TabelaImpostoPresumido />
-        </div>
-
+        {dadosFormularioMensal.map((objeto, index) => (
+          <div className={styles.container} key={index}>
+            <h1 className={styles.titulo}>{objeto.ano}</h1>
+            <MostraFaturamento inputValor={objeto.faturamento} />
+            <TabelaImpostoPresumido 
+              propsIr={objeto.irT} 
+              propsCsll={objeto.csll}
+              propsPis={objeto.pis}
+              propsCofins={objeto.cofins}
+              propsIrRestituir={objeto.irRestituir}
+              propsCsllRestituir={objeto.csllRestituir}
+              propsCofinsRestituir={objeto.cofinsRestituir}
+              propsPisRestituir={objeto.pisRestituir}
+            />
+          </div>
+        ))}
       </section>
     </ContainerTrib>
   )

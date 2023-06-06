@@ -4,8 +4,11 @@ import styles from './TabelaImpostoPresumido.module.scss';
 import { FaturamentoInputContext } from '../../common/contex/FaturamentoInput';
 import { CalculoContext } from '../../common/contex/Calculos';
 
-export default function TabelaImpostoPresumido() {
+export default function TabelaImpostoPresumido({
+  propsIr = 0, propsCsll = 0, propsPis = 0, propsCofins = 0, 
+  propsIrRestituir = 0, propsCsllRestituir = 0, propsPisRestituir = 0, propsCofinsRestituir = 0}) {
   /* Variáveis de estado */
+
   const [Ir, setIr] = useState(0);
   const [Csll, setCsll] = useState(0);
   const [Pis, setPis] = useState(0);
@@ -38,14 +41,30 @@ x
   const { faturamentoAnual } = useContext(FaturamentoInputContext);
   const { setFatCalculo } = useContext(CalculoContext);
 
-//TODO ----  Atualizar estados com base nos valores do contexto */
+
 
 
 
 useEffect(() => {
-  if (valorTotalIr > 0) {
-    const irRestituir = Number(valorIrRestituir).toFixed(2);
-    const csllRestituir = Number(valorCsllRestituir).toFixed(2);
+ 
+  if (propsIr > 0 ) {
+
+    let irRestituir = Number(propsIrRestituir).toFixed(2);
+    let csllRestituir = Number(propsCsllRestituir).toFixed(2);
+
+    setIr(propsIr.toFixed(2));
+    setCsll(propsCsll.toFixed(2));
+    setPis(propsPis.toFixed(2));
+    setCofins(propsCofins.toFixed(2));
+    setIrRestituir(irRestituir);
+    setCsllRestituir(csllRestituir);
+    setCofinsRestituir(propsCofinsRestituir);
+    setPisRestituir(propsPisRestituir);
+
+  }
+  else if(valorTotalIr > 0) {
+    let irRestituir = Number(valorIrRestituir).toFixed(2);
+   let csllRestituir = Number(valorCsllRestituir).toFixed(2);
 
     setIr(valorTotalIr.toFixed(2));
     setCsll(valorCsll.toFixed(2));
@@ -55,7 +74,8 @@ useEffect(() => {
     setCsllRestituir(csllRestituir);
     setCofinsRestituir(valorCofinsRestituir);
     setPisRestituir(valorPisRestituir);
-  }
+  } 
+
 }, [valorTotalIr, valorCsll, valorPis, valorCofins, valorIrRestituir, valorCsllRestituir, valorPisRestituir, valorCofinsRestituir]);
 
 
