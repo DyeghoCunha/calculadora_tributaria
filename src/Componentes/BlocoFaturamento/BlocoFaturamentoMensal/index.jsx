@@ -15,6 +15,7 @@ import BlocoGraficoCircular from '../BlocoGraficos/BlocoGraficosCircular'
 
 import styles from './BlocoFaturamentoMensal.module.scss'
 import React, { useContext } from 'react'
+import { BotaoAsideProvider } from '../../../common/contex/BotoesAside'
 
 export default function BlocoFaturamentoMensal() {
 
@@ -25,6 +26,7 @@ export default function BlocoFaturamentoMensal() {
     <EmpresaProvider>
       <CalculoProvider>
         <FaturamentoInputProvider>
+          <BotaoAsideProvider></BotaoAsideProvider>
           <div className={styles.container}>
             <InputFaturamentoMensal />
             <div className={styles.containerGrafico}>
@@ -36,10 +38,10 @@ export default function BlocoFaturamentoMensal() {
               <div className={styles.contailerAll}>
                 <GraficoContextProvider>
                   <div className={styles.containerGraficoCircular}>
-                    {/*  <BlocoGraficoCircular /> */}
+                     <BlocoGraficoCircular /> 
                   </div>
                   <div className={styles.containerGraficosLinhaeBarra}>
-                    {/*   <BlocoGraficoFaturamento /> */}
+                       <BlocoGraficoFaturamento /> 
                   </div>
                 </GraficoContextProvider>
               </div>

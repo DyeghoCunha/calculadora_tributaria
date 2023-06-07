@@ -1,0 +1,19 @@
+.container {
+  width: 100vw;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.faturamentoMensal {
+  z-index: 0px;
+
+}
+
+.barraLateral {
+  position: sticky;
+  margin-right: 5px;
+  height: 100vh;
+  z-index: 10;
+}

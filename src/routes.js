@@ -11,6 +11,7 @@ import PaginaFaturamentoAnual from './Paginas/PaginaFaturamentoAnual';
 import PaginaFaturamentoMensal from './Paginas/PaginaFaturamentoMensal';
 import { CalculoProvider } from './common/contex/Calculos';
 import { EmpresaProvider } from './common/contex/Empresa';
+import { BotaoAsideProvider } from './common/contex/BotoesAside';
 
 
 
@@ -18,23 +19,23 @@ import { EmpresaProvider } from './common/contex/Empresa';
 export default function AppRoutes() {
   return (
     <BrowserRouter>
-       <NavBar/>
-       <EmpresaProvider>
-       <CalculoProvider> 
-      <DctfImportContextProvider>
-        <FaturamentoInputProvider>        
-     
-        <Routes>
-       {/*  <Route path="/" element={<PaginaApresentacao/>} /> */}
-       {/*  <Route path="/" element={<PaginaInicial />} /> */}
-       {/*  <Route path="/" element={<PaginaFaturamentoAnual />} />  */}
-        <Route path="/" element={<PaginaFaturamentoMensal />} />
-        
-        </Routes>
-        
-        </FaturamentoInputProvider>
-      </DctfImportContextProvider>
-      </CalculoProvider>
+      <NavBar />
+      <EmpresaProvider>
+        <CalculoProvider>
+          <DctfImportContextProvider>
+            <FaturamentoInputProvider>
+              <BotaoAsideProvider>
+                <Routes>
+                  {/*  <Route path="/" element={<PaginaApresentacao/>} /> */}
+                  {/*  <Route path="/" element={<PaginaInicial />} /> */}
+                  {/*  <Route path="/" element={<PaginaFaturamentoAnual />} />  */}
+                  <Route path="/" element={<PaginaFaturamentoMensal />} />
+
+                </Routes>
+              </BotaoAsideProvider>
+            </FaturamentoInputProvider>
+          </DctfImportContextProvider>
+        </CalculoProvider>
       </EmpresaProvider>
     </BrowserRouter>
   );

@@ -10,7 +10,7 @@ export default function NavBar() {
         <div className={styles.links}>
           <LinkNav  titulo={'Pagina Inicial'}/>
           <LinkNav  titulo={'Calculo Tributario'}/>
-          <h1>Hamburger</h1>
+          <h1>Ham</h1>
         </div>
        
        </nav>

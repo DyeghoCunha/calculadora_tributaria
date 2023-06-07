@@ -9,10 +9,7 @@
 
 }
 
-
 .botao{
-  
-
   left: 15px;
   top: 15px;
   display: flex;
@@ -28,14 +25,14 @@
   background-color: rgba(255,255,255,0.25);
   backdrop-filter: blur(2px);
   box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+  
 }
+
 .botao:hover{
 color:$colorTribDestaque;
 background-color: $colorTribDestaqueFade;
 border: solid 2px $colorTribDestaqueFade;
-
 }
-
 
 .icone{
   width: 27px;

@@ -1,27 +1,30 @@
 import GraficoBarra from '../../../Graficos/GraficoBarra'
 import styles from './BlocoGraficoBarra.module.scss'
-import React, { useState } from 'react'
-import { TbChartBar} from "react-icons/tb";
+import React, { useContext, useState } from 'react'
+import { TbChartBar } from "react-icons/tb";
 import { RiBarChart2Fill } from "react-icons/ri";
 
-
+import { BotaoAsideContext } from '../../../../common/contex/BotoesAside'
 
 export default function BlocoGraficoBarra() {
 
-const [visivel, setVisivel] = useState(true)
+  const [visivel, setVisivel] = useState(true)
 
-const visibilidade = ()=>{
-  return setVisivel(!visivel)
-}
+  const { graficoBarra, setGraficoBarra } = useContext(BotaoAsideContext)
 
+  const visibilidade = () => {
+    setGraficoBarra(!graficoBarra)
+  }
 
+  console.log(graficoBarra)
 
   return (
-    <div className={styles.container}>
-      <button className={styles.botao} onClick={visibilidade}><RiBarChart2Fill className={styles.icone}/></button>
-      {visivel && (
-      <GraficoBarra/>
-      )}
-    </div>
+    <>
+      {!graficoBarra && (
+        <div className={styles.container}>
+          <button className={styles.botao} onClick={visibilidade}><TbChartBar className={styles.icone} /></button>
+          <GraficoBarra />
+        </div>)}
+    </>
   )
 }

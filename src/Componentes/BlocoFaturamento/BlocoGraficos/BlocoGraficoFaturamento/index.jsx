@@ -1,48 +1,42 @@
 import styles from './BlocoGraficoFaturamento.module.scss'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import BlocoGraficoLinha from '../BlocoGraficoLinha'
 import BlocoGraficoBarra from '../BlocoGraficoBarra'
-import { FcComboChart } from "react-icons/fc";
 
+import { RiFolderChartLine } from "react-icons/ri";
+import { BotaoAsideContext } from '../../../../common/contex/BotoesAside';
 
 
 
 export default function BlocoGraficoFaturamento() {
 
   const [visivel, setVisivel] = useState(true)
+  const { graficoFaturamento, setGraficoFaturamento, graficoLinha, setGraficoLinha, graficoBarra, setGraficoBarra } = useContext(BotaoAsideContext)
 
   const visibilidade = () => {
-    return setVisivel(!visivel)
+    setGraficoFaturamento(!graficoFaturamento)
+    setGraficoBarra(!graficoBarra)
+    setGraficoLinha(!graficoLinha)
+
   }
-
-  const [visivel2, setVisivel2] = useState(true)
-
-  const visibilidade2 = () => {
-    return setVisivel2(!visivel2)
-  }
-
 
   return (
-    <div className={styles.container}>
-      <div className={styles.botaoClose} onClick={visibilidade2}>
-        <FcComboChart className={styles.iconeClose} />
-      </div>
-  
-      {visivel2 && (
-        <div className={styles.containerTitulo}>
-          <h1 className={styles.titulo}>Grafico do Faturamento</h1>
-          <div className={styles.botao} onClick={visibilidade}>
-            <FcComboChart className={styles.icone} />
+    <>
+
+      {!graficoFaturamento && (
+        <div className={styles.container}>
+          <div className={styles.containerTitulo}>
+            <h1 className={styles.titulo}>Grafico do Faturamento</h1>
+            <div className={styles.botao} onClick={visibilidade}>
+              <RiFolderChartLine className={styles.icone} />
+            </div>
           </div>
-        </div>
-      )}
-  
-      {visivel && (
-        <>
+
           <BlocoGraficoLinha />
           <BlocoGraficoBarra />
-        </>
+
+        </div>
       )}
-    </div>
+    </>
   );
-      }
+}

@@ -1,0 +1,145 @@
+@import '../../styles/variaveis';
+
+
+
+.container {
+  position: sticky;
+  top: 0px;
+  width: fit-content;
+  height: fit-content;
+
+  border: 2px solid rgba($colorTribBotao,0.2);
+border-top: none;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2px;
+  border-radius: 0px 0px 8px 8px;
+  background-color: $colorTribCard;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.containerIcones {
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  margin: 3px 0px;
+  box-sizing: border-box;
+z-index: 1001;
+}
+
+.containerGrupo{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3px 0px;
+  border-radius: 8px;
+  padding:5px 0px;
+  box-sizing: border-box;
+ z-index: 1001;
+
+}
+
+.containerGrupo:hover{
+  color: $colorTribDestaque;
+  background-color: rgba($colorTribBotao, 0.2);
+  box-sizing: border-box;
+  box-shadow: 
+  0px 1px 2px rgba(0, 0, 0, 0.25),
+  0px -1px 2px rgba(0, 0, 0, 0.25), 
+  1px 0px 2px rgba(0, 0, 0, 0.25), 
+  -1px 0px 2px rgba(0, 0, 0, 0.25);
+}
+
+.botao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 2px $colorTribCard;
+  color: $colorTribBotao ;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(2px);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin: 2px 0px;
+  
+  
+  box-sizing: border-box;
+z-index: 1001;
+}
+
+.botao:hover {
+  color: white;
+  background-color: rgba($colorTribBotao, 1);
+  border: solid 2px $colorTribDestaqueFade;
+  box-sizing: border-box;
+}
+
+
+.botao:hover::after{
+  content: "Botao de Faturamento";
+  width: 100px;
+  position: absolute;
+  right: 50px;
+  border-radius: 8px 0px 0px 8px;
+  background-color: $colorTribBotao;
+  color: white;
+}
+
+
+.icone {
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  z-index: 1001;
+}
+
+.botaoNav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 2px $colorTribCard;
+  color: $colorTribBotao ;
+  width: 100%;
+  height:100%;
+  border-radius: 0px 0px 8px 8px;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(2px);
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  z-index: 1001;
+}
+
+.botaoBotton{
+  margin-top: 2px;
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.25);
+ 
+}
+.botaoBotton:hover{
+  color:white;
+  background-color: $colorTribDestaque;
+  border-color: $colorTribDestaque;
+}
+
+.botaoTop{
+  margin-bottom: 2px;
+
+}
+.botaoTop:hover{
+  color:white;
+  background-color: $colorTribBotao;
+  border-color: $colorTribBotao;
+}
+
+.botaoAtivo{
+  display: block;
+}

@@ -69,6 +69,8 @@ const CalculoProvider = ({ children }) => {
 
    const [controlaAno, setControlaAno] = useState(0)
 
+   const [reconheceClickBotao, setReconheceClickBotao] = useState(true)
+
   const {dadosFormularioMensal, setDadosFormularioMensal} = useContext(EmpresaContext);
  
 
@@ -242,9 +244,10 @@ setControlaAno(controlaAno +1)
   } else {
     setDadosFormularioMensal([...dadosFormularioMensal, novoObjeto]);
   }
+
   //todo ---- ENCONTRAR UMA FORMA DO CODIGO ACEITAR FATURAMENTOS IGUAIS PARA ANOS DIFERENTES
   //!! TENHO QUE ACHAR UM JEITO DE RESOLVER 
-}, [valorIrRestituir]);
+}, [valorIrRestituir, reconheceClickBotao]);
 
 
    useEffect(() => {
@@ -324,7 +327,7 @@ setControlaAno(controlaAno +1)
     valorPisRestituir,
     valorCofinsRestituir,
     setFaturamentoMesAno,
-    setControlaAno
+    setControlaAno,setReconheceClickBotao, reconheceClickBotao
   };
 
   return (

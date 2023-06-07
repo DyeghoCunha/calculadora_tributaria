@@ -5,6 +5,7 @@ import styles from './BlocoGraficoCircular.module.scss'
 import { TbChartDonut2 } from "react-icons/tb";
 import { CalculoContext } from '../../../../common/contex/Calculos';
 import { FaturamentoInputContext } from '../../../../common/contex/FaturamentoInput';
+import { BotaoAsideContext } from '../../../../common/contex/BotoesAside';
 
 export default function BlocoGraficoCircular({ nomeImposto, valorPago, valorCorreto }) {
 
@@ -24,40 +25,42 @@ export default function BlocoGraficoCircular({ nomeImposto, valorPago, valorCorr
     valorCofins,
     valorPisRestituir,
     valorCofinsRestituir } = useContext(CalculoContext)
-
+  const { graficoCirculo, setGraficoCirculo } = useContext(BotaoAsideContext)
 
   const mostraConteudo = () => {
-    setVisibilidade(!visibilidade)
+    setGraficoCirculo(!graficoCirculo)
   }
 
 
   return (
-    <div className={styles.container}>
-      <div className={styles.botao} onClick={mostraConteudo}>
-        <TbChartDonut2 className={styles.icone} />
-      </div>
-      {/* valorTotalIr > 0 && */ visibilidade && (
 
-        <ContainerTrib>
-          <div className={styles.containerGrafico}>
+    <>
+      {valorTotalIr > 0 && (
 
-            <h1 className={styles.titulo}>{anoSelecionado}</h1>
+        <>
+        {!graficoCirculo &&(
+        <div className={styles.container}>
+          <button className={styles.botao} onClick={mostraConteudo}>
+            <TbChartDonut2 className={styles.icone} />
+          </button>
+          <ContainerTrib>
+            <div className={styles.containerGrafico}>
 
-            <div className={styles.containerCirculo}>
-              <GraficoCircular nomeImposto={'IR'} valorPago={valorTotalIr} valorCorreto={valorTotalIrHospital} />
-              <GraficoCircular nomeImposto={'CSLL'} valorPago={valorCsll} valorCorreto={valorCsllHospital} />
+              <h1 className={styles.titulo}>{anoSelecionado}</h1>
 
-              {valorPisRestituir > 0 && (
-                <GraficoCircular nomeImposto={'PIS'} valorPago={valorPis} valorCorreto={valorPis} />
-              )}
-              {valorCofinsRestituir > 0 && (
-                <GraficoCircular nomeImposto={'COFINS'} valorPago={valorCofins} valorCorreto={valorCofins} />
-              )}
+              <div className={styles.containerCirculo}>
+                <GraficoCircular nomeImposto={'IR'} valorPago={valorTotalIr} valorCorreto={valorTotalIrHospital} />
+                <GraficoCircular nomeImposto={'CSLL'} valorPago={valorCsll} valorCorreto={valorCsllHospital} />
+
+                {valorPisRestituir > 0 && (<GraficoCircular nomeImposto={'PIS'} valorPago={valorPis} valorCorreto={valorPis} />)}
+                {valorCofinsRestituir > 0 && (<GraficoCircular nomeImposto={'COFINS'} valorPago={valorCofins} valorCorreto={valorCofins} />)}
+
+              </div>
             </div>
-          </div>
-        </ContainerTrib>
-      )
-      }
-    </div >
+          </ContainerTrib>
+        </div >
+)}
+     </> )}
+    </>
   );
 }

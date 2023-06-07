@@ -7,6 +7,7 @@ import { FaturamentoInputContext } from '../../common/contex/FaturamentoInput';
 import { MdOutlineCleaningServices } from "react-icons/md";
 import { useEffect } from 'react';
 import { EmpresaContext } from '../../common/contex/Empresa';
+import { CalculoContext } from '../../common/contex/Calculos';
 
 
 export default function InputFaturamentoMensal() {
@@ -17,14 +18,13 @@ export default function InputFaturamentoMensal() {
   const { anoSelecionado, setAnoSelecionado } = useContext(EmpresaContext)
   const [isErroAno, setIsErroAno] = useState(false); // New state variable
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const {reconheceClickBotao, setReconheceClickBotao} = useContext(CalculoContext)
 
 
   
   //* É COM O faturamentoMensal que temos as informações
 
   //? o faturamentoDbValues tem as informações do arquivo Json ?
-
-
 
   const handleFaturamentoInputChange = (id, value) => {
     setFaturamentoDbValues((prevValues) => ({
@@ -37,19 +37,19 @@ export default function InputFaturamentoMensal() {
 
 
 
-
   const handleCaptureData = () => {
     const capturedValues = faturamentoDbValues.faturamentoMensal.map((obj) => ({
       id: obj.id,
       valor: obj.faturamentoMes,
       mes: obj.mês,
       ano: anoSelecionado,
-    }));
+     
+
+    })
+    );
+    setReconheceClickBotao(prevState => !prevState)
     setFaturamentoMensal(capturedValues);
     //!setAllFaturamentoMensal((prevValues) => [...prevValues, ...capturedValues]); // Coloca todos os valores em um unico array
-
-    
-
 
     setFaturamentoMensalComAno((prevValues) => ({
       ...prevValues,
