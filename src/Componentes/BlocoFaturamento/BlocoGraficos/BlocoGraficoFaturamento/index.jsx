@@ -15,10 +15,12 @@ export default function BlocoGraficoFaturamento() {
 
   const visibilidade = () => {
     setGraficoFaturamento(!graficoFaturamento)
-    setGraficoBarra(!graficoBarra)
-    setGraficoLinha(!graficoLinha)
-
-  }
+if(!graficoBarra && !graficoLinha){
+  setGraficoBarra(true)
+  setGraficoLinha(true)
+}
+    }
+  
 
   return (
     <>

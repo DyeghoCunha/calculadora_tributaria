@@ -16,7 +16,7 @@ export default function BlocoGraficoBarra() {
     setGraficoBarra(!graficoBarra)
   }
 
-  console.log(graficoBarra)
+ 
 
   return (
     <>
