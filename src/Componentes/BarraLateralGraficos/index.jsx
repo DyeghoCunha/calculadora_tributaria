@@ -13,7 +13,7 @@ export default function BarraLateralGraficos() {
   const { graficoBarra, setGraficoBarra, graficoLinha, setGraficoLinha, graficoCirculo, setGraficoCirculo,
     graficoFaturamento, setGraficoFaturamento, graficoRestituição, setGraficoRestituição } = useContext(BotaoAsideContext)
 
-  const [abreBarra, setAbreBarra] = useState(false)
+  const [abreBarra, setAbreBarra] = useState(true)
 
   const [clickBarra, setClickBarra] = useState(0)
 
@@ -48,11 +48,11 @@ export default function BarraLateralGraficos() {
     }
   }
 
-useEffect(()=>{
-     if (graficoBarra && graficoLinha) {
+  useEffect(() => {
+    if (graficoBarra && graficoLinha) {
       setGraficoFaturamento(true)
     }
-},[graficoBarra,graficoLinha])
+  }, [graficoBarra, graficoLinha])
 
   useEffect(() => {
 
@@ -60,43 +60,77 @@ useEffect(()=>{
     console.log('Linha: ', graficoLinha)
     console.log('Barra :', graficoBarra)
     console.log('------------------\n')
-  }, [graficoBarra, graficoLinha, graficoFaturamento])
+    console.log('AbreBarra: ', abreBarra)
+  }, [graficoBarra, graficoLinha, graficoFaturamento, abreBarra])
+
+  function close() {
+    setAbreBarra(!abreBarra)
+  }
 
 
 
-
-  
   return (
-    <aside className={styles.container}>
+    <aside className={`${styles.container} `}>
 
 
-      <button className={`${styles.botaoNav} ${styles.botaoTop}  ${abreBarra ? styles.botaoAtivo : ''} `}>
-        <LuPanelTopOpen className={styles.iconeNav} /></button>
+      <button className={`
+      ${styles.botaoNav} 
+      ${styles.botaoTop} 
+      ${!abreBarra ? styles.botaoTopAtivo : ''}
+      ${!abreBarra ? styles.botaoTopHover : ''}
+      
+      `}
+        disabled={abreBarra}
+        onClick={close}>
+        <LuPanelTopOpen className={styles.iconeNav} />
+      </button>
 
-      <div className={styles.containerIcones}>
+      {abreBarra && (
 
-        {graficoCirculo && (
-          <div className={styles.containerGrupo}>
-            <button className={styles.botao} onClick={visibilidadeCirculo}><TbChartDonut2 className={styles.icone} /></button>
-          </div>)}
+        <div className={`${styles.containerIcones}  ${abreBarra ? styles.fadeOut1s : ''}`}
+        >
+
+          {graficoCirculo && (
+            <div className={`${styles.containerGrupo} `} >
+              <button className={`${styles.botao} ${styles.botaoCirculo}`}
+                onClick={visibilidadeCirculo}><TbChartDonut2 className={styles.icone} /></button>
+            </div>)}
 
 
-        <section className={styles.containerGrupo}>
-          {graficoFaturamento && (
-            <button className={styles.botao} onClick={visibilidadeFaturamento}><RiFolderChartLine className={styles.icone} /></button>
-          )}
-          {graficoLinha && (
-            <button className={styles.botao} onClick={visibilidadeLinha} ><TbChartLine className={styles.icone} /></button>
-          )}
+          <section className={`${styles.containerGrupo} ${abreBarra ? styles.fadeOut2s : styles.fadeIn2s}`}>
 
-          {graficoBarra && (
-            <button className={styles.botao} onClick={visibilidadeBarra} ><TbChartBar className={styles.icone} /></button>
+            {graficoFaturamento && (
 
-          )}
-        </section>
+              <button className={`${styles.botao} ${styles.botaoFaturamento}`}
+                onClick={visibilidadeFaturamento}><RiFolderChartLine className={styles.icone} /></button>
+            )}
+            {graficoLinha && (
 
-      </div>
-      <button className={`${styles.botaoNav} ${styles.botaoBotton} /* ${abreBarra ? styles.botaoAtivo : ''} */`}>
+              <button className={`${styles.botao} ${styles.botaoLinha}`}
+                onClick={visibilidadeLinha} ><TbChartLine className={styles.icone} /></button>
+            )}
+
+            {graficoBarra && (
+              <button className={`${styles.botao} ${styles.botaoBarra}`}
+                onClick={visibilidadeBarra} ><TbChartBar className={styles.icone} /></button>
+
+            )}
+          </section>
+
+        </div>
+      )}
+
+      <button
+        className={`
+      ${styles.botaoNav} 
+      ${styles.botaoBotton} 
+      ${!abreBarra ? styles.botaoBottonAtivo : ''}
+      ${abreBarra ? styles.botaoBottonHover : ''}
+     
+      ${abreBarra ? styles.fadeOut3s : styles.fadeIn1s}
+      `}
+        disabled={!abreBarra}
+        onClick={close}>
         <LuPanelBottomOpen className={styles.iconeNav} /></button>
 
 
