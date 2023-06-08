@@ -7,6 +7,7 @@
   height: fit-content;
   //background-color: $colorTribCard;
   display: flex;
+  border: 5px solid;
 }
 
 .containerGrafico {
@@ -30,6 +31,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
 .containerGraficosLinhaeBarra{
   display: flex;

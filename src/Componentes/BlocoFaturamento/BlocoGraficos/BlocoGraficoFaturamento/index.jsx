@@ -5,6 +5,7 @@ import BlocoGraficoBarra from '../BlocoGraficoBarra'
 
 import { RiFolderChartLine } from "react-icons/ri";
 import { BotaoAsideContext } from '../../../../common/contex/BotoesAside';
+import ContainerTrib from '../../../ContainerTrib';
 
 
 
@@ -32,11 +33,11 @@ if(!graficoBarra && !graficoLinha){
             <div className={styles.botao} onClick={visibilidade}>
               <RiFolderChartLine className={styles.icone} />
             </div>
-          </div>
-
+        </div>
+<ContainerTrib>
           <BlocoGraficoLinha />
           <BlocoGraficoBarra />
-
+</ContainerTrib>
         </div>
       )}
     </>

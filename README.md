@@ -92,3 +92,27 @@ O código também inclui vários blocos useEffect que são acionados quando dete
 Por fim, o provedor CalculoProvider envolve os componentes filhos e fornece o contexto com os valores e funções de configuração para que possam ser acessados por esses componentes.
 
 ##GraficoLinha
+
+
+
+
+##Media Queries
+/* Pequenas telas (até 576px) */
+@media (max-width: 576px) {
+  /* Estilos para telas pequenas */
+}
+
+/* Telas médias (de 577px a 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  /* Estilos para telas médias */
+}
+
+/* Telas grandes (de 769px a 992px) */
+@media (min-width: 769px) and (max-width: 992px) {
+  /* Estilos para telas grandes */
+}
+
+/* Telas extra grandes (acima de 1200px) */
+@media (min-width: 1200px) {
+  /* Estilos para telas extra grandes */
+}

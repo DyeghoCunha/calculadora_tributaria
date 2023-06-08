@@ -5,41 +5,38 @@ import ContainerTrib from '../../ContainerTrib';
 import { GraficoContext } from '../../../common/contex/GraficoContext';
 
 
-export default function GraficoBarra({ width = 860, height = 300 }) {
+export default function GraficoBarra() {
 
   const { dataKeys, data, getLineColor } = useContext(GraficoContext)
 
   return (
-    <ContainerTrib>
+   
       <div className={styles.container}>
+<ResponsiveContainer width="100%" height="100%">
         <BarChart
           data={data}
-          height={height}
-          width={width}
           margin={{
             top: 5,
-            right: 30,
-            left: 20,
+            right: 10,
+            left: 10,
             bottom: 5,
           }}
         >
           <CartesianGrid strokeDasharray="1 1" />
-          <XAxis dataKey="mes" tick={{ fill: 'green', fontSize: 18 }} />
-          <YAxis tick={{ fill: 'green', fontSize: 15 }} />
+          <XAxis dataKey="mes" tick={{ fill: 'green', fontSize: 10 }} />
+          <YAxis tick={{ fill: 'green', fontSize: 10 }} />
           <Tooltip contentStyle={{ borderRadius: '8px' }} wrapperStyle={{ border: '1px solid green', borderRadius: '8px' }} />
-          <Legend />
+          <Legend  fontSize={1} />
           {dataKeys.map((key, index) => (
             <Bar
               key={key}
               dataKey={key}
               fill={getLineColor(index)}
-
-
-
             />
           ))}
         </BarChart>
+        </ResponsiveContainer>
       </div>
-    </ContainerTrib>
+ 
   );
 }

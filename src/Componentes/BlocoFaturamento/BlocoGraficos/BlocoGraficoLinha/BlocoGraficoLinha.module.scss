@@ -5,16 +5,12 @@
   width: fit-content;
   max-height:fit-content ;
   min-height: 50px;
- 
-
 }
 
 
 .botao{
-  
-
   left: 15px;
-  top: 15px;
+  bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,13 +23,22 @@
   border-radius: 8px;
   background-color: rgba(255,255,255,0.25);
   backdrop-filter: blur(2px);
-  box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.25),
+  -1px 0px 4px rgba(0,0,0,0.15);
 }
+
 .botao:hover{
 color:$colorTribDestaque;
 background-color: $colorTribDestaqueFade;
 border: solid 2px $colorTribDestaqueFade;
+}
 
+.botao:active{ 
+color:$colorTribCard;
+background-color: $colorTribDestaque;
+border: solid 2px $colorTribDestaque;
+box-shadow: inset 0px 1px 1px rgba(0,0,0,0.25),
+ inset  -4px 0px 4px rgba(0,0,0,0.15);
 }
 
 

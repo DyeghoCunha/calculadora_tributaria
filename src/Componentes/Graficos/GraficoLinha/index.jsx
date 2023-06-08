@@ -9,7 +9,7 @@ import { GraficoContext } from '../../../common/contex/GraficoContext';
 
 
 
-export default function GraficoLinha({width=860,height=300}) {
+export default function GraficoLinha() {
 
 
   const {faturamentoMensal, anoAtual, anoRetroativo, faturamentoMensalComAno} = useContext(FaturamentoInputContext)
@@ -17,11 +17,10 @@ export default function GraficoLinha({width=860,height=300}) {
   
 
   return (
-    <ContainerTrib>
+    
     <div className={styles.container} >
+      <ResponsiveContainer width="100%" height="100%">
       <LineChart
-        width={width}
-        height={height}
         data={data}
         margin={{
           top: 5,
@@ -46,7 +45,8 @@ export default function GraficoLinha({width=860,height=300}) {
           />
         ))}
       </LineChart>
+      </ResponsiveContainer>
     </div>
-    </ContainerTrib>
+    
   );
 }
