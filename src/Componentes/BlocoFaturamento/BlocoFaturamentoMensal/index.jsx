@@ -33,7 +33,6 @@ export default function BlocoFaturamentoMensal() {
 
               <div className={styles.containerFaturamento}>
                 <BlocoTabelaImposto />
-
               </div>
 
               <div className={styles.contailerAll}>
@@ -45,8 +44,8 @@ export default function BlocoFaturamentoMensal() {
                   <div className={styles.containerGraficosLinhaeBarra}>
                     <BlocoGraficoFaturamento />
                   </div>
-                  
                 </GraficoContextProvider>
+
               </div>
             </div>
           </div>

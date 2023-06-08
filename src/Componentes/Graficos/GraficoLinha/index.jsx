@@ -1,7 +1,6 @@
 import styles from './GraficoLinha.module.scss'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import React, { useContext } from 'react'
-import ContainerTrib from '../../ContainerTrib';
 import { FaturamentoInputContext } from '../../../common/contex/FaturamentoInput';
 import { GraficoContext } from '../../../common/contex/GraficoContext';
 

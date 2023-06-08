@@ -4,8 +4,10 @@
 .container{
   position: relative;
   width: fit-content;
+  height: 100%;
   max-height:fit-content ;
-  min-height: 60px;
+  
+
  
 
 }
@@ -16,16 +18,17 @@
 
 }
 .containerGrafico{
-  height: fit-content;
+  height:100%;
   width: fit-content;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
- 
 }
 .containerCirculo{
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 25px;
 }
 .botao{
 

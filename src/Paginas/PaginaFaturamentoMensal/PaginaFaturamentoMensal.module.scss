@@ -2,8 +2,12 @@
   width: 100vw;
   height: fit-content;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-between;
   position: relative;
+  border: 2px solid;
+  overflow: hidden;
 }
 
 .faturamentoMensal {
@@ -12,8 +16,10 @@
 }
 
 .barraLateral {
-  position: sticky;
-  margin-right: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 0px;
   height: 100vh;
   z-index: 10;
 }

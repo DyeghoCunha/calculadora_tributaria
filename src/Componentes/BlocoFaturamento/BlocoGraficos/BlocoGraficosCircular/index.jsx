@@ -43,7 +43,7 @@ export default function BlocoGraficoCircular({ nomeImposto, valorPago, valorCorr
           <button className={styles.botao} onClick={mostraConteudo}>
             <TbChartDonut2 className={styles.icone} />
           </button>
-          <ContainerTrib>
+        
             <div className={styles.containerGrafico}>
 
               <h1 className={styles.titulo}>{anoSelecionado}</h1>
@@ -57,7 +57,7 @@ export default function BlocoGraficoCircular({ nomeImposto, valorPago, valorCorr
 
               </div>
             </div>
-          </ContainerTrib>
+        
         </div >
 )}
      </> )}
