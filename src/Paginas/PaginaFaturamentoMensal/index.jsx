@@ -4,23 +4,27 @@ import { FaturamentoInputProvider } from '../../common/contex/FaturamentoInput'
 import { CalculoProvider } from '../../common/contex/Calculos'
 import BarraLateralGraficos from '../../Componentes/BarraLateralGraficos'
 import styles from './PaginaFaturamentoMensal.module.scss'
+import { EmpresaProvider } from '../../common/contex/Empresa'
+import { BotaoAsideProvider } from '../../common/contex/BotoesAside'
 
 export default function PaginaFaturamentoMensal() {
   return (
 
+    <EmpresaProvider>
+      <BotaoAsideProvider>
+        <section className={styles.container}>
 
-    <section className={styles.container}>
+          <div className={styles.faturamentoMensal}>
+            <BlocoFaturamentoMensal />
+          </div>
 
-      <div className={styles.faturamentoMensal}>
-        <BlocoFaturamentoMensal />
-      </div>
+          <div className={styles.barraLateral}>
 
-      <div className={styles.barraLateral}>
-        <BarraLateralGraficos />
-      </div>
+            <BarraLateralGraficos />
+          </div>
 
-    </section>
-
-
+        </section>
+      </BotaoAsideProvider>
+    </EmpresaProvider>
   )
 }

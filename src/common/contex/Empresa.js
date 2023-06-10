@@ -16,8 +16,13 @@ const EmpresaProvider = ({ children }) => {
   const [anoSelecionado, setAnoSelecionado] = useState('')
 
   const [dadosFormularioMensal, setDadosFormularioMensal] = useState([]);
+  const [anoSide, setAnoSide] = useState([]);
+
 
   //!Arrumar o Ano e finalizar a empresa
+  
+
+
   
 useEffect(()=>{
 
@@ -25,12 +30,19 @@ useEffect(()=>{
   console.log('Empresa: ',dadosFormularioMensal)}
 },[dadosFormularioMensal])
   
+  useEffect(() => {
+  if (dadosFormularioMensal) {
+    const anos = dadosFormularioMensal.map((objeto) => objeto.ano);
+    setAnoSide(anos);
+  }
+}, [dadosFormularioMensal]);
+
 
   const value = {
 anoSelecionado,
 setAnoSelecionado,
 dadosFormularioMensal,
-setDadosFormularioMensal
+setDadosFormularioMensal,anoSide
 
   }
 

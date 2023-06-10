@@ -167,3 +167,31 @@ background-color: rgba($colorTribBotao,0.8);
   padding: 2px 4px;
   z-index: 100;
 }
+.containerCard {
+  // Estilos para quando o elemento estiver visível, mas não aparecendo
+  &.visivel {
+    display: block;
+  }
+
+  // Estilos para quando o elemento estiver visível e aparecendo
+  &.aparece {
+    display: block;
+    animation: apareceAnimacao 0.5s ease-in-out;
+  }
+
+  // Estilos para quando o elemento estiver oculto
+  &.esconde {
+    display: none;
+  }
+}
+
+@keyframes apareceAnimacao {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

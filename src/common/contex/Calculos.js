@@ -218,6 +218,8 @@ setControlaAno(controlaAno +1)
       pisRestituir: valorPisRestituir,
       cofinsRestituir: valorCofinsRestituir,
       mesesFaturado: qtdMeses,
+      visivel:true
+     
     };
   
     // Verificar se o novo objeto já existe no array
@@ -249,7 +251,7 @@ setControlaAno(controlaAno +1)
   //!! TENHO QUE ACHAR UM JEITO DE RESOLVER 
 }, [valorIrRestituir, reconheceClickBotao]);
 
-
+/* 
    useEffect(() => {
       if (valorIrHospital > 1) {
 
@@ -271,7 +273,7 @@ setControlaAno(controlaAno +1)
         console.log('cofinsRestituir: ', valorCofinsRestituir);
         console.log('mesesFaturado: ', qtdMeses);
 
-   /*      console.log("------------Faturamento---------------");
+        console.log("------------Faturamento---------------");
         console.log('Faturamento: ', faturamento)
         console.log("----------Normal--------------");
         console.log('BcIRn: ', bcNormalIr)
@@ -280,7 +282,7 @@ setControlaAno(controlaAno +1)
         console.log('IRn Total: ', valorTotalIr)
         console.log("---------------------------");
         console.log("BcCslln: ", bcNormalCsll);
-        console.log('Valor Cslln: ', valorCsll) */
+        console.log('Valor Cslln: ', valorCsll) 
 
         console.log("\n----------Hospital--------------");
 
@@ -300,7 +302,7 @@ setControlaAno(controlaAno +1)
     
       }
   
-    }, [mostraTela]) 
+    }, [mostraTela]) */
 
 
   const value = {

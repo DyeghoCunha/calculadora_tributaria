@@ -7,17 +7,17 @@ import { LuPanelBottomOpen, LuPanelTopOpen } from "react-icons/lu";
 import React, { useContext, useEffect, useState } from 'react'
 import { BotaoAsideContext } from '../../common/contex/BotoesAside';
 import { RiFolderChartLine } from "react-icons/ri";
+import { EmpresaContext } from '../../common/contex/Empresa';
 
 export default function BarraLateralGraficos() {
 
   const { graficoBarra, setGraficoBarra, graficoLinha, setGraficoLinha, graficoCirculo, setGraficoCirculo,
-    graficoFaturamento, setGraficoFaturamento, graficoRestituição, setGraficoRestituição } = useContext(BotaoAsideContext)
+    graficoFaturamento, setGraficoFaturamento, graficoRestituição, setGraficoRestituição, anosMinimizados, setAnosMinimizados, minimizaAba, setMinimizaAba } = useContext(BotaoAsideContext)
+ const { dadosFormularioMensal , setDadosFormularioMensal} = useContext(EmpresaContext)
 
   const [abreBarra, setAbreBarra] = useState(true)
 
   const [clickBarra, setClickBarra] = useState(0)
-
-
   function visibilidadeBarra() {
     setGraficoBarra(!graficoBarra)
 
@@ -51,23 +51,49 @@ export default function BarraLateralGraficos() {
   useEffect(() => {
     if (graficoBarra && graficoLinha) {
       setGraficoFaturamento(true)
+
     }
   }, [graficoBarra, graficoLinha])
 
-  useEffect(() => {
 
-    console.log('Fat: ', graficoFaturamento)
-    console.log('Linha: ', graficoLinha)
-    console.log('Barra :', graficoBarra)
-    console.log('------------------\n')
-    console.log('AbreBarra: ', abreBarra)
-  }, [graficoBarra, graficoLinha, graficoFaturamento, abreBarra])
+
+  /*   useEffect(() => {
+  
+      console.log('Fat: ', graficoFaturamento)
+      console.log('Linha: ', graficoLinha)
+      console.log('Barra :', graficoBarra)
+      console.log('------------------\n')
+      console.log('AbreBarra: ', abreBarra)
+    }, [graficoBarra, graficoLinha, graficoFaturamento, abreBarra]) */
 
   function close() {
     setAbreBarra(!abreBarra)
   }
 
+  function minimiza() {
+    setMinimizaAba(prev => !prev)
+  }
 
+  useEffect(() => {
+    console.log("Minimiza Barra: ", minimizaAba)
+  }, [minimizaAba])
+
+
+  function handleMinimizar(objeto) {
+    if (!anosMinimizados.some(item => item.ano === objeto.ano)) {
+      const updatedDadosFormularioMensal = minimizaAba.map(item => {
+        if (item.ano === objeto.ano) {
+          if (item.visivel) {
+            return { ...item, visivel: true }; // Altera a propriedade visivel para false
+          }
+        }
+        return item;
+      });
+      setMinimizaAba(updatedDadosFormularioMensal);
+
+    }
+  }
+  
 
   return (
     <aside className={`${styles.container} `}>
@@ -115,8 +141,21 @@ export default function BarraLateralGraficos() {
                 onClick={visibilidadeBarra} ><TbChartBar className={styles.icone} /></button>
 
             )}
+
           </section>
 
+          
+            <section className={`${styles.containerGrupo} ${abreBarra ? styles.fadeOut2s : styles.fadeIn2s}`}>
+              {minimizaAba.map((objeto, index) => (
+               objeto.visivel===false &&(
+                <button key={index} className={`${styles.botao} ${styles.botaoBarra}`}
+                  onClick={() => handleMinimizar(objeto)}
+                >{objeto.ano}</button>
+                )
+              ))}
+
+            </section>
+        
         </div>
       )}
 

@@ -16,11 +16,13 @@ import { BotaoAsideProvider } from './common/contex/BotoesAside';
 
 
 
+
 export default function AppRoutes() {
   return (
     <BrowserRouter>
       <NavBar />
       <EmpresaProvider>
+     
         <CalculoProvider>
           <DctfImportContextProvider>
             <FaturamentoInputProvider>
@@ -36,6 +38,7 @@ export default function AppRoutes() {
             </FaturamentoInputProvider>
           </DctfImportContextProvider>
         </CalculoProvider>
+     
       </EmpresaProvider>
     </BrowserRouter>
   );
