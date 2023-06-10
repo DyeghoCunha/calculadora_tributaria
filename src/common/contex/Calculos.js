@@ -22,8 +22,6 @@ const CalculoProvider = ({ children }) => {
   const alqPis = 0.0065;
   const alqCofins = 0.03;
 
-
-
   //*Apenas para controlar o que aparece na Teal
   const [mostraTela, setMostratela] = useState(true)
   //*--------------------------------------------
@@ -65,24 +63,23 @@ const CalculoProvider = ({ children }) => {
 
   const [faturamentoMesAno, setFaturamentoMesAno] = useState({})
 
-  const { empresa, setEmpresa, setArreyEmpresa , anoSelecionado} = useContext(EmpresaContext);
+  const { empresa, setEmpresa, setArreyEmpresa, anoSelecionado } = useContext(EmpresaContext);
 
-   const [controlaAno, setControlaAno] = useState(0)
+  const [controlaAno, setControlaAno] = useState(0)
 
-   const [reconheceClickBotao, setReconheceClickBotao] = useState(true)
+  const [reconheceClickBotao, setReconheceClickBotao] = useState(true)
 
-  const {dadosFormularioMensal, setDadosFormularioMensal} = useContext(EmpresaContext);
- 
+  const { dadosFormularioMensal, setDadosFormularioMensal } = useContext(EmpresaContext);
 
- 
-  
 
-    useEffect(() => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [userConfirmation, setUserConfirmation] = useState(false);
+
+
+  useEffect(() => {
     if (fatCalculo && fatCalculo.rbt12) {
       setFaturamento(fatCalculo.rbt12);
       setFaturamentoSomado(faturamentoSomado + fatCalculo.rbt12)
-
-
     }
   }, [fatCalculo]);
 
@@ -186,21 +183,21 @@ const CalculoProvider = ({ children }) => {
     setValorCofinsRestituir(0)
 
 
-    
-    
-    setMostratela(!mostraTela)
-  }, [valorTotalIr, valorIrHospital,valorAdIrHospital])
 
-useEffect(()=>{
-setControlaAno(controlaAno +1)
-},[valorIr])
+
+    setMostratela(!mostraTela)
+  }, [valorTotalIr, valorIrHospital, valorAdIrHospital])
+
+  useEffect(() => {
+    setControlaAno(controlaAno + 1)
+  }, [valorIr])
 
   useEffect(() => {
     // Verifica se o ano selecionado está vazio
     if (anoSelecionado.length === 0) {
       return;
     }
-  
+
     const novoObjeto = {
       ano: anoSelecionado,
       faturamento: faturamento,
@@ -218,91 +215,93 @@ setControlaAno(controlaAno +1)
       pisRestituir: valorPisRestituir,
       cofinsRestituir: valorCofinsRestituir,
       mesesFaturado: qtdMeses,
-      visivel:true
-     
+      visivel: true
     };
-  
+
+    
+
     // Verificar se o novo objeto já existe no array
     const objetoExistente = dadosFormularioMensal.find(objeto => {
       return objeto.ano === novoObjeto.ano;
     });
-  
+
     if (!objetoExistente) {
       setDadosFormularioMensal([...dadosFormularioMensal, novoObjeto]);
     }
- 
-  const objetoExistenteIndex = dadosFormularioMensal.findIndex(objeto => objeto.ano === anoSelecionado);
 
-  if (objetoExistenteIndex !== -1) {
-    const confirmacao = window.confirm(`Um objeto com o ano ${anoSelecionado} já existe no array. Deseja substituir?`);
+    const objetoExistenteIndex = dadosFormularioMensal.findIndex(objeto => objeto.ano === anoSelecionado);
 
-    if (confirmacao) {
-      const novosDados = [...dadosFormularioMensal];
-      novosDados[objetoExistenteIndex] = novoObjeto;
-      setDadosFormularioMensal(novosDados);
-    } else {
-      console.log('Os valores não foram alterados.');
-    }
-  } else {
-    setDadosFormularioMensal([...dadosFormularioMensal, novoObjeto]);
-  }
+    if (objetoExistenteIndex !== -1) {
 
-  //todo ---- ENCONTRAR UMA FORMA DO CODIGO ACEITAR FATURAMENTOS IGUAIS PARA ANOS DIFERENTES
-  //!! TENHO QUE ACHAR UM JEITO DE RESOLVER 
-}, [valorIrRestituir, reconheceClickBotao]);
+      const confirmacao = window.confirm(`Os Calculos são apenas para consulta e orientação`);
 
-/* 
-   useEffect(() => {
-      if (valorIrHospital > 1) {
-
-
-        console.log('ano: ', anoSelecionado);
-        console.log('faturamento: ', faturamento);
-        console.log('ir: ', valorIr);
-        console.log('irAd: ', valorAdIr);
-        console.log('irT: ', valorTotalIr);
-        console.log('irH: ', valorIrHospital);
-        console.log('irHAd: ', valorAdIrHospital);
-        console.log('irHT: ', valorTotalIrHospital);
-        console.log('csll: ', valorCsll);
-        console.log('pis: ', valorPis);
-        console.log('cofins: ', valorCofins);
-        console.log('irRestituir: ', valorIrRestituir);
-        console.log('csllRestituir: ', valorCsllRestituir);
-        console.log('pisRestituir: ', valorPisRestituir);
-        console.log('cofinsRestituir: ', valorCofinsRestituir);
-        console.log('mesesFaturado: ', qtdMeses);
-
-        console.log("------------Faturamento---------------");
-        console.log('Faturamento: ', faturamento)
-        console.log("----------Normal--------------");
-        console.log('BcIRn: ', bcNormalIr)
-        console.log('Valor IRn: ', valorIr)
-        console.log('Adicional IRn: ', valorAdIr)
-        console.log('IRn Total: ', valorTotalIr)
-        console.log("---------------------------");
-        console.log("BcCslln: ", bcNormalCsll);
-        console.log('Valor Cslln: ', valorCsll) 
-
-        console.log("\n----------Hospital--------------");
-
-        console.log('BcIR-hpt: ', bcHospitalIr)
-        console.log('Valor IR-hpt: ', valorIrHospital)
-        console.log('Adicional IR-hpt: ', valorAdIrHospital)
-        console.log('IR-hpt Total: ', valorTotalIrHospital)
-        console.log("---------------------------");
-        console.log("BcCsll-hpt: ", bcHospitalCsll);
-        console.log('Valor Csll-hpt: ', valorCsllHospital)
-        console.log("\n---------------------------");
-
-        console.log("Pis:", valorPis);
-        console.log("Cofins:", valorCofins);
-        console.log("----------------------------");
-  
-    
+      if (confirmacao) {
+        const novosDados = [...dadosFormularioMensal];
+        novosDados[objetoExistenteIndex] = novoObjeto;
+        setDadosFormularioMensal(novosDados);
+      } else {
+        console.log('Os valores não foram alterados.');
       }
-  
-    }, [mostraTela]) */
+    } else {
+      setDadosFormularioMensal([...dadosFormularioMensal, novoObjeto]);
+    }
+
+    //todo ---- ENCONTRAR UMA FORMA DO CODIGO ACEITAR FATURAMENTOS IGUAIS PARA ANOS DIFERENTES
+    //!! TENHO QUE ACHAR UM JEITO DE RESOLVER 
+  }, [valorIrRestituir, reconheceClickBotao]);
+
+
+  useEffect(() => {
+    if (valorIrHospital > 1) {
+
+
+      console.log('ano: ', anoSelecionado);
+      console.log('faturamento: ', faturamento);
+      console.log('ir: ', valorIr);
+      console.log('irAd: ', valorAdIr);
+      console.log('irT: ', valorTotalIr);
+      console.log('irH: ', valorIrHospital);
+      console.log('irHAd: ', valorAdIrHospital);
+      console.log('irHT: ', valorTotalIrHospital);
+      console.log('csll: ', valorCsll);
+      console.log('pis: ', valorPis);
+      console.log('cofins: ', valorCofins);
+      console.log('irRestituir: ', valorIrRestituir);
+      console.log('csllRestituir: ', valorCsllRestituir);
+      console.log('pisRestituir: ', valorPisRestituir);
+      console.log('cofinsRestituir: ', valorCofinsRestituir);
+      console.log('mesesFaturado: ', qtdMeses);
+
+      console.log("------------Faturamento---------------");
+      console.log('Faturamento: ', faturamento)
+      console.log("----------Normal--------------");
+      console.log('BcIRn: ', bcNormalIr)
+      console.log('Valor IRn: ', valorIr)
+      console.log('Adicional IRn: ', valorAdIr)
+      console.log('IRn Total: ', valorTotalIr)
+      console.log("---------------------------");
+      console.log("BcCslln: ", bcNormalCsll);
+      console.log('Valor Cslln: ', valorCsll)
+
+      console.log("\n----------Hospital--------------");
+
+      console.log('BcIR-hpt: ', bcHospitalIr)
+      console.log('Valor IR-hpt: ', valorIrHospital)
+      console.log('Adicional IR-hpt: ', valorAdIrHospital)
+      console.log('IR-hpt Total: ', valorTotalIrHospital)
+      console.log("---------------------------");
+      console.log("BcCsll-hpt: ", bcHospitalCsll);
+      console.log('Valor Csll-hpt: ', valorCsllHospital)
+      console.log("\n---------------------------");
+
+      console.log("Pis:", valorPis);
+      console.log("Cofins:", valorCofins);
+      console.log("----------------------------");
+
+
+    }
+
+  }, [mostraTela])
 
 
   const value = {
@@ -329,7 +328,7 @@ setControlaAno(controlaAno +1)
     valorPisRestituir,
     valorCofinsRestituir,
     setFaturamentoMesAno,
-    setControlaAno,setReconheceClickBotao, reconheceClickBotao
+    setControlaAno, setReconheceClickBotao, reconheceClickBotao, modalIsOpen, setModalIsOpen, userConfirmation, setUserConfirmation
   };
 
   return (
@@ -344,4 +343,3 @@ export { CalculoContext, CalculoProvider };
 
 
 
- 

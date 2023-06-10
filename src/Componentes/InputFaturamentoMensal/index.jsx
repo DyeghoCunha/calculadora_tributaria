@@ -8,6 +8,8 @@ import { MdOutlineCleaningServices } from "react-icons/md";
 import { useEffect } from 'react';
 import { EmpresaContext } from '../../common/contex/Empresa';
 import { CalculoContext } from '../../common/contex/Calculos';
+import ReactModal from 'react-modal';
+
 
 
 export default function InputFaturamentoMensal() {
@@ -18,10 +20,24 @@ export default function InputFaturamentoMensal() {
   const { anoSelecionado, setAnoSelecionado } = useContext(EmpresaContext)
   const [isErroAno, setIsErroAno] = useState(false); // New state variable
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-  const {reconheceClickBotao, setReconheceClickBotao} = useContext(CalculoContext)
+  const { reconheceClickBotao, setReconheceClickBotao, setModalIsOpen, setUserConfirmation } = useContext(CalculoContext)
 
 
-  
+
+
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = (confirmed) => {
+    setUserConfirmation(confirmed);
+    setModalIsOpen(false);
+  };
+
+
+
+
   //* É COM O faturamentoMensal que temos as informações
 
   //? o faturamentoDbValues tem as informações do arquivo Json ?
@@ -43,7 +59,7 @@ export default function InputFaturamentoMensal() {
       valor: obj.faturamentoMes,
       mes: obj.mês,
       ano: anoSelecionado,
-     
+
 
     })
     );
@@ -91,7 +107,7 @@ export default function InputFaturamentoMensal() {
 
   }, [anoSelecionado, anoAtual, anoRetroativo]);
 
-  const handleAnoSelecionado = (e)=>{
+  const handleAnoSelecionado = (e) => {
     const valorDigitado = e.target.value;
     if (valorDigitado >= anoRetroativo && valorDigitado <= anoAtual) {
       setAnoSelecionado(valorDigitado);

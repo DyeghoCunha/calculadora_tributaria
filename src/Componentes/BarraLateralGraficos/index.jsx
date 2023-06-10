@@ -74,10 +74,10 @@ export default function BarraLateralGraficos() {
     setMinimizaAba(prev => !prev)
   }
 
-  useEffect(() => {
+/*   useEffect(() => {
     console.log("Minimiza Barra: ", minimizaAba)
   }, [minimizaAba])
-
+ */
 
   function handleMinimizar(objeto) {
     if (!anosMinimizados.some(item => item.ano === objeto.ano)) {

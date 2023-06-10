@@ -21,12 +21,25 @@ const BotaoAsideProvider = ({ children }) => {
 
 
  
+useEffect(() => {
+  const updatedMinimizaAba = dadosFormularioMensal.map(objeto => {
+    const matchingItem = minimizaAba.find(item => item.ano === objeto.ano);
+    if (matchingItem) {
+      // Objeto já existe em minimizaAba, preserva a propriedade 'visivel'
+      return { ...matchingItem };
+    } else {
+      // Objeto é novo, copia do dadosFormularioMensal
+      return { ...objeto };
+    }
+  });
 
-console.log('BotoesAsideContext: ', dadosFormularioMensal)
+  setMinimizaAba(updatedMinimizaAba);
 
-useEffect(()=>{
-  setMinimizaAba(dadosFormularioMensal)
-},[dadosFormularioMensal])
+}, [dadosFormularioMensal]);
+
+/* useEffect(()=>{
+console.log(`MinimizaAbaContext: `, minimizaAba)
+}, [minimizaAba]) */
 
 
   const value = {

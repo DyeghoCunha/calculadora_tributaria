@@ -26,7 +26,7 @@ export default function BlocoFaturamentoMensal() {
     <EmpresaProvider>
       <CalculoProvider>
         <FaturamentoInputProvider>
-          <BotaoAsideProvider></BotaoAsideProvider>
+          
           <div className={styles.container}>
             <InputFaturamentoMensal />
             <div className={styles.containerGrafico}>
@@ -49,6 +49,7 @@ export default function BlocoFaturamentoMensal() {
               </div>
             </div>
           </div>
+         
         </FaturamentoInputProvider>
       </CalculoProvider>
     </EmpresaProvider>
