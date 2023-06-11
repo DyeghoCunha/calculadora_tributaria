@@ -131,7 +131,17 @@ z-index: 1001;
   font-family: $fonte-normal;
 }
 
-
+.botaoAno:hover:after{
+  content: "Tabela do ano:";
+  text-align: center;
+  width: 100px;
+  position: absolute;
+  right: 50px;
+  border-radius: 8px 0px 0px 8px;
+  background-color: $colorTribBotao;
+  color: white;
+  font-family: $fonte-normal;
+}
 
 
 

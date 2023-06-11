@@ -9,9 +9,9 @@ const EmpresaProvider = ({ children }) => {
 
 
 
-  const [empresa, setEmpresa] = useState({});
 
-  const [arreyEmpresa, setArreyEmpresa] = useState([])
+
+
 
   const [anoSelecionado, setAnoSelecionado] = useState('')
 
@@ -38,11 +38,17 @@ useEffect(()=>{
 }, [dadosFormularioMensal]);
 
 
+
+
+
+
   const value = {
 anoSelecionado,
 setAnoSelecionado,
 dadosFormularioMensal,
-setDadosFormularioMensal,anoSide
+setDadosFormularioMensal,anoSide,
+
+
 
   }
 

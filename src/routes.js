@@ -20,7 +20,7 @@ import { BotaoAsideProvider } from './common/contex/BotoesAside';
 export default function AppRoutes() {
   return (
     <BrowserRouter>
-      <NavBar />
+      {/* <NavBar /> */}
       <EmpresaProvider>
      
         <CalculoProvider>

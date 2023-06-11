@@ -80,10 +80,10 @@ export default function BarraLateralGraficos() {
  */
 
   function handleMinimizar(objeto) {
-    if (!anosMinimizados.some(item => item.ano === objeto.ano)) {
+   
       const updatedDadosFormularioMensal = minimizaAba.map(item => {
         if (item.ano === objeto.ano) {
-          if (item.visivel) {
+          if (item.visivel===false) {
             return { ...item, visivel: true }; // Altera a propriedade visivel para false
           }
         }
@@ -91,8 +91,10 @@ export default function BarraLateralGraficos() {
       });
       setMinimizaAba(updatedDadosFormularioMensal);
 
-    }
+
   }
+  
+
   
 
   return (
@@ -148,7 +150,7 @@ export default function BarraLateralGraficos() {
             <section className={`${styles.containerGrupo} ${abreBarra ? styles.fadeOut2s : styles.fadeIn2s}`}>
               {minimizaAba.map((objeto, index) => (
                objeto.visivel===false &&(
-                <button key={index} className={`${styles.botao} ${styles.botaoBarra}`}
+                <button key={index} className={`${styles.botao} ${styles.botaoBarra} ${styles.botaoAno}`}
                   onClick={() => handleMinimizar(objeto)}
                 >{objeto.ano}</button>
                 )

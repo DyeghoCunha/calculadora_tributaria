@@ -152,6 +152,20 @@
   border: none;
   background-color: transparent;
 }
+
+.limpaFormulario:hover:after{
+  content: "Limpa os dados do formulário";
+  text-align: center;
+  width: 150px;
+  position: absolute;
+bottom:0px;
+right: 0px;
+  border-radius: 8px 0px 8px 0px;
+  background-color: $colorTribDestaque;
+  color: white;
+  font-family: $fonte-normal;
+}
+
 .iconeLimpa{
   color: $colorTribBotao;
   width: fit-content;

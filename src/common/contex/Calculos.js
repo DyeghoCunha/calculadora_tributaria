@@ -46,15 +46,12 @@ const CalculoProvider = ({ children }) => {
   const [valorPisRestituir, setValorPisRestituir] = useState(0)
   const [valorCofinsRestituir, setValorCofinsRestituir] = useState(0)
 
-
   const [bcHospitalCsll, setBcHospitalCsll] = useState(0);
   const [bcHospitalIr, setBcHospitalIr] = useState(0);
   const [valorAdIrHospital, setValorAdIrHospital] = useState(0);
   const [valorIrHospital, setValorIrHospital] = useState(0);
   const [valorTotalIrHospital, setValorTotalIrHospital] = useState(0)
   const [valorCsllHospital, setValorCsllHospital] = useState(0);
-
-
 
   const [valorPis, setValorPis] = useState(0);
   const [valorCofins, setValorCofins] = useState(0);
@@ -63,7 +60,11 @@ const CalculoProvider = ({ children }) => {
 
   const [faturamentoMesAno, setFaturamentoMesAno] = useState({})
 
+<<<<<<< HEAD
+  const { anoSelecionado } = useContext(EmpresaContext);
+=======
   const { empresa, setEmpresa, setArreyEmpresa, anoSelecionado } = useContext(EmpresaContext);
+>>>>>>> 54efe7a2a8cfd7a57a8c780c444232a32dc8551e
 
   const [controlaAno, setControlaAno] = useState(0)
 
@@ -71,11 +72,18 @@ const CalculoProvider = ({ children }) => {
 
   const { dadosFormularioMensal, setDadosFormularioMensal } = useContext(EmpresaContext);
 
+<<<<<<< HEAD
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const [userConfirmation, setUserConfirmation] = useState(false);
+ 
+=======
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [userConfirmation, setUserConfirmation] = useState(false);
 
 
+>>>>>>> 54efe7a2a8cfd7a57a8c780c444232a32dc8551e
   useEffect(() => {
     if (fatCalculo && fatCalculo.rbt12) {
       setFaturamento(fatCalculo.rbt12);
@@ -177,6 +185,10 @@ const CalculoProvider = ({ children }) => {
     const irRestituir = valorTotalIr - valorTotalIrHospital
     const csllRestituir = valorCsll - valorCsllHospital
 
+    console.log('ValorCsll: ', valorCsll)
+    console.log('valorCsllHp: ', valorCsllHospital)
+    console.log('Valor rest: ' ,csllRestituir)
+
     setValorIrRestituir(irRestituir)
     setValorCsllRestituir(csllRestituir)
     setValorPisRestituir(0)
@@ -197,6 +209,35 @@ const CalculoProvider = ({ children }) => {
     if (anoSelecionado.length === 0) {
       return;
     }
+<<<<<<< HEAD
+
+    const timer = setTimeout(() => {
+      const novoObjeto = {
+        ano: anoSelecionado,
+        faturamento: faturamento,
+        ir: valorIr,
+        irAd: valorAdIr,
+        irT: valorTotalIr,
+        irH: valorIrHospital,
+        irHAd: valorAdIrHospital,
+        irHT: valorTotalIrHospital,
+        csll: valorCsll,
+        pis: valorPis,
+        cofins: valorCofins,
+        irRestituir: valorIrRestituir,
+        csllRestituir: valorCsllRestituir,
+        pisRestituir: valorPisRestituir,
+        cofinsRestituir: valorCofinsRestituir,
+        mesesFaturado: qtdMeses,
+        visivel:'' 
+      };
+    
+      const objetoExistente = dadosFormularioMensal.find(objeto => objeto.ano === novoObjeto.ano);
+    
+      if (!objetoExistente) {
+        setDadosFormularioMensal([...dadosFormularioMensal, novoObjeto]);
+      } else {
+=======
 
     const novoObjeto = {
       ano: anoSelecionado,
@@ -302,7 +343,79 @@ const CalculoProvider = ({ children }) => {
     }
 
   }, [mostraTela])
+>>>>>>> 54efe7a2a8cfd7a57a8c780c444232a32dc8551e
 
+
+        //TODO FAZER UM CARD INFORMANDO ISTO
+        console.log('Já existe um objeto com o mesmo ano no array.');
+      }
+    }, 20);
+    
+    return () => {
+      clearTimeout(timer);
+    };
+    
+    
+     
+    
+    //setDadosFormularioMensal([...dadosFormularioMensal, novoObjeto]);
+    //todo ---- ENCONTRAR UMA FORMA DO CODIGO ACEITAR FATURAMENTOS IGUAIS PARA ANOS DIFERENTES
+    //!! TENHO QUE ACHAR UM JEITO DE RESOLVER 
+  }, [valorIrRestituir, reconheceClickBotao]);
+
+
+  useEffect(() => {
+    if (valorIrHospital > 1) {
+
+
+      console.log('ano: ', anoSelecionado);
+      console.log('faturamento: ', faturamento);
+      console.log('ir: ', valorIr);
+      console.log('irAd: ', valorAdIr);
+      console.log('irT: ', valorTotalIr);
+      console.log('irH: ', valorIrHospital);
+      console.log('irHAd: ', valorAdIrHospital);
+      console.log('irHT: ', valorTotalIrHospital);
+      console.log('csll: ', valorCsll);
+      console.log('pis: ', valorPis);
+      console.log('cofins: ', valorCofins);
+      console.log('irRestituir: ', valorIrRestituir);
+      console.log('csllRestituir: ', valorCsllRestituir);
+      console.log('pisRestituir: ', valorPisRestituir);
+      console.log('cofinsRestituir: ', valorCofinsRestituir);
+      console.log('mesesFaturado: ', qtdMeses);
+
+/*       console.log("------------Faturamento---------------");
+      console.log('Faturamento: ', faturamento)
+      console.log("----------Normal--------------");
+      console.log('BcIRn: ', bcNormalIr)
+      console.log('Valor IRn: ', valorIr)
+      console.log('Adicional IRn: ', valorAdIr)
+      console.log('IRn Total: ', valorTotalIr)
+      console.log("---------------------------");
+      console.log("BcCslln: ", bcNormalCsll);
+      console.log('Valor Cslln: ', valorCsll)
+
+      console.log("\n----------Hospital--------------");
+
+      console.log('BcIR-hpt: ', bcHospitalIr)
+      console.log('Valor IR-hpt: ', valorIrHospital)
+      console.log('Adicional IR-hpt: ', valorAdIrHospital)
+      console.log('IR-hpt Total: ', valorTotalIrHospital)
+      console.log("---------------------------");
+      console.log("BcCsll-hpt: ", bcHospitalCsll);
+      console.log('Valor Csll-hpt: ', valorCsllHospital)
+      console.log("\n---------------------------");
+
+      console.log("Pis:", valorPis);
+      console.log("Cofins:", valorCofins);
+      console.log("----------------------------"); */
+
+
+    }
+
+  }, [mostraTela])
+ 
 
   const value = {
     fatCalculo,

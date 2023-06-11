@@ -63,9 +63,17 @@ $materialCardShaddow: 0 2px 4px rgba(0, 0, 0, 0.25); // Defina a sombra do card
 
 // Cores Projeto Calculadora tributaria
 
-$colorTribFundo: rgba(246,246,247,1);
+//$colorTribFundo: rgba(246,246,247,1);
 $colorTribCard: rgba(255,255,255,1);
 $colorTribCampoFundo: rgba(228,228,228,1);
 $colorTribBotao: rgba(25,194,125,1);
 $colorTribDestaque:rgba(151,71,255,1);
 $colorTribDestaqueFade:rgba(151,71,255,0.2);
+
+$colorTribFundo2: rgba(246,246,247,1);
+$colorTribFundo: #009995;
+/* $colorTribCard: rgba(255,255,255,1);
+$colorTribCampoFundo: rgba(228,228,228,1);
+$colorTribBotao: #009995;
+$colorTribDestaque:#E47F15;
+$colorTribDestaqueFade:rgba(151,71,255,0.2); */

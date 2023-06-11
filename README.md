@@ -107,6 +107,8 @@ Por fim, o provedor CalculoProvider envolve os componentes filhos e fornece o co
   /* Estilos para telas médias */
 }
 
+alteração
+
 /* Telas grandes (de 769px a 992px) */
 @media (min-width: 769px) and (max-width: 992px) {
   /* Estilos para telas grandes */
@@ -116,3 +118,8 @@ Por fim, o provedor CalculoProvider envolve os componentes filhos e fornece o co
 @media (min-width: 1200px) {
   /* Estilos para telas extra grandes */
 }
+
+
+vever o grafico
+ teste
+ 
