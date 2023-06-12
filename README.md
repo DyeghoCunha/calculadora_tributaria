@@ -6,7 +6,7 @@ Projeto desenvolvido para fixar conhecimento em React Js e Contabilidade Tributa
 | -------------  | --- |
 | :sparkles: Nome        | **Calculadora Tributaria**
 | :label: Tecnologias | React.Js, HTML5, SCSS.
-| :rocket: URL         | https://myroom-six.vercel.app
+| :rocket: URL         | calculadora-tributaria.vercel.app
 
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
