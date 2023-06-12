@@ -12,7 +12,7 @@ const FaturamentoInputProvider = ({ children }) => {
   const [faturamentoAnual, setFaturamentoAnual] = useState(0);
   
 
-  const [faturamentoMensalComAno, setFaturamentoMensalComAno] = useState({})
+  const [faturamentoMensalComAno, setFaturamentoMensalComAno] = useState([])
   const [anoSelecionado, setAnoSelecionado] = useState('');
   
   const [anoAtual, setAnoAtual] = useState(0)
