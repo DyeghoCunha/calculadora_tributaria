@@ -14,10 +14,12 @@ const EmpresaProvider = ({ children }) => {
 
 
   const [anoSelecionado, setAnoSelecionado] = useState('')
-
   const [dadosFormularioMensal, setDadosFormularioMensal] = useState([]);
   const [anoSide, setAnoSide] = useState([]);
 
+
+  const[simplesNacional, setSimplesNacional]= useState(false)
+  const[lucroPresumido, setLucroPresumido]= useState(false)
 
   //!Arrumar o Ano e finalizar a empresa
   

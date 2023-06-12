@@ -126,7 +126,7 @@ const CalculoProvider = ({ children }) => {
     if (bcNormalIr > bcExcedente) {
       const addBc = (bcNormalIr - bcExcedente) * adicionalIr
       setValorAdIr(addBc);
-      console.log('ValorAdIRNormal: ',addBc)
+     
     }
   
     if (bcNormalIr) {
@@ -142,7 +142,7 @@ const CalculoProvider = ({ children }) => {
     if (bcHospitalIr > bcExcedente) {
       const addBc = (bcHospitalIr - bcExcedente) * adicionalIr
       setValorAdIrHospital(addBc);
-      console.log('ValorAdIRHospital: ',addBc)
+      
     }
 
     if (bcHospitalIr) {
