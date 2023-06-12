@@ -18,26 +18,27 @@ const EmpresaProvider = ({ children }) => {
   const [anoSide, setAnoSide] = useState([]);
 
 
-  const[simplesNacional, setSimplesNacional]= useState(false)
-  const[lucroPresumido, setLucroPresumido]= useState(false)
+  const [simplesNacional, setSimplesNacional] = useState(true)
+  const [lucroPresumido, setLucroPresumido] = useState(false)
 
   //!Arrumar o Ano e finalizar a empresa
-  
 
 
-  
-useEffect(()=>{
 
-  if(dadosFormularioMensal.length>0){
-  console.log('Empresa: ',dadosFormularioMensal)}
-},[dadosFormularioMensal])
-  
+
   useEffect(() => {
-  if (dadosFormularioMensal) {
-    const anos = dadosFormularioMensal.map((objeto) => objeto.ano);
-    setAnoSide(anos);
-  }
-}, [dadosFormularioMensal]);
+
+    if (dadosFormularioMensal.length > 0) {
+      console.log('Empresa: ', dadosFormularioMensal)
+    }
+  }, [dadosFormularioMensal])
+
+  useEffect(() => {
+    if (dadosFormularioMensal) {
+      const anos = dadosFormularioMensal.map((objeto) => objeto.ano);
+      setAnoSide(anos);
+    }
+  }, [dadosFormularioMensal]);
 
 
 
@@ -45,10 +46,10 @@ useEffect(()=>{
 
 
   const value = {
-anoSelecionado,
-setAnoSelecionado,
-dadosFormularioMensal,
-setDadosFormularioMensal,anoSide,
+    anoSelecionado,
+    setAnoSelecionado,
+    dadosFormularioMensal,
+    setDadosFormularioMensal, anoSide,simplesNacional, setSimplesNacional, lucroPresumido, setLucroPresumido
 
 
 

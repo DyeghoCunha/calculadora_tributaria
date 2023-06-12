@@ -71,7 +71,9 @@ const CalculoProvider = ({ children }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const [userConfirmation, setUserConfirmation] = useState(false);
- 
+
+
+
   useEffect(() => {
     if (fatCalculo && fatCalculo.rbt12) {
       setFaturamento(fatCalculo.rbt12);
@@ -83,6 +85,11 @@ const CalculoProvider = ({ children }) => {
   }, [fatCalculo]);
 
 
+
+
+
+
+  //*----- INICIO CALCULO DE RESTITUIÇÃO CLINICAS ------------------------------------------------
   useEffect(() => {
 
     if (faturamento) {
@@ -126,9 +133,9 @@ const CalculoProvider = ({ children }) => {
     if (bcNormalIr > bcExcedente) {
       const addBc = (bcNormalIr - bcExcedente) * adicionalIr
       setValorAdIr(addBc);
-     
+
     }
-  
+
     if (bcNormalIr) {
       setValorIr(bcNormalIr * alqIr);
       setValorCsll(bcNormalCsll * alqCsll)
@@ -142,7 +149,7 @@ const CalculoProvider = ({ children }) => {
     if (bcHospitalIr > bcExcedente) {
       const addBc = (bcHospitalIr - bcExcedente) * adicionalIr
       setValorAdIrHospital(addBc);
-      
+
     }
 
     if (bcHospitalIr) {
@@ -201,29 +208,29 @@ const CalculoProvider = ({ children }) => {
       return;
     }
 
-   
-      const novoObjeto = {
-        ano: anoSelecionado,
-        faturamento: faturamento,
-        ir: valorIr,
-        irAd: valorAdIr,
-        irT: valorTotalIr,
-        irH: valorIrHospital,
-        irHAd: valorAdIrHospital,
-        irHT: valorTotalIrHospital,
-        csll: valorCsll,
-        pis: valorPis,
-        cofins: valorCofins,
-        irRestituir: valorIrRestituir,
-        csllRestituir: valorCsllRestituir,
-        pisRestituir: valorPisRestituir,
-        cofinsRestituir: valorCofinsRestituir,
-        mesesFaturado: qtdMeses,
-        visivel:'' 
-      };
-     const timer = setTimeout(() => {
+
+    const novoObjeto = {
+      ano: anoSelecionado,
+      faturamento: faturamento,
+      ir: valorIr,
+      irAd: valorAdIr,
+      irT: valorTotalIr,
+      irH: valorIrHospital,
+      irHAd: valorAdIrHospital,
+      irHT: valorTotalIrHospital,
+      csll: valorCsll,
+      pis: valorPis,
+      cofins: valorCofins,
+      irRestituir: valorIrRestituir,
+      csllRestituir: valorCsllRestituir,
+      pisRestituir: valorPisRestituir,
+      cofinsRestituir: valorCofinsRestituir,
+      mesesFaturado: qtdMeses,
+      visivel: ''
+    };
+    const timer = setTimeout(() => {
       const objetoExistente = dadosFormularioMensal.find(objeto => objeto.ano === novoObjeto.ano);
-    
+
       if (!objetoExistente) {
         setDadosFormularioMensal([...dadosFormularioMensal, novoObjeto]);
       } else {
@@ -233,72 +240,93 @@ const CalculoProvider = ({ children }) => {
         console.log('Já existe um objeto com o mesmo ano no array.');
       }
     }, 20);
-    
+
     return () => {
       clearTimeout(timer);
     };
-    
-    
-     
-    
+
+
+
+
     //setDadosFormularioMensal([...dadosFormularioMensal, novoObjeto]);
     //todo ---- ENCONTRAR UMA FORMA DO CODIGO ACEITAR FATURAMENTOS IGUAIS PARA ANOS DIFERENTES
     //!! TENHO QUE ACHAR UM JEITO DE RESOLVER 
   }, [valorIrRestituir, reconheceClickBotao]);
 
-/*
-  useEffect(() => {
-    if (valorIrHospital > 1) {
+  /*
+    useEffect(() => {
+      if (valorIrHospital > 1) {
+  
+  
+        console.log('ano: ', anoSelecionado);
+        console.log('faturamento: ', faturamento);
+        console.log('ir: ', valorIr);
+        console.log('irAd: ', valorAdIr);
+        console.log('irT: ', valorTotalIr);
+        console.log('irH: ', valorIrHospital);
+        console.log('irHAd: ', valorAdIrHospital);
+        console.log('irHT: ', valorTotalIrHospital);
+        console.log('csll: ', valorCsll);
+        console.log('pis: ', valorPis);
+        console.log('cofins: ', valorCofins);
+        console.log('irRestituir: ', valorIrRestituir);
+        console.log('csllRestituir: ', valorCsllRestituir);
+        console.log('pisRestituir: ', valorPisRestituir);
+        console.log('cofinsRestituir: ', valorCofinsRestituir);
+        console.log('mesesFaturado: ', qtdMeses);
+  
+         console.log("------------Faturamento---------------");
+        console.log('Faturamento: ', faturamento)
+        console.log("----------Normal--------------");
+        console.log('BcIRn: ', bcNormalIr)
+        console.log('Valor IRn: ', valorIr)
+        console.log('Adicional IRn: ', valorAdIr)
+        console.log('IRn Total: ', valorTotalIr)
+        console.log("---------------------------");
+        console.log("BcCslln: ", bcNormalCsll);
+        console.log('Valor Cslln: ', valorCsll)
+  
+        console.log("\n----------Hospital--------------");
+  
+        console.log('BcIR-hpt: ', bcHospitalIr) console.log('Valor IR-hpt: ', valorIrHospital)
+        console.log('Adicional IR-hpt: ', valorAdIrHospital)
+        console.log('IR-hpt Total: ', valorTotalIrHospital)
+        console.log("---------------------------");
+        console.log("BcCsll-hpt: ", bcHospitalCsll);
+        console.log('Valor Csll-hpt: ', valorCsllHospital)
+        console.log("\n---------------------------");
+  
+        console.log("Pis:", valorPis);
+        console.log("Cofins:", valorCofins);
+        console.log("----------------------------");
+  
+  
+      }
+  
+    }, [mostraTela])
+    */
+  //*----- FIM CALCULO DE RESTITUIÇÃO CLINICAS ------------------------------------------------
+  //!------------------------------------------------------------------------------------------
+  //!------------------------------------------------------------------------------------------
+  //!------------------------------------------------------------------------------------------
+  //*----- INICIO SIMPLES NACIONAL ------------------------------------------------------------
 
 
-      console.log('ano: ', anoSelecionado);
-      console.log('faturamento: ', faturamento);
-      console.log('ir: ', valorIr);
-      console.log('irAd: ', valorAdIr);
-      console.log('irT: ', valorTotalIr);
-      console.log('irH: ', valorIrHospital);
-      console.log('irHAd: ', valorAdIrHospital);
-      console.log('irHT: ', valorTotalIrHospital);
-      console.log('csll: ', valorCsll);
-      console.log('pis: ', valorPis);
-      console.log('cofins: ', valorCofins);
-      console.log('irRestituir: ', valorIrRestituir);
-      console.log('csllRestituir: ', valorCsllRestituir);
-      console.log('pisRestituir: ', valorPisRestituir);
-      console.log('cofinsRestituir: ', valorCofinsRestituir);
-      console.log('mesesFaturado: ', qtdMeses);
-
-       console.log("------------Faturamento---------------");
-      console.log('Faturamento: ', faturamento)
-      console.log("----------Normal--------------");
-      console.log('BcIRn: ', bcNormalIr)
-      console.log('Valor IRn: ', valorIr)
-      console.log('Adicional IRn: ', valorAdIr)
-      console.log('IRn Total: ', valorTotalIr)
-      console.log("---------------------------");
-      console.log("BcCslln: ", bcNormalCsll);
-      console.log('Valor Cslln: ', valorCsll)
-
-      console.log("\n----------Hospital--------------");
-
-      console.log('BcIR-hpt: ', bcHospitalIr)
-      console.log('Valor IR-hpt: ', valorIrHospital)
-      console.log('Adicional IR-hpt: ', valorAdIrHospital)
-      console.log('IR-hpt Total: ', valorTotalIrHospital)
-      console.log("---------------------------");
-      console.log("BcCsll-hpt: ", bcHospitalCsll);
-      console.log('Valor Csll-hpt: ', valorCsllHospital)
-      console.log("\n---------------------------");
-
-      console.log("Pis:", valorPis);
-      console.log("Cofins:", valorCofins);
-      console.log("----------------------------");
 
 
-    }
 
-  }, [mostraTela])
-  */
+
+
+
+
+
+
+
+
+
+
+  //*----- FIM SIMPLES NACIONAL ---------------------------------------------------------------
+
 
   const value = {
     fatCalculo,

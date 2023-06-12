@@ -6,8 +6,8 @@ import { EmpresaContext } from './Empresa';
 const FaturamentoInputContext = createContext();
 
 const FaturamentoInputProvider = ({ children }) => {
-  const { setFatCalculo, setQtdMeses, setFaturamentoMesAno ,setControlaAno} = useContext(CalculoContext);
-  const { anoInput }= useContext(EmpresaContext)
+  const { setFatCalculo, setQtdMeses, setFaturamentoMesAno } = useContext(CalculoContext);
+
   const [faturamentoMensal, setFaturamentoMensal] = useState([]);
   const [faturamentoAnual, setFaturamentoAnual] = useState(0);
   
@@ -26,7 +26,10 @@ const FaturamentoInputProvider = ({ children }) => {
     setAnoRetroativo(currentYear - 5);
   }, []);
 
-
+  console.log("faturamentoMensal:", faturamentoMensal);
+  console.log("faturamentoAnual:", faturamentoAnual);
+  console.log("faturamentoMensalComAno:", faturamentoMensalComAno);
+  
 
   useEffect(() => {
 

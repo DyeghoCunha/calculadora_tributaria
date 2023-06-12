@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import InputFaturamentoGenerico from './InputFaturamentoGenerico';
-import styles from './InputFaturamentoMensal.module.scss';
+import InputFatGenericoSimplesNacional from './InputFatGenericoSimplesNacional';
+import styles from './InputFaturamentoSimplesNacional.module.scss';
 
 import faturamentoDb from '../../assets/json/dados.json';
 import { FaturamentoInputContext } from '../../common/contex/FaturamentoInput';
@@ -12,7 +12,7 @@ import { CalculoContext } from '../../common/contex/Calculos';
 
 
 
-export default function InputFaturamentoMensal() {
+export default function InputFaturamentoSimplesNacional() {
   const [faturamentoDbValues, setFaturamentoDbValues] = useState(faturamentoDb);
 
   const { setFaturamentoMensal, setFaturamentoMensalComAno, anoAtual, anoRetroativo } = useContext(FaturamentoInputContext);
@@ -111,7 +111,7 @@ export default function InputFaturamentoMensal() {
       <h1 className={styles.titulo}>Faturamento Mensal</h1>
       <div className={styles.mesesContainer}>
 
-        <InputFaturamentoGenerico
+        <InputFatGenericoSimplesNacional
           faturamentoDb={faturamentoDbValues}
           handleFaturamentoInputChange={handleFaturamentoInputChange}/>
 

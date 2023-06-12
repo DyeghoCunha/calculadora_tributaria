@@ -1,8 +1,8 @@
-import styles from './InputFaturamentoGenerico.module.scss';
+import styles from './InputFatGenericoSimplesNacional.module.scss';
 import React from 'react';
 
 
-const InputFaturamentoGenerico = ({ faturamentoDb, handleFaturamentoInputChange}) => {
+const InputFatGenericoSimplesNacional = ({ faturamentoDb, handleFaturamentoInputChange}) => {
 
   
 
@@ -30,4 +30,4 @@ const InputFaturamentoGenerico = ({ faturamentoDb, handleFaturamentoInputChange}
   );
 };
 
-export default InputFaturamentoGenerico;
+export default InputFatGenericoSimplesNacional;

@@ -1,0 +1,48 @@
+@import '../../../styles/variaveis';
+
+
+
+
+.containerPrincipal{
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 20px 0;
+
+}
+.container:hover label{
+  color:$colorTribBotao
+}
+
+.mesContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.label{
+  font-family: $fonte-normal;
+  margin-right: 5px;
+}
+
+.input{
+  width: 140px;
+  height: 30px;
+  border-radius: 8px;
+  border: none;
+  background-color: $colorTribCampoFundo;
+
+ 
+  box-sizing: border-box;
+}
+
+
+
+.input:hover{
+  border: solid 2px $colorTribBotao;
+}
+.input:focus{
+  outline: none;
+  border: solid 3px $colorTribDestaque
+}

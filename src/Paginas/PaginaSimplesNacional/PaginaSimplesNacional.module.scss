@@ -1,3 +1,7 @@
+@import '../../styles/variaveis';
+
+
+
 .container {
   width: 100vw;
   height: fit-content;
@@ -9,18 +13,4 @@
   //border: 2px solid;
  overflow-x: hidden; 
 
-}
-
-.faturamentoMensal {
-  z-index: 0px;
-
-}
-
-.barraLateral {
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin-right: 0px;
-  height: 100vh;
-  z-index: 10;
 }
