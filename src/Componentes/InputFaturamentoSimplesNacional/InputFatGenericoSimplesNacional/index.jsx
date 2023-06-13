@@ -1,15 +1,15 @@
+import { EmpresaContext } from '../../../common/contex/Empresa';
 import styles from './InputFatGenericoSimplesNacional.module.scss';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 
-const InputFatGenericoSimplesNacional = ({ faturamentoDb, handleFaturamentoInputChange}) => {
+const InputFatGenericoSimplesNacional = ({ empresa, handleFaturamentoInputChange }) => {
 
-  
-
+  const { mesAtual, mesAnterior, anoAtual, meses} = useContext(EmpresaContext)
 
   return (
     <div className={styles.containerPrincipal}>
-      {faturamentoDb.faturamentoMensal.map(obj => (
+      {empresa.map(obj => (
         <div className={styles.container} key={obj.id}>
           <div className={styles.mesContainer}>
             <label className={styles.label} htmlFor={`faturamentoMes_${obj.id}`}>

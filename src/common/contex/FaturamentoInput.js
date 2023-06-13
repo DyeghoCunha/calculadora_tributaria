@@ -26,10 +26,7 @@ const FaturamentoInputProvider = ({ children }) => {
     setAnoRetroativo(currentYear - 5);
   }, []);
 
-  console.log("faturamentoMensal:", faturamentoMensal);
-  console.log("faturamentoAnual:", faturamentoAnual);
-  console.log("faturamentoMensalComAno:", faturamentoMensalComAno);
-  
+ 
 
   useEffect(() => {
 
