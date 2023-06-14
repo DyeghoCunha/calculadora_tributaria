@@ -22,6 +22,13 @@ const EmpresaProvider = ({ children }) => {
 
 
   const [empresaSimplesNacional, setEmpresaSimplesNacional] = useState([])
+  const [atividadeEmpresa, setAtividadeEmpresa] = useState('')
+
+
+
+
+
+
   const [dataAtual, setDataAtual] = useState(new Date());
   const [mesAgora, setMesAgora] = useState(0);
   const [anoHoje, setAnoHoje] = useState(0);
@@ -187,8 +194,6 @@ const EmpresaProvider = ({ children }) => {
    
 
 
-
-
     }
 
   }, [dadosFormularioMensal])
@@ -200,6 +205,12 @@ const EmpresaProvider = ({ children }) => {
     }
   }, [dadosFormularioMensal]);
 
+  
+useEffect(()=>{
+  console.log(atividadeEmpresa)
+},[atividadeEmpresa])
+
+
 
 
   const value = {
@@ -208,7 +219,7 @@ const EmpresaProvider = ({ children }) => {
     dadosFormularioMensal,
     setDadosFormularioMensal, anoSide, simplesNacional, setSimplesNacional, lucroPresumido, setLucroPresumido,
     mesAtual, mesAnterior, anoAtual, meses, empresa, setEmpresa, empresaSimplesNacional, setEmpresaSimplesNacional,
-    anoHoje, mesesDeFaturamento
+    anoHoje, mesesDeFaturamento, atividadeEmpresa, setAtividadeEmpresa
 
 
 

@@ -137,7 +137,7 @@ export default function InputFaturamentoSimplesNacional() {
 
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.cabecalhoFormulario}>
         <input
           type="text"
           placeholder="Digite o ano"

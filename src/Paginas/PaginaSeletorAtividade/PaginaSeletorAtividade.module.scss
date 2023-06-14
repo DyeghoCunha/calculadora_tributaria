@@ -1,0 +1,16 @@
+@import '../../styles/variaveis';
+
+
+
+.container {
+  width: 100vw;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
+  //border: 2px solid;
+ overflow-x: hidden; 
+
+}
