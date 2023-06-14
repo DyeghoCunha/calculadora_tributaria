@@ -1,0 +1,229 @@
+@import '../../styles/variaveis';
+
+
+.container {
+  height: fit-content;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Define três colunas com tamanho igual */
+  grid-template-rows: auto 1fr; /* Permite que as linhas se ajustem automaticamente ao conteúdo */
+  grid-gap: 10px; /* Define um espaçamento entre as células */
+  justify-content: center;
+  align-items: center;
+  background-color: $colorTribFundo2;
+  box-sizing: border-box;
+}
+
+.titulo {
+  grid-column: 1/4; /* Ocupa três colunas */
+  grid-row: 1; /* Ocupa a primeira linha */
+  align-self: center;
+  text-align: center;
+  font-family: $fonte-normal;
+  background-color: $colorTribCard;
+  padding: 3px;
+  color: $colorTribBotao;
+  font-size: 2.5em;
+}
+
+
+
+.ramoServico{
+  
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  padding: 6px;
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+
+}
+
+
+.anexo3{
+
+position: relative;
+  grid-column: 2 ; 
+  grid-row: 2;
+  background-image: url(../../assets/images/FundoAnexo3.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+
+ cursor: pointer;
+
+}
+
+.servico{
+  position: relative;
+  grid-column: 1 ; 
+  grid-row: 2;
+  background-image: url(../../assets/images/FundoServico.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+
+
+}
+.anexo4{
+  position: relative;
+  grid-column: 3 ;
+  grid-row: 2;
+  background-image: url(../../assets/images/FundoAnexo4.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+   cursor: pointer;
+   
+}
+
+
+.tituloServico{
+font-family: $fonte-normal;
+color: $colorTribCard;
+font-size: 5em;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 8px;
+background-color: rgba($colorTribBotao, 0.3);
+backdrop-filter: blur(1px);
+width: 100%;
+height:fit-content;
+padding: 2px;
+border: 1px solid rgba(255,255,255,0.4);
+border-right: 1px solid rgba(255,255,255,0.2) ;
+border-bottom: 1px solid rgba(255,255,255,0.2) ;
+box-shadow: inset 5px 0px 15px rgba(255,255,255,0.25), inset 0px 5px 15px rgba(255,255,255,0.25);
+}
+
+.paragrafoServico{
+
+flex-direction: column;
+font-family: $fonte-normal;
+color: transparent;
+font-size: 1.17em;
+display: flex;
+justify-content: center;
+align-items: top;
+border-radius: 8px;
+padding: 5px;
+
+width: 100%;
+height:fit-content;
+
+letter-spacing: 1px;
+line-height: 1.5;
+
+
+}
+.paragrafoServico:hover{
+backdrop-filter: blur(10px);
+color: $colorTribCard;
+background-color: rgba($colorTribBotao, 0.7);
+border: 1px solid rgba(255,255,255,0.4);
+border-right: 1px solid rgba(255,255,255,0.2) ;
+border-bottom: 1px solid rgba(255,255,255,0.2) ;
+box-shadow: inset 5px 0px 15px rgba(255,255,255,0.25), inset 0px 5px 15px rgba(255,255,255,0.25);
+.realce{
+  text-align: center;
+  font-size: 1.4em;
+strong{
+  color: $colorTribDestaque;
+    font-size: 1.6em;
+}
+}
+
+}
+.paragrafoServico li {
+  margin-bottom: 10px; /* Espaçamento entre os itens da lista */
+}
+
+
+
+.tituloRamo{
+font-family: $fonte-normal;
+color: $colorTribCard;
+font-size: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 8px;
+backdrop-filter: blur(1px);
+width: 80%;
+height: 30%;
+border: 1px solid rgba(255,255,255,0.4);
+border-right: 1px solid rgba(255,255,255,0.2) ;
+border-bottom: 1px solid rgba(255,255,255,0.2) ;
+box-shadow: inset 5px 0px 15px rgba(255,255,255,0.25), inset 0px 5px 15px rgba(255,255,255,0.25);
+  
+}
+
+.tituloRamo:hover{
+scale: 1.1;
+box-shadow: 5px 0px 15px rgba(0,0,0,0.25), 0px 5px 15px rgba(0,0,0,0.25);
+border: 1px solid rgba(255,255,255,0.4);
+border-right: 1px solid rgba(255,255,255,0.2) ;
+border-bottom: 1px solid rgba(255,255,255,0.2) ;
+}
+
+.tituloRamo:active{
+  box-shadow: inset 5px 0px 15px rgba(0,0,0,0.25), inset 0px 5px 15px rgba(0,0,0,0.25);
+}
+
+
+.esconde{
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr ; /* Altera para uma única coluna */
+    grid-template-rows: auto 1fr 1fr 1fr; /* Adiciona mais uma linha para os títulos */
+    align-items: flex-start; /* Alinha os elementos ao topo */
+    justify-content: center;
+  }
+
+  .titulo {
+    grid-column: 1; /* Ocupa uma única coluna */
+    grid-row: 1; /* Ocupa a primeira linha */
+  }
+
+  .ramo {
+    grid-column: 1; /* Ocupa uma única coluna */
+    width: 90%;
+    justify-self: center;
+  }
+
+  .tituloRamo {
+    font-size: 2em; /* Altera o tamanho da fonte */
+    width: 80%; /* Ocupa a largura total */
+    height: 40%; /* Ajusta a altura automaticamente ao conteúdo */
+  }
+
+ .comercio{
+ grid-column: 1; /* Ocupa uma única coluna */
+  grid-row: 2; /* Ocupa a segunda linha */
+ }
+ .servico{
+ grid-column: 1; /* Ocupa uma única coluna */
+  grid-row: 3; /* Ocupa a segunda linha */
+ }
+  .industria{
+ grid-column: 1; /* Ocupa uma única coluna */
+  grid-row: 4; /* Ocupa a segunda linha */
+ }
+
+
+
+}

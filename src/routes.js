@@ -14,6 +14,7 @@ import { EmpresaProvider } from './common/contex/Empresa';
 import { BotaoAsideProvider } from './common/contex/BotoesAside';
 import PaginaSimplesNacional from './Paginas/PaginaSimplesNacional';
 import PaginaSeletorAtividade from './Paginas/PaginaSeletorAtividade';
+import PaginaSeletorDeServicos from './Paginas/PaginaSeletorDeServicos';
 
 
 
@@ -34,7 +35,7 @@ export default function AppRoutes() {
                   {/*  <Route path="/" element={<PaginaInicial />} /> */}
                   {/*  <Route path="/" element={<PaginaFaturamentoAnual />} />  */}
                   {/* <Route path="/" element={<PaginaFaturamentoMensal />} /> */}
-                  <Route path="/" element={<PaginaSeletorAtividade/>} />
+                  <Route path="/" element={<PaginaSeletorDeServicos/>} />
                 </Routes>
               </BotaoAsideProvider>
             </FaturamentoInputProvider>
