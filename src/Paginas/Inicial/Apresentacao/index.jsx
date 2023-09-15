@@ -96,7 +96,7 @@ export default function PaginaApresentacao() {
 
     <section className={styles.secaoContainer}>
 
-        <h2 className={styles.subtitulo}>Contato e Serviços da GroselhaCont</h2>
+        <h2 className={styles.subtitulo}>Contato e Serviços da Excel Contabilidade</h2>
     
 
         <p className={styles.paragrafo}> No Brasil, as obrigações tributárias são abrangentes e frequentemente representam um ônus considerável para as empresas. No setor da saúde, a tributação é particularmente complexa, uma realidade bem conhecida pelos empreendedores do ramo. No entanto, muitos desconhecem a possibilidade de obter créditos tributários, o que pode contribuir para a redução de custos e o aumento da rentabilidade das clínicas.
@@ -111,11 +111,11 @@ export default function PaginaApresentacao() {
 
   
 
-        <p className={styles.paragrafo}>A GroselhaCont oferece serviços especializados em recuperação de créditos tributários para clínicas médicas. Por meio de uma análise minuciosa da situação fiscal da clínica, é possível identificar os tributos pagos indevidamente e solicitar a recuperação dos valores pagos a mais. Isso pode gerar uma melhoria significativa na saúde financeira das clínicas médicas.</p>
+        <p className={styles.paragrafo}>A Excel Contabilidade oferece serviços especializados em recuperação de créditos tributários para clínicas médicas. Por meio de uma análise minuciosa da situação fiscal da clínica, é possível identificar os tributos pagos indevidamente e solicitar a recuperação dos valores pagos a mais. Isso pode gerar uma melhoria significativa na saúde financeira das clínicas médicas.</p>
 
         <br /><br />
 
-        <p className={styles.paragrafo}>Não deixe de entrar em contato com a GroselhaCont para obter mais informações sobre como sua clínica médica pode se beneficiar da recuperação de créditos tributários e reduzir seus custos. Aproveite a oportunidade de realizar um <a className={styles.linkBotao} href='/'>Diagnóstico Tributário Gratuito</a>para descobrir se sua clínica é elegível para esse processo. E se ainda etiver com dúvidas sobre as vantagens </p>
+        <p className={styles.paragrafo}>Não deixe de entrar em contato com a Excel Contabilidade para obter mais informações sobre como sua clínica médica pode se beneficiar da recuperação de créditos tributários e reduzir seus custos. Aproveite a oportunidade de realizar um <a className={styles.linkBotao} href='/'>Diagnóstico Tributário Gratuito</a>para descobrir se sua clínica é elegível para esse processo. E se ainda etiver com dúvidas sobre as vantagens </p>
 
       </section>
     </div>
