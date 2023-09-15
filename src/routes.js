@@ -31,8 +31,8 @@ export default function AppRoutes() {
             <FaturamentoInputProvider>
               <BotaoAsideProvider>
                 <Routes>
-                  <Route path="/apresentacao" element={<PaginaApresentacao/>} /> 
-                    <Route path="/" element={<PaginaInicial />} /> 
+                  <Route path="/" element={<PaginaApresentacao/>} /> 
+                    <Route path="/inicial" element={<PaginaInicial />} /> 
                    <Route path="/anual" element={<PaginaFaturamentoAnual />} />  
                   <Route path="/mensal" element={<PaginaFaturamentoMensal />} /> 
                  <Route path="/seletor" element={<PaginaSeletorDeServicos/>} />
