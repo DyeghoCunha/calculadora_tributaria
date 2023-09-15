@@ -31,11 +31,11 @@ export default function AppRoutes() {
             <FaturamentoInputProvider>
               <BotaoAsideProvider>
                 <Routes>
-                  {/*  <Route path="/" element={<PaginaApresentacao/>} /> */}
-                  {/*  <Route path="/" element={<PaginaInicial />} /> */}
-                  {/*  <Route path="/" element={<PaginaFaturamentoAnual />} />  */}
-                  <Route path="/" element={<PaginaFaturamentoMensal />} /> 
-                { /* <Route path="/" element={<PaginaSeletorDeServicos/>} />*/}
+                  <Route path="/apresentacao" element={<PaginaApresentacao/>} /> 
+                    <Route path="/" element={<PaginaInicial />} /> 
+                   <Route path="/anual" element={<PaginaFaturamentoAnual />} />  
+                  <Route path="/mensal" element={<PaginaFaturamentoMensal />} /> 
+                 <Route path="/seletor" element={<PaginaSeletorDeServicos/>} />
                 </Routes>
               </BotaoAsideProvider>
             </FaturamentoInputProvider>
