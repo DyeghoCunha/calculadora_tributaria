@@ -2,9 +2,32 @@ import styles from './PaginaApresentacao.module.scss'
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleDot } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 
 export default function PaginaApresentacao() {
   return (
+    <>
+    <header className={styles.header}>
+      <nav className={styles.header_item}>
+        <ul>
+          <li>
+            <Link className={styles.link} to="/">Home</Link>
+          </li>
+            <li>
+            <Link className={styles.link} to="/inicial">(Teste) Página Inicial</Link>
+          </li>
+          <li>
+            <Link className={styles.link}to="/anual">(Teste) Cálculo com Faturamento Anual</Link>
+          </li>
+          <li>
+            <Link className={styles.link}to="/mensal">(Funcionando) Cálculo com Faturamento Mensal</Link>
+          </li>
+          <li>
+            <Link className={styles.link}to="/seletor">(Teste) Seletor de Anexo</Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <div className={styles.container}>
       <h1 className={styles.titulo}>Recuperação de créditos tributários para <span className={`${styles.destaque} ${styles.destaqueTitulo}`}>clínicas médicas</span></h1>
 
@@ -119,6 +142,7 @@ export default function PaginaApresentacao() {
 
       </section>
     </div>
+    </>
   );
 }
 

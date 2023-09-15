@@ -1,10 +1,41 @@
 @import '../../../styles/variaveis';
 
+.header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: $colorTribDestaque;
+  list-style: none;
+  background-color: white;
 
+  &_item{
+    display: flex;
+
+    ul{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      list-style: none;
+     
+      .link{
+     font-size: 40;
+       font-style: none;
+      font-family: $fonte-normal;
+      color: $colorTribDestaque;
+      text-decoration: none;
+   
+      }
+    }
+    
+  }
+
+}
 .container{
   width: 100vw;
   height: auto;
-  background-color: $colorTribFundo;
+  background-color: aliceblue;
 } 
 
 .titulo{
